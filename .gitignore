@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.gradle/3.3/taskArtifacts/fileHashes.bin
+.gradle/3.3/taskArtifacts/taskArtifacts.lock
+.idea/workspace.xml
+build/android-profile/profile-2017-08-28-13-33-46-923.rawproto
+build/android-profile/profile-2017-08-28-13-33-51-366.rawproto
