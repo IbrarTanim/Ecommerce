@@ -20,7 +20,7 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(activity, MainActivity.class));
+                startActivity(new Intent(activity, MenuActivity.class));
                 finish();
             }
         }, SPLASH_TIME_OUT);
