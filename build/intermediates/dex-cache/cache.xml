@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\ibrar\.android\build-cache\0965ee72a9b74e0850040adf0b5110d284b62433\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ebcb0bcf52fab7c586f39717f7cb8de91748b1b1">
+        <dex dex="F:\abc\Ecommerce\app\build\intermediates\pre-dexed\debug\classes_8f31b8782be700c679e8f47b3cc8dcfabb42a9de.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ibrar\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="F:\abc\Ecommerce\app\build\intermediates\pre-dexed\debug\library-1.0.19_f75d8b2a5261a68b60077b6a80105616b058ba75.jar" />
+    </item>
+
+</items>
