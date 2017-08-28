@@ -18,6 +18,7 @@ public class Generator {
     private static void addTables(Schema schema) {
         /* entities */
         Entity user = addUser(schema);
+        Entity CSVQuestion = addCSVQuestionTable(schema);
 
     }
 
