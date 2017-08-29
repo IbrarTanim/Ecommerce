@@ -5,5 +5,5 @@ package com.educareapps.quiz.utilities;
  */
 
 public class RootUrl {
-    public final static String RootUrl="http://192.52.243.6/TourismApp/Packages/";
+    public final static String RootUrl="http://192.52.243.6/Quiz/";
 }

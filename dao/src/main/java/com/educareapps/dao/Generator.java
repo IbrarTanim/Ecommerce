@@ -2,7 +2,9 @@ package com.educareapps.dao;
 
 import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
+import de.greenrobot.daogenerator.Property;
 import de.greenrobot.daogenerator.Schema;
+import de.greenrobot.daogenerator.ToMany;
 
 public class Generator {
 
@@ -17,39 +19,68 @@ public class Generator {
 
     private static void addTables(Schema schema) {
         /* entities */
-        Entity user = addUser(schema);
+
         Entity CSVQuestion = addCSVQuestionTable(schema);
+        Entity QuestionSet = addQuestionSetTable(schema, CSVQuestion);
+        Entity Language = addLanguageTable(schema, QuestionSet);
 
     }
 
-    private static Entity addUser(Schema schema) {
-        Entity user = schema.addEntity("User");
-        user.addIdProperty().primaryKey().autoincrement();
-        user.addStringProperty("name").notNull();
-        user.addStringProperty("Age").notNull();
-        user.addStringProperty("proPic").notNull();
-        user.addIntProperty("active").notNull();
-        user.addIntProperty("userId").notNull();
-        return user;
-    }
 
-
-     private static Entity addCSVQuestionTable(Schema schema) {
+    private static Entity addCSVQuestionTable(Schema schema) {
         Entity csvQuestionTble = schema.addEntity("CSVQuestionTable");
-         csvQuestionTble.addIdProperty().primaryKey().autoincrement();
+        csvQuestionTble.addIdProperty().primaryKey().autoincrement();
 
-         csvQuestionTble.addStringProperty("csv_id").notNull();
-         csvQuestionTble.addStringProperty("ques_set_id").notNull();
-         csvQuestionTble.addStringProperty("question").notNull();
+        csvQuestionTble.addLongProperty("question_id").notNull();
+        csvQuestionTble.addStringProperty("question").notNull();
+        csvQuestionTble.addStringProperty("option_one").notNull();
+        csvQuestionTble.addStringProperty("option_two").notNull();
+        csvQuestionTble.addStringProperty("option_three").notNull();
+        csvQuestionTble.addStringProperty("option_four").notNull();
+        csvQuestionTble.addStringProperty("answer").notNull();
 
-         csvQuestionTble.addStringProperty("option_1").notNull();
-         csvQuestionTble.addStringProperty("option_2").notNull();
-         csvQuestionTble.addStringProperty("option_3").notNull();
-         csvQuestionTble.addStringProperty("option_4").notNull();
-
-         csvQuestionTble.addStringProperty("answer").notNull();
 
         return csvQuestionTble;
     }
+
+
+    private static Entity addQuestionSetTable(Schema schema, Entity language) {
+        Entity questionSet = schema.addEntity("QuestionSetTable");
+        questionSet.addIdProperty().primaryKey().autoincrement();
+
+        questionSet.addLongProperty("question_set_id").notNull();
+        questionSet.addStringProperty("question_set").notNull();
+        questionSet.addStringProperty("title").notNull();
+        questionSet.addStringProperty("photo").notNull();
+        questionSet.addStringProperty("created_at").notNull();
+
+
+        Property questionSetProperty = questionSet.addLongProperty("question_id").notNull().getProperty();
+        ToMany questionSetToCSVQuestion = language.addToMany(questionSet, questionSetProperty);
+        questionSetToCSVQuestion.setName("CSVQuestionToquestionSet");
+
+
+        return questionSet;
+    }
+
+
+    private static Entity addLanguageTable(Schema schema, Entity questionSet) {
+        Entity question = schema.addEntity("LanguageTable");
+        question.addIdProperty().primaryKey().autoincrement();
+
+        question.addLongProperty("lang_id").notNull();
+        question.addStringProperty("lang_name").notNull();
+        question.addStringProperty("status").notNull();
+        question.addStringProperty("created_at").notNull();
+
+
+        Property languageProperty = question.addLongProperty("question_set_id").notNull().getProperty();
+        ToMany languageToquestionSet = questionSet.addToMany(question, languageProperty);
+        languageToquestionSet.setName("questoinSetToLanguage");
+
+
+        return question;
+    }
+
 
 }

@@ -24,68 +24,100 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".6">
+            android:layout_weight=".8">
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:weightSum="1">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_gravity="center_horizontal"
-                    android:checked="false"
-                    android:text="A"
-                    android:textSize="25dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/zero"
+                    android:layout_gravity="center"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.13"
-                    android:checked="false"
-                    android:text="B"
-                    android:textSize="25dp" />
+                    <View
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".2" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_gravity="center_horizontal"
-                    android:checked="false"
-                    android:text="C"
-                    android:textSize="25dp" />
+                    <RadioButton
+                        android:id="@+id/rbtnOptionOne"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight=".3"
+                        android:checked="true"
+                        android:text="A"
+                        android:textSize="25dp" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.13"
-                    android:checked="false"
-                    android:text="D"
-                    android:textSize="25dp" />
+                    <RadioButton
+                        android:id="@+id/rbtnOptionTwo"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight=".3"
+                        android:checked="false"
+                        android:text="B"
+                        android:textSize="25dp" />
+
+                    <View
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/zero"
+                    android:layout_gravity="center"
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <View
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".2" />
+
+                    <RadioButton
+                        android:id="@+id/rbtnOptionThree"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight=".3"
+                        android:checked="false"
+                        android:text="C"
+                        android:textSize="25dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbtnOptionFour"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight=".3"
+                        android:checked="false"
+                        android:text="D"
+                        android:textSize="25dp" />
+
+                    <View
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".2" />
+                </LinearLayout>
+
+
             </RadioGroup>
 
 
         </LinearLayout>
-
-
-        <EditText
-            android:id="@+id/edtTTS"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".15"
-            android:gravity="center"
-            android:hint="add text" />
-
-        <Button
-            android:id="@+id/btnSpeek"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".05"
-            android:background="@color/transparent"
-            android:text="Speek" />
-
     </LinearLayout>
 
 

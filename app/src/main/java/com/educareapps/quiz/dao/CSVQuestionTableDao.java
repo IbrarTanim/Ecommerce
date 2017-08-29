@@ -24,15 +24,16 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Csv_id = new Property(1, String.class, "csv_id", false, "CSV_ID");
-        public final static Property Ques_set_id = new Property(2, String.class, "ques_set_id", false, "QUES_SET_ID");
-        public final static Property Question = new Property(3, String.class, "question", false, "QUESTION");
-        public final static Property Option_1 = new Property(4, String.class, "option_1", false, "OPTION_1");
-        public final static Property Option_2 = new Property(5, String.class, "option_2", false, "OPTION_2");
-        public final static Property Option_3 = new Property(6, String.class, "option_3", false, "OPTION_3");
-        public final static Property Option_4 = new Property(7, String.class, "option_4", false, "OPTION_4");
-        public final static Property Answer = new Property(8, String.class, "answer", false, "ANSWER");
+        public final static Property Question_id = new Property(1, long.class, "question_id", false, "QUESTION_ID");
+        public final static Property Question = new Property(2, String.class, "question", false, "QUESTION");
+        public final static Property Option_one = new Property(3, String.class, "option_one", false, "OPTION_ONE");
+        public final static Property Option_two = new Property(4, String.class, "option_two", false, "OPTION_TWO");
+        public final static Property Option_three = new Property(5, String.class, "option_three", false, "OPTION_THREE");
+        public final static Property Option_four = new Property(6, String.class, "option_four", false, "OPTION_FOUR");
+        public final static Property Answer = new Property(7, String.class, "answer", false, "ANSWER");
     };
+
+    private DaoSession daoSession;
 
 
     public CSVQuestionTableDao(DaoConfig config) {
@@ -41,6 +42,7 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
     
     public CSVQuestionTableDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -48,14 +50,13 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CSVQUESTION_TABLE\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"CSV_ID\" TEXT NOT NULL ," + // 1: csv_id
-                "\"QUES_SET_ID\" TEXT NOT NULL ," + // 2: ques_set_id
-                "\"QUESTION\" TEXT NOT NULL ," + // 3: question
-                "\"OPTION_1\" TEXT NOT NULL ," + // 4: option_1
-                "\"OPTION_2\" TEXT NOT NULL ," + // 5: option_2
-                "\"OPTION_3\" TEXT NOT NULL ," + // 6: option_3
-                "\"OPTION_4\" TEXT NOT NULL ," + // 7: option_4
-                "\"ANSWER\" TEXT NOT NULL );"); // 8: answer
+                "\"QUESTION_ID\" INTEGER NOT NULL ," + // 1: question_id
+                "\"QUESTION\" TEXT NOT NULL ," + // 2: question
+                "\"OPTION_ONE\" TEXT NOT NULL ," + // 3: option_one
+                "\"OPTION_TWO\" TEXT NOT NULL ," + // 4: option_two
+                "\"OPTION_THREE\" TEXT NOT NULL ," + // 5: option_three
+                "\"OPTION_FOUR\" TEXT NOT NULL ," + // 6: option_four
+                "\"ANSWER\" TEXT NOT NULL );"); // 7: answer
     }
 
     /** Drops the underlying database table. */
@@ -73,14 +74,19 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindString(2, entity.getCsv_id());
-        stmt.bindString(3, entity.getQues_set_id());
-        stmt.bindString(4, entity.getQuestion());
-        stmt.bindString(5, entity.getOption_1());
-        stmt.bindString(6, entity.getOption_2());
-        stmt.bindString(7, entity.getOption_3());
-        stmt.bindString(8, entity.getOption_4());
-        stmt.bindString(9, entity.getAnswer());
+        stmt.bindLong(2, entity.getQuestion_id());
+        stmt.bindString(3, entity.getQuestion());
+        stmt.bindString(4, entity.getOption_one());
+        stmt.bindString(5, entity.getOption_two());
+        stmt.bindString(6, entity.getOption_three());
+        stmt.bindString(7, entity.getOption_four());
+        stmt.bindString(8, entity.getAnswer());
+    }
+
+    @Override
+    protected void attachEntity(CSVQuestionTable entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
@@ -94,14 +100,13 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
     public CSVQuestionTable readEntity(Cursor cursor, int offset) {
         CSVQuestionTable entity = new CSVQuestionTable( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1), // csv_id
-            cursor.getString(offset + 2), // ques_set_id
-            cursor.getString(offset + 3), // question
-            cursor.getString(offset + 4), // option_1
-            cursor.getString(offset + 5), // option_2
-            cursor.getString(offset + 6), // option_3
-            cursor.getString(offset + 7), // option_4
-            cursor.getString(offset + 8) // answer
+            cursor.getLong(offset + 1), // question_id
+            cursor.getString(offset + 2), // question
+            cursor.getString(offset + 3), // option_one
+            cursor.getString(offset + 4), // option_two
+            cursor.getString(offset + 5), // option_three
+            cursor.getString(offset + 6), // option_four
+            cursor.getString(offset + 7) // answer
         );
         return entity;
     }
@@ -110,14 +115,13 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
     @Override
     public void readEntity(Cursor cursor, CSVQuestionTable entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setCsv_id(cursor.getString(offset + 1));
-        entity.setQues_set_id(cursor.getString(offset + 2));
-        entity.setQuestion(cursor.getString(offset + 3));
-        entity.setOption_1(cursor.getString(offset + 4));
-        entity.setOption_2(cursor.getString(offset + 5));
-        entity.setOption_3(cursor.getString(offset + 6));
-        entity.setOption_4(cursor.getString(offset + 7));
-        entity.setAnswer(cursor.getString(offset + 8));
+        entity.setQuestion_id(cursor.getLong(offset + 1));
+        entity.setQuestion(cursor.getString(offset + 2));
+        entity.setOption_one(cursor.getString(offset + 3));
+        entity.setOption_two(cursor.getString(offset + 4));
+        entity.setOption_three(cursor.getString(offset + 5));
+        entity.setOption_four(cursor.getString(offset + 6));
+        entity.setAnswer(cursor.getString(offset + 7));
      }
     
     /** @inheritdoc */

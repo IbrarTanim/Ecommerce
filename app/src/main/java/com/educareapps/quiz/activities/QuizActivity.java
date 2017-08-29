@@ -7,16 +7,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.educareapps.quiz.R;
 
 import java.util.Locale;
 
-public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitListener {
+public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitListener, View.OnClickListener {
     QuizActivity activity;
     TextToSpeech textToSpeech;
     EditText edtTTS;
     Button btnSpeek;
+
+    RadioButton rbtnOptionOne, rbtnOptionTwo, rbtnOptionThree, rbtnOptionFour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +28,25 @@ public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitLis
         activity = this;
 
         textToSpeech = new TextToSpeech(this, this);
-        edtTTS = (EditText) findViewById(R.id.edtTTS);
-        btnSpeek = (Button) findViewById(R.id.btnSpeek);
-        btnSpeek.setOnClickListener(new View.OnClickListener() {
+        rbtnOptionOne = (RadioButton) findViewById(R.id.rbtnOptionOne);
+        rbtnOptionTwo = (RadioButton) findViewById(R.id.rbtnOptionTwo);
+        rbtnOptionThree = (RadioButton) findViewById(R.id.rbtnOptionThree);
+        rbtnOptionFour = (RadioButton) findViewById(R.id.rbtnOptionFour);
+
+        rbtnOptionOne.setOnClickListener(this);
+        rbtnOptionTwo.setOnClickListener(this);
+        rbtnOptionThree.setOnClickListener(this);
+        rbtnOptionFour.setOnClickListener(this);
+
+        //edtTTS = (EditText) findViewById(R.id.edtTTS);
+        //btnSpeek = (Button) findViewById(R.id.btnSpeek);
+      /*  btnSpeek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String vlaueTTS = edtTTS.getText().toString();
                 speak(vlaueTTS);
             }
-        });
+        });*/
 
     }
 
@@ -76,4 +89,34 @@ public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitLis
         super.onDestroy();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.rbtnOptionOne:
+                rbtnOptionTwo.setChecked(false);
+                rbtnOptionThree.setChecked(false);
+                rbtnOptionFour.setChecked(false);
+
+                break;
+            case R.id.rbtnOptionTwo:
+                rbtnOptionOne.setChecked(false);
+                rbtnOptionThree.setChecked(false);
+                rbtnOptionFour.setChecked(false);
+
+                break;
+            case R.id.rbtnOptionThree:
+                rbtnOptionOne.setChecked(false);
+                rbtnOptionTwo.setChecked(false);
+                rbtnOptionFour.setChecked(false);
+
+                break;
+            case R.id.rbtnOptionFour:
+                rbtnOptionOne.setChecked(false);
+                rbtnOptionTwo.setChecked(false);
+                rbtnOptionThree.setChecked(false);
+                break;
+
+
+        }
+    }
 }
