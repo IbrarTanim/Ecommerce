@@ -13,7 +13,7 @@ import com.educareapps.quiz.R;
 
 import java.util.List;
 
-public class ErrorLogActivity extends AppCompatActivity {
+public class ErrorLogActivity extends BaseActivity {
 
     Button btnReport;
     ErrorLogActivity logActivity;

@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.educareapps.quiz.R;
 
-public class ResultActivity extends AppCompatActivity {
+public class ResultActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
