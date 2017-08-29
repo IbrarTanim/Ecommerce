@@ -2,22 +2,31 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\ibrar\.android\build-cache\0965ee72a9b74e0850040adf0b5110d284b62433\output\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="F:\RunningApp\Ecommerce\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="ebcb0bcf52fab7c586f39717f7cb8de91748b1b1">
-        <dex dex="F:\abc\Ecommerce\app\build\intermediates\pre-dexed\debug\classes_8f31b8782be700c679e8f47b3cc8dcfabb42a9de.jar" />
+        sha1="5239880e5a23a63bac77f951bd57f170cf788a76">
+        <dex dex="F:\RunningApp\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5c55f7053d8e79dc28ea8a9647635b7de7e061fb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\RunningApp\Ecommerce\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="F:\RunningApp\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_fd5580412b36cbae9a3f4d27df4569596454b382\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\ibrar\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jar="C:\Users\RK-Reaz\.gradle\caches\modules-2\files-2.1\de.greenrobot\greendao\2.1.0\9414c1d4578673dac83a23119009624fd695726d\greendao-2.1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="F:\abc\Ecommerce\app\build\intermediates\pre-dexed\debug\library-1.0.19_f75d8b2a5261a68b60077b6a80105616b058ba75.jar" />
+        sha1="9414c1d4578673dac83a23119009624fd695726d">
+        <dex dex="F:\RunningApp\Ecommerce\app\build\intermediates\pre-dexed\debug\greendao-2.1.0_0db67e94f97a41862cf3c0bb5d2bebd900549f7e.jar" />
     </item>
 
 </items>

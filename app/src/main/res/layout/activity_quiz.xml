@@ -18,8 +18,8 @@
             android:layout_gravity="center"
             android:layout_weight=".2"
             android:gravity="center"
-            android:text="What is your name?" />
-
+            android:text="What is the name of your favorite cricket team?"
+            android:textSize="@dimen/twenty_five" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,14 +28,15 @@
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:weightSum="1">
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
                     android:layout_gravity="center_horizontal"
                     android:checked="false"
-                    android:text="Male"
+                    android:text="A"
                     android:textSize="25dp" />
 
                 <RadioButton
@@ -44,7 +45,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.13"
                     android:checked="false"
-                    android:text="Female"
+                    android:text="B"
                     android:textSize="25dp" />
 
                 <RadioButton
@@ -52,7 +53,7 @@
                     android:layout_height="55dp"
                     android:layout_gravity="center_horizontal"
                     android:checked="false"
-                    android:text="Boy"
+                    android:text="C"
                     android:textSize="25dp" />
 
                 <RadioButton
@@ -61,7 +62,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.13"
                     android:checked="false"
-                    android:text="Gilr"
+                    android:text="D"
                     android:textSize="25dp" />
             </RadioGroup>
 
