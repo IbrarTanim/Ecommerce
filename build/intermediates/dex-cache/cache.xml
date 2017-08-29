@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="F:\RunningApp\Ecommerce\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="5239880e5a23a63bac77f951bd57f170cf788a76">
-        <dex dex="F:\RunningApp\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5c55f7053d8e79dc28ea8a9647635b7de7e061fb\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="F:\RunningApp\Ecommerce\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -27,6 +18,15 @@
         revision="25.0.3"
         sha1="9414c1d4578673dac83a23119009624fd695726d">
         <dex dex="F:\RunningApp\Ecommerce\app\build\intermediates\pre-dexed\debug\greendao-2.1.0_0db67e94f97a41862cf3c0bb5d2bebd900549f7e.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\RunningApp\Ecommerce\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7e0cf834cc6bca5d7bb6aab8ba4964931ac88fbb">
+        <dex dex="F:\RunningApp\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5c55f7053d8e79dc28ea8a9647635b7de7e061fb\classes.dex" />
     </item>
 
 </items>

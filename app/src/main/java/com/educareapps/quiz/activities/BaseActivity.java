@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
+import com.educareapps.quiz.utilities.ApplicationMode;
+import com.educareapps.quiz.utilities.ExceptionHandler;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BaseActivity extends ActionBarActivity {
@@ -22,10 +25,9 @@ public class BaseActivity extends ActionBarActivity {
         UiChangeListener();
 
         //Custom Error log handeled by Mail
-       /* if (!ApplicationMode.devMode) {
+        if (!ApplicationMode.devMode) {
             Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
         }
-*/
 
 
     }
@@ -77,8 +79,8 @@ public class BaseActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //fullScreencall();
-        //UiChangeListener();
+        fullScreencall();
+        UiChangeListener();
     }
 
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">quiz</string>
+
+    <string name="SorryText">SORRY! FOR SOMETHING WENT WRONG.</string>
+    <string name="btnText">PLEASE REPORT TO US </string>
+
 </resources>
