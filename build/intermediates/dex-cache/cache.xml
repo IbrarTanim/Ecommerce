@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\af1d621290fe7fa71249ba43e0682b5ccdca5605\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_35ca32c4f141deb8f5f11d2167939c8fe2e3b397\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.gradle\caches\modules-2\files-2.1\de.greenrobot\greendao\2.1.0\9414c1d4578673dac83a23119009624fd695726d\greendao-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9414c1d4578673dac83a23119009624fd695726d">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\greendao-2.1.0_863603136463f519f28c4e7b9d998ca7d9dde9b1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\0c4bb08333bb22a17ad15e02dfce7b179ce81339\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b01de25feedef0cfd001a76b58105743a4890b23\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-1.0.19_ec7b52a75c9eeecefb39654198cdd165985a36bb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="014b29efc4bef44f7eb7b3667029925b28473e91">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_95fad01204601a8d29fee866ae97ed1675b075bc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\a33e83713a0f6d0729d528ba88da83fa7e2ff1eb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e2ad4f981b7416b4854e582bad1884832ea90e5f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\be8faf339715c65ecb8c147bee5c80d6f99e21ad\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1be3cc097939219de5d1e86ecde0404038acc692\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\5c556a95cf4f7b3b4365017dd1ff9a8058fcded9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ebcb0bcf52fab7c586f39717f7cb8de91748b1b1">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fd08f096e0fa55a0dbcb115c987a7280b7243bc3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_42798de11ed53ea1548822490d0dc2ddc0ea0493\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\3cc07121f29c25a89bdfa741963d0e85fe8d3322\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_52a4d2c837cb1c87432aa7a84d2c99ec58d576c8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\755e8154569db16fa6e3a9a8444ee760c4236303\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7148d92e64792c8f9ac3e22c9f2e48fed14ec6ac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_1fab95ed971bcbde83d7e166f54a6335562e9872\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\bcc7f54787088725f44d92744e6e64825ac8ba00\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2fc824d6bc47b99b6ef1d70d9f883da9c979ad0f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\33be0bb7632a6d108a01b534f1f3ecccce4354a9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_611e7915b0dbd707e8056bc8d0f26f5236a9185b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\26a3e0695db47b1cdec0f34023d4c6acf1c3d2da\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2a6693075376c1385b64b1bc5f377fdf02cee020\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\f2562154d3ea5a9dd0a270a4e188ab2c8d203d14\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1f3fbbc895cf0074f57e20ceed5e0033083762b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_10ad9c38becafe5b8de337aa424fc6c6b8f0ee01\classes.dex" />
+    </item>
+
+</items>
