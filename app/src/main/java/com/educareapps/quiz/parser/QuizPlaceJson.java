@@ -46,14 +46,16 @@ public class QuizPlaceJson {
 
     }
 
-    public void parser() {
+    boolean isParseDone = false;
+
+    public boolean parser() {
 
         ArrayList<LanguageTable> languageArr = new ArrayList<>();
 
         try {
             if (jsonLanguageArray != null)
                 for (int i = 0; i < jsonLanguageArray.length(); i++) {
-                    JSONObject jresponse = jsonLanguageArray.getJSONObject(String.valueOf(i));
+                    JSONObject jresponse = jsonLanguageArray.getJSONObject("quiz");
                     LanguageTable languageTable = new LanguageTable();
                     languageTable.setLang_id(Long.parseLong(jresponse.getString(TAG_LANG_ID)));
                     languageTable.setLang_name(jresponse.getString(TAG_Language));
@@ -94,12 +96,12 @@ public class QuizPlaceJson {
                         }
                     languageArr.add(languageTable);
                 }
-
+            isParseDone = true;
         } catch (JSONException e) {
             e.printStackTrace();
 
         }
-
+        return isParseDone;
     }
 
 }

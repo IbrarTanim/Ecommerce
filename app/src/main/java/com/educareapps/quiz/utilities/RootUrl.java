@@ -6,6 +6,6 @@ package com.educareapps.quiz.utilities;
 
 public class RootUrl {
     public final static String RootUrl="http://192.52.243.6/Quiz/";
-    public final static String QuizUrl="http://192.52.243.6/Quiz/GetAllQuiz/";
+    public final static String QuizUrl="http://192.52.243.6/Quiz/QuestionSet/GetAllQuiz";
 
 }

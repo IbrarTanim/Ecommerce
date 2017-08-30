@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -25,11 +26,12 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         activity = this;
-
         makeRequest();
 
+    }
+
+    private void goToNextActivity() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -37,24 +39,25 @@ public class SplashActivity extends BaseActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
-
     }
-
 
     private void makeRequest() {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, RootUrl.QuizUrl, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
                 Log.e("Json", response.toString());
                 QuizPlaceJson quizPlaceJson = new QuizPlaceJson(activity, response);
-                quizPlaceJson.parser();
+                boolean isDone = quizPlaceJson.parser();
+                if (isDone) {
+                    goToNextActivity();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(activity, String.valueOf(error.getMessage() + " we are starting again the request for you..."), Toast.LENGTH_SHORT).show();
+                makeRequest();
             }
         });
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
