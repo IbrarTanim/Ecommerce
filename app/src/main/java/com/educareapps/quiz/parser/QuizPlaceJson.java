@@ -17,7 +17,7 @@ public class QuizPlaceJson {
 
     Context context;
     String JSONValue;
-    JSONArray jsonLanguageArray;
+    JSONObject jsonLanguageArray;
     JSONArray jsonQuestionSetArray;
     JSONArray jsonCSVQuestionArray;
 
@@ -40,7 +40,7 @@ public class QuizPlaceJson {
     public static final String TAG_ANSWER = "answer";
 
 
-    public QuizPlaceJson(Context context, JSONArray jsonLanguageArray) {
+    public QuizPlaceJson(Context context, JSONObject jsonLanguageArray) {
         this.context = context;
         this.jsonLanguageArray = jsonLanguageArray;
 
@@ -53,7 +53,7 @@ public class QuizPlaceJson {
         try {
             if (jsonLanguageArray != null)
                 for (int i = 0; i < jsonLanguageArray.length(); i++) {
-                    JSONObject jresponse = jsonLanguageArray.getJSONObject(i);
+                    JSONObject jresponse = jsonLanguageArray.getJSONObject(String.valueOf(i));
                     LanguageTable languageTable = new LanguageTable();
                     languageTable.setLang_id(Long.parseLong(jresponse.getString(TAG_LANG_ID)));
                     languageTable.setLang_name(jresponse.getString(TAG_Language));
