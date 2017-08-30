@@ -52,6 +52,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         rbtnOptionThree.setOnClickListener(this);
         rbtnOptionFour.setOnClickListener(this);
         csvQuestionList = databaseManager.listCSVQuestionTable();
+        end = csvQuestionList.size();
         question = csvQuestionList.get(start);
         initViewWithQuestion();
         startQuize();
