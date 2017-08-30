@@ -1,33 +1,35 @@
 package com.educareapps.quiz.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.educareapps.quiz.R;
+import com.educareapps.quiz.utilities.SpeechToTextUtil;
+import com.educareapps.quiz.utilities.TextToSpeechManager;
 
-import java.util.Locale;
-
-public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitListener, View.OnClickListener {
+public class QuizActivity extends BaseActivity implements View.OnClickListener, TextToSpeechManager.FinishSpeakListener, SpeechToTextUtil.SpeechListeningFinishListener {
     QuizActivity activity;
-    TextToSpeech textToSpeech;
     EditText edtTTS;
     Button btnSpeek;
-
+    TextView tvQuestion;
     RadioButton rbtnOptionOne, rbtnOptionTwo, rbtnOptionThree, rbtnOptionFour;
+    TextToSpeechManager textToSpeechManager;
+    SpeechToTextUtil speechToTextUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         activity = this;
-
-        textToSpeech = new TextToSpeech(this, this);
+        textToSpeechManager = new TextToSpeechManager(activity, this);
+        speechToTextUtil = new SpeechToTextUtil(activity, this);
+        tvQuestion = (TextView) findViewById(R.id.tvQuestion);
         rbtnOptionOne = (RadioButton) findViewById(R.id.rbtnOptionOne);
         rbtnOptionTwo = (RadioButton) findViewById(R.id.rbtnOptionTwo);
         rbtnOptionThree = (RadioButton) findViewById(R.id.rbtnOptionThree);
@@ -37,55 +39,27 @@ public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitLis
         rbtnOptionTwo.setOnClickListener(this);
         rbtnOptionThree.setOnClickListener(this);
         rbtnOptionFour.setOnClickListener(this);
-
-        //edtTTS = (EditText) findViewById(R.id.edtTTS);
-        //btnSpeek = (Button) findViewById(R.id.btnSpeek);
-      /*  btnSpeek.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String vlaueTTS = edtTTS.getText().toString();
-                speak(vlaueTTS);
-            }
-        });*/
+        startQuize();
 
     }
 
-    private void speak(String textToSpeak) {
-        textToSpeech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null);
+    public void startQuize() {
+        String data = tvQuestion.getText().toString();
+        textToSpeechManager.speak(data + " " +
+                "The Options are: " +
+                "Option 1       " + rbtnOptionOne.getText().toString() +
+                "Option 2       " + rbtnOptionTwo.getText().toString() +
+                "Option 3       " + rbtnOptionThree.getText().toString() +
+                "Option 4       " + rbtnOptionFour.getText().toString()
+
+        );
+        isForAnswer = true;
     }
-
-
-    @Override
-    public void onInit(int status) {
-        // status can be either TextToSpeech.SUCCESS or TextToSpeech.ERROR
-        if (status == TextToSpeech.SUCCESS) {
-            // Set preferred language to US english.
-            // Note that a language may not be available, and the result will indicate this.
-            int result = textToSpeech.setLanguage(new Locale("bn", "BD"));
-
-            if (result == TextToSpeech.LANG_MISSING_DATA ||
-                    result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                // Lanuage data is missing or the language is not supported.
-                Log.e("404", "Language is not available.");
-            }
-        } else {
-            // Initialization failed.
-            Log.e("404", "Could not initialize TextToSpeech.");
-            // May be its not installed so we prompt it to be installed
-            Intent installIntent = new Intent();
-            installIntent.setAction(
-                    TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-            startActivity(installIntent);
-        }
-    }
-
 
     @Override
     protected void onDestroy() {
-        if (textToSpeech != null) {
-            textToSpeech.stop();
-            textToSpeech.shutdown();
-        }
+        textToSpeechManager.stopTextToSpeech();
+        speechToTextUtil.destroySpeechToText();
         super.onDestroy();
     }
 
@@ -118,5 +92,56 @@ public class QuizActivity extends BaseActivity implements TextToSpeech.OnInitLis
 
 
         }
+    }
+
+    boolean isForAnswer = false;
+
+    @Override
+    public void speakFinished() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isForAnswer) {/// if true start listening for geting answer from user
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            speechToTextUtil.startListening();
+                        }
+                    }, 1200);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getListeningResult(String result) {
+        Log.e("detect", result);
+        if (result.equals(rbtnOptionOne.getText().toString())) {
+            rbtnOptionOne.setSelected(true);
+            textToSpeechManager.speak("Correct Answer. Moving For Next Question");
+            isForAnswer = false;
+            movingToNextQuestion();
+        } else {
+            textToSpeechManager.speak("Wrong Answer. Moving For Next Question");
+            isForAnswer = false;
+            movingToNextQuestion();
+        }
+    }
+
+    //// moving to next questions
+    public void movingToNextQuestion() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startQuize();
+            }
+        }, 4000);
+    }
+
+    @Override
+    public void getErrorMsg(String result) {
+        textToSpeechManager.speak(result);
+        /// start listening again for answer jus make isForAnswer true. it will automatecally detect answer
+        isForAnswer = true;
     }
 }
