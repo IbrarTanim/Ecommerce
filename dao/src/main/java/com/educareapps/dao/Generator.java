@@ -63,7 +63,6 @@ public class Generator {
         return questionSet;
     }
 
-
     private static Entity addLanguageTable(Schema schema, Entity questionSet) {
         Entity question = schema.addEntity("LanguageTable");
         question.addIdProperty().primaryKey().autoincrement();
@@ -73,11 +72,9 @@ public class Generator {
         question.addStringProperty("status").notNull();
         question.addStringProperty("created_at").notNull();
 
-
         Property languageProperty = question.addLongProperty("question_set_id").notNull().getProperty();
         ToMany languageToquestionSet = questionSet.addToMany(question, languageProperty);
         languageToquestionSet.setName("questoinSetToLanguage");
-
 
         return question;
     }
