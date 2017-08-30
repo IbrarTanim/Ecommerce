@@ -14,17 +14,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-*/
-/**
- * Created by ibrar on 11/27/2016.
- *//*
 
 
 public class ParserMode {
     Context context;
     String JSONValue;
     JSONArray jsonArray;
-    public ArrayList<Countries> linkList;
+    //public ArrayList<Countries> linkList;
     // for avatar text Color static value
     public static final String TAG_COUNTRY_ID = "package_id";
     public static final String TAG_COUNTRY = "country";
