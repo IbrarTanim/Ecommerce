@@ -256,6 +256,8 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
         return null;
     }
 
+
+
     @Override
     public QuestionSetTable getQuestionSetTableById(long id) {
 
@@ -337,5 +339,44 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
         return languageTable;
     }
 
+    @Override
+    public synchronized boolean deleteLanguageById(Long id) {
+        try {
+            openWritableDb();
+            LanguageTableDao  languageTableDao= daoSession.getLanguageTableDao();
+            languageTableDao.deleteByKey(id);
+            daoSession.clear();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    @Override
+    public synchronized boolean deleteQuestionSetById(Long userId) {
+        try {
+            openWritableDb();
+            QuestionSetTableDao  questionSetTableDao = daoSession.getQuestionSetTableDao();
+            questionSetTableDao.deleteByKey(userId);
+            daoSession.clear();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    @Override
+    public synchronized boolean deleteQuestionById(Long id) {
+        try {
+            openWritableDb();
+            CSVQuestionTableDao  csvQuestionTableDao = daoSession.getCSVQuestionTableDao();
+            csvQuestionTableDao.deleteByKey(id);
+            daoSession.clear();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }

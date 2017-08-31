@@ -92,4 +92,13 @@ public interface IDatabaseManager {
     LanguageTable getLanguageTableById(long id);
 
 
+
+
+    boolean deleteLanguageById(Long id);
+
+    boolean deleteQuestionSetById(Long id);
+
+    boolean deleteQuestionById(Long id);
+
+
 }
