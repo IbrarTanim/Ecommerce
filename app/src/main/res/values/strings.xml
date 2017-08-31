@@ -4,5 +4,11 @@
     <string name="SorryText">SORRY! FOR SOMETHING WENT WRONG.</string>
     <string name="btnText">PLEASE REPORT TO US </string>
     <string name="quiz_summery">Quiz Summery</string>
+    <string name="totat_played">Totat Played</string>
+    <string name="play_again">Play Again</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="wrong_answer">Wrong Answer</string>
+    <string name="total_score">Total Score</string>
+    <string name="total_duration">Total Duration</string>
 
 </resources>

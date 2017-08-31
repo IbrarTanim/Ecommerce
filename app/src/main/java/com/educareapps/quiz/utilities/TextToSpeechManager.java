@@ -62,7 +62,7 @@ public class TextToSpeechManager {
                 String da = Locale.getDefault().getDisplayLanguage();
                 Log.e("lan", String.valueOf(da));
                 mTextToSpeech.setLanguage(Locale.getDefault());
-                mTextToSpeech.setSpeechRate(0.7f);
+                mTextToSpeech.setSpeechRate(0.6f);
                 isTTSInitialized = true;
                 mTextToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                     @Override

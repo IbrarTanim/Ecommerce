@@ -73,7 +73,7 @@ public class Generator {
 
         question.addLongProperty("lang_id").notNull();
         question.addStringProperty("lang_name").notNull();
-        question.addStringProperty("status").notNull();
+        question.addStringProperty("status");
         question.addStringProperty("created_at").notNull();
 
        /* Property languageProperty = question.addLongProperty("question_set_id").notNull().getProperty();

@@ -1,5 +1,6 @@
 package com.educareapps.quiz.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,8 +15,11 @@ import com.educareapps.quiz.dao.CSVQuestionTable;
 import com.educareapps.quiz.dao.QuestionSetTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.utilities.SpeechToTextUtil;
+import com.educareapps.quiz.utilities.StaticAccess;
 import com.educareapps.quiz.utilities.TextToSpeechManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class QuizActivity extends BaseActivity implements View.OnClickListener, TextToSpeechManager.FinishSpeakListener, SpeechToTextUtil.SpeechListeningFinishListener {
@@ -55,10 +59,11 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         end = csvQuestionList.size();
         question = csvQuestionList.get(start);
         initViewWithQuestion();
-        startQuize();
+        startQuiz();
     }
 
     private void initViewWithQuestion() {
+        resetOptions();
         tvQuestion.setText(question.getQuestion());
         rbtnOptionOne.setText(question.getOption_one());
         rbtnOptionTwo.setText(question.getOption_two());
@@ -66,7 +71,17 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         rbtnOptionFour.setText(question.getOption_four());
     }
 
-    public void startQuize() {
+    int canPlay = 10;
+    long quizStartTime = -1;
+    long quizEndTime = -1;
+    int totalPlayed = -1;
+    int correctAnswer = 0;
+    int wrongAnswer = 0;
+    String duration = "";
+    int totalScore = 0;
+
+    public void startQuiz() {
+        quizStartTime = System.currentTimeMillis();
         textToSpeechManager.speak(question.getQuestion() + " " +
                 "The Options are: " +
                 "Option 1       " + rbtnOptionOne.getText().toString() +
@@ -78,11 +93,12 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         isForAnswer = true;
     }
 
-    @Override
-    protected void onDestroy() {
-        textToSpeechManager.stopTextToSpeech();
-        speechToTextUtil.destroySpeechToText();
-        super.onDestroy();
+
+    void resetOptions() {
+        rbtnOptionOne.setChecked(false);
+        rbtnOptionTwo.setChecked(false);
+        rbtnOptionThree.setChecked(false);
+        rbtnOptionFour.setChecked(false);
     }
 
     @Override
@@ -92,6 +108,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
                 rbtnOptionTwo.setChecked(false);
                 rbtnOptionThree.setChecked(false);
                 rbtnOptionFour.setChecked(false);
+                //startActivity(new Intent(activity, ResultActivity.class));
 
                 break;
             case R.id.rbtnOptionTwo:
@@ -123,6 +140,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
                 if (isForAnswer) {/// if true start listening for geting answer from user
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -140,14 +158,53 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         Log.e("detect", result);
         if (result.equals(question.getAnswer())) {
             checkRadioAnswer(question.getAnswer());
-            textToSpeechManager.speak("Correct Answer. Moving For Next Question");
+            textToSpeechManager.speak("Correct Answer");
             isForAnswer = false;
-            movingToNextQuestion();
+            correctAnswer++;
+            totalScore++;
+            if (checkQuizOver()) {
+                playQuizOver();
+
+            } else {
+                movingToNextQuestion();
+            }
         } else {
-            textToSpeechManager.speak("Wrong Answer. Moving For Next Question");
+            textToSpeechManager.speak("Wrong Answer");
+            wrongAnswer++;
             isForAnswer = false;
-            movingToNextQuestion();
+            if (checkQuizOver()) {
+                playQuizOver();
+            } else {
+                movingToNextQuestion();
+            }
         }
+    }
+
+    private void playQuizOver() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                textToSpeechManager.speak("Quiz Over");
+                isForAnswer = false;
+            }
+        }, 1200);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                goToResultActivity();
+            }
+        }, 3000);
+    }
+
+    private void goToResultActivity() {
+        Intent resIntent = new Intent(activity, ResultActivity.class);
+        resIntent.putExtra(StaticAccess.TAG_TOTAL_PLAYED, totalPlayed);
+        resIntent.putExtra(StaticAccess.TAG_CORRECT_ANSWER, correctAnswer);
+        resIntent.putExtra(StaticAccess.TAG_WRONG_ANSWER, wrongAnswer);
+        resIntent.putExtra(StaticAccess.TAG_TOTAL_SCORE, totalScore);
+        resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
+        startActivity(resIntent);
+        finish();
     }
 
     private void checkRadioAnswer(String answer) {
@@ -168,21 +225,47 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
 
     //// moving to next questions
     public void movingToNextQuestion() {
-        if (start != end) {
-            start++;
-        } else if (start == end) {
-            //// game over
-            textToSpeechManager.speak("Game Over");
-            isForAnswer = false;
-        }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                textToSpeechManager.speak("Moving For Next Question");
+            }
+        }, 1200);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 question = csvQuestionList.get(start);
                 initViewWithQuestion();
-                startQuize();
+                startQuiz();
             }
         }, 4000);
+    }
+
+
+    private boolean checkQuizOver() {
+        boolean isOver = false;
+        if (end > canPlay) {
+            end = canPlay;
+        }
+        if (start != end - 1) {
+            start++;
+
+        } else if (start == end-1) {
+            //// game over
+            totalPlayed = start;
+
+            quizEndTime = System.currentTimeMillis();
+            long totalDuration = quizEndTime - quizStartTime;
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            Date resultdate = new Date(totalDuration);
+            System.out.println(sdf.format(resultdate));
+            duration = sdf.format(resultdate);
+            isOver = true;
+
+        }
+        return isOver;
     }
 
     @Override
@@ -190,5 +273,31 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         textToSpeechManager.speak(result);
         /// start listening again for answer jus make isForAnswer true. it will automatecally detect answer
         isForAnswer = true;
+    }
+
+    @Override
+    protected void onPause() {
+        textToSpeechManager.stopTextToSpeech();
+        speechToTextUtil.destroySpeechToText();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        if (textToSpeechManager == null) {
+            textToSpeechManager = new TextToSpeechManager(activity, this);
+        }
+        if (speechToTextUtil == null) {
+            speechToTextUtil = new SpeechToTextUtil(activity, this);
+        }
+        startQuiz();
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        textToSpeechManager.stopTextToSpeech();
+        speechToTextUtil.destroySpeechToText();
+        super.onDestroy();
     }
 }

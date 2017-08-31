@@ -5,21 +5,213 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/thirty"
-        android:gravity="center"
-        android:text="@string/quiz_summery"
-        android:textColor="@color/black"
-        android:textSize="@dimen/thirty" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum=".7">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:gravity="center"
+            android:text="@string/quiz_summery"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_five" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="right"
+                android:text="@string/totat_played"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+            <TextView
+                android:id="@+id/tvTotalPlayed"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="right"
+                android:text="@string/correct_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+            <TextView
+                android:id="@+id/tvCorrectAnswer"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="right"
+                android:text="@string/wrong_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+            <TextView
+                android:id="@+id/tvWrongAnswer"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="right"
+                android:text="@string/total_score"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+            <TextView
+                android:id="@+id/tvTotalScore"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="right"
+                android:text="@string/total_duration"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+            <TextView
+                android:id="@+id/tvTotalDuration"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <View
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <Button
+                android:id="@+id/btnPlayAgain"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".6"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:text="@string/play_again"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty" />
+
+            <View
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibtnCrossResult"
+        android:layout_width="@dimen/forty_five"
+        android:layout_height="@dimen/forty_five"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_delete" />
 
 </RelativeLayout>

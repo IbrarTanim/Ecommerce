@@ -6,6 +6,11 @@ package com.educareapps.quiz.utilities;
 
 public class StaticAccess {
 
+    public static final String TAG_TOTAL_PLAYED = "total_played";
+    public static final String TAG_CORRECT_ANSWER = "correct_answer";
+    public static final String TAG_WRONG_ANSWER = "wrong_answer";
+    public static final String TAG_TOTAL_SCORE = "total_score";
+    public static final String TAG_TOTAL_DURATION = "total_duration";
     //net Check
     public static int TYPE_WIFI = 1;
     public static int TYPE_MOBILE = 2;
