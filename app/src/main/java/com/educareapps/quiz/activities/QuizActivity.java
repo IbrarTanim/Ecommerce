@@ -100,6 +100,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
                 rbtnOptionTwo.setChecked(false);
                 rbtnOptionThree.setChecked(false);
                 rbtnOptionFour.setChecked(false);
+                //startActivity(new Intent(activity, ResultActivity.class));
 
                 break;
             case R.id.rbtnOptionTwo:
