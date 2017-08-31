@@ -14,7 +14,6 @@ public class LanguageTable {
     private long lang_id;
     /** Not-null value. */
     private String lang_name;
-    /** Not-null value. */
     private String status;
     /** Not-null value. */
     private String created_at;
@@ -74,12 +73,10 @@ public class LanguageTable {
         this.lang_name = lang_name;
     }
 
-    /** Not-null value. */
     public String getStatus() {
         return status;
     }
 
-    /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setStatus(String status) {
         this.status = status;
     }
