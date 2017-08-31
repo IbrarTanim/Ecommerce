@@ -29,5 +29,6 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'de.greenrobot:greendao:2.1.0'
+    compile 'gun0912.ted:tedpermission:1.0.3'
     testCompile 'junit:junit:4.12'
 }

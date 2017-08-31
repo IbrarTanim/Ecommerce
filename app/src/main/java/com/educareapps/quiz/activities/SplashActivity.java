@@ -1,5 +1,6 @@
 package com.educareapps.quiz.activities;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,7 +21,11 @@ import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.manager.IDatabaseManager;
 import com.educareapps.quiz.parser.QuizPlaceJson;
 import com.educareapps.quiz.utilities.AppController;
+import com.educareapps.quiz.utilities.InternetAvailabilityCheck;
 import com.educareapps.quiz.utilities.RootUrl;
+import com.educareapps.quiz.utilities.StaticAccess;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import org.json.JSONObject;
 
@@ -41,7 +46,10 @@ public class SplashActivity extends BaseActivity {
         progressDialog = new ProgressDialog(activity);
         databaseManager = new DatabaseManager(activity);
         // if internet has
-        new DeleteAsyncTask().execute();
+        checkPermission();
+
+
+        //new DeleteAsyncTask().execute();
         // else
         // go next
     }
@@ -81,7 +89,6 @@ public class SplashActivity extends BaseActivity {
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
 
     }
-
 
 
     boolean isDelete = false;
@@ -140,10 +147,11 @@ public class SplashActivity extends BaseActivity {
         protected void onPostExecute(String file_url) {
             if (isDelete) {
                 makeRequest();
-            }else
+            } else
                 hideProgress();
         }
     }
+
     private void showProgress() {
         if (progressDialog != null) {
             progressDialog.setMessage("please wait...");
@@ -158,6 +166,35 @@ public class SplashActivity extends BaseActivity {
         if (progressDialog.isShowing()) {
             progressDialog.hide();
         }
+    }
+
+    boolean isAllPermissionGranted = false;
+
+    void checkPermission() {
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                isAllPermissionGranted = true;
+                if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
+                    new DeleteAsyncTask().execute();
+                }
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                Toast.makeText(activity, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+                checkPermission();
+            }
+        };
+        new TedPermission(this)
+
+                .setPermissionListener(permissionlistener)
+                .setRationaleMessage("we need permission for RECORD_AUDIO, READ_EXTERNAL_STORAGE,& WRITE_EXTERNAL_STORAGE & INTERNET")
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setGotoSettingButtonText("setting")
+                .setPermissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE)
+                .check();
+
     }
 
 }
