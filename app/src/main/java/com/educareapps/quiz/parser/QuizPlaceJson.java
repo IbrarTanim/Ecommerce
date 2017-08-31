@@ -53,9 +53,11 @@ public class QuizPlaceJson {
         ArrayList<LanguageTable> languageArr = new ArrayList<>();
 
         try {
-            if (jsonLanguageArray != null)
-                for (int i = 0; i < jsonLanguageArray.length(); i++) {
-                    JSONObject jresponse = jsonLanguageArray.getJSONObject("quiz");
+            JSONArray quizArrObj = jsonLanguageArray.getJSONArray("quiz");
+            if (quizArrObj != null)
+                for (int i = 0; i < quizArrObj.length(); i++) {
+                    JSONObject jresponse = quizArrObj.getJSONObject(i);
+
                     LanguageTable languageTable = new LanguageTable();
                     languageTable.setLang_id(Long.parseLong(jresponse.getString(TAG_LANG_ID)));
                     languageTable.setLang_name(jresponse.getString(TAG_Language));
