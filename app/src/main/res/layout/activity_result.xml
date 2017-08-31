@@ -19,7 +19,7 @@
             android:gravity="center"
             android:text="@string/quiz_summery"
             android:textColor="@color/black"
-            android:textSize="@dimen/thirty" />
+            android:textSize="@dimen/twenty_five" />
 
 
         <LinearLayout
@@ -33,10 +33,10 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="@string/totat_played"
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
             <TextView
@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
         </LinearLayout>
@@ -63,10 +63,10 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="@string/correct_answer"
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
             <TextView
@@ -77,7 +77,7 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
         </LinearLayout>
@@ -93,10 +93,10 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="@string/wrong_answer"
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
             <TextView
@@ -107,7 +107,7 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
         </LinearLayout>
@@ -123,10 +123,10 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="@string/total_score"
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
             <TextView
@@ -137,7 +137,7 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
         </LinearLayout>
@@ -153,10 +153,10 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="@string/total_duration"
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
             <TextView
@@ -167,7 +167,7 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
 
         </LinearLayout>
@@ -193,7 +193,7 @@
                 android:gravity="center"
                 android:text="@string/play_again"
                 android:textColor="@color/black"
-                android:textSize="@dimen/twenty_five" />
+                android:textSize="@dimen/twenty" />
 
             <View
                 android:layout_width="@dimen/zero"
@@ -208,8 +208,8 @@
 
     <ImageButton
         android:id="@+id/ibtnCrossResult"
-        android:layout_width="@dimen/sixty"
-        android:layout_height="@dimen/sixty"
+        android:layout_width="@dimen/forty_five"
+        android:layout_height="@dimen/forty_five"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@android:drawable/ic_delete" />
