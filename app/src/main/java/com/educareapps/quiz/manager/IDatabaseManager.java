@@ -52,7 +52,7 @@ public interface IDatabaseManager {
     * insertQuestionSetTable
     * */
 
-    QuestionSetTable insertQuestionSetTable(QuestionSetTable questionSetTable);
+    long insertQuestionSetTable(QuestionSetTable questionSetTable);
 
     /*
 * updateQuestionSetTable
@@ -74,7 +74,7 @@ public interface IDatabaseManager {
     * insertLanguageTable
     * */
 
-    LanguageTable insertLanguageTable(LanguageTable languageTable);
+    long insertLanguageTable(LanguageTable languageTable);
 
     /*
 * updateLanguageTable

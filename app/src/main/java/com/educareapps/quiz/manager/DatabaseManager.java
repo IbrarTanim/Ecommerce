@@ -203,20 +203,21 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
     }
 
     @Override
-    public QuestionSetTable insertQuestionSetTable(QuestionSetTable questionSetTable) {
-
+    public long insertQuestionSetTable(QuestionSetTable questionSetTable) {
+        long id = 0;
         try {
             if (questionSetTable != null) {
                 openWritableDb();
                 QuestionSetTableDao questionSetTableDao = daoSession.getQuestionSetTableDao();
-                questionSetTableDao.insert(questionSetTable);
+                id = questionSetTableDao.insert(questionSetTable);
                 daoSession.clear();
             }
         } catch (SQLiteException e) {
             e.printStackTrace();
+            id = 0;
         }
 
-        return questionSetTable;
+        return id;
     }
 
     @Override
@@ -272,19 +273,19 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
     }
 
     @Override
-    public LanguageTable insertLanguageTable(LanguageTable languageTable) {
-
+    public long insertLanguageTable(LanguageTable languageTable) {
+        long id = 0;
         try {
             if (languageTable != null) {
                 openWritableDb();
                 LanguageTableDao languageTableDao = daoSession.getLanguageTableDao();
-                languageTableDao.insert(languageTable);
+                id = languageTableDao.insert(languageTable);
                 daoSession.clear();
             }
         } catch (SQLiteException e) {
             e.printStackTrace();
         }
-        return languageTable;
+        return id;
     }
 
     @Override
