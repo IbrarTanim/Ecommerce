@@ -1,5 +1,6 @@
 package com.educareapps.quiz.dao;
 
+import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
@@ -7,6 +8,8 @@ import android.database.sqlite.SQLiteStatement;
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.internal.DaoConfig;
+import de.greenrobot.dao.query.Query;
+import de.greenrobot.dao.query.QueryBuilder;
 
 import com.educareapps.quiz.dao.CSVQuestionTable;
 
@@ -31,10 +34,10 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         public final static Property Option_three = new Property(5, String.class, "option_three", false, "OPTION_THREE");
         public final static Property Option_four = new Property(6, String.class, "option_four", false, "OPTION_FOUR");
         public final static Property Answer = new Property(7, String.class, "answer", false, "ANSWER");
+        public final static Property Question_set_id = new Property(8, long.class, "question_set_id", false, "QUESTION_SET_ID");
     };
 
-    private DaoSession daoSession;
-
+    private Query<CSVQuestionTable> questionSetTable_QuestionSetToLanguageQuery;
 
     public CSVQuestionTableDao(DaoConfig config) {
         super(config);
@@ -42,7 +45,6 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
     
     public CSVQuestionTableDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
-        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -56,7 +58,8 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
                 "\"OPTION_TWO\" TEXT NOT NULL ," + // 4: option_two
                 "\"OPTION_THREE\" TEXT NOT NULL ," + // 5: option_three
                 "\"OPTION_FOUR\" TEXT NOT NULL ," + // 6: option_four
-                "\"ANSWER\" TEXT NOT NULL );"); // 7: answer
+                "\"ANSWER\" TEXT NOT NULL ," + // 7: answer
+                "\"QUESTION_SET_ID\" INTEGER NOT NULL );"); // 8: question_set_id
     }
 
     /** Drops the underlying database table. */
@@ -81,12 +84,7 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         stmt.bindString(6, entity.getOption_three());
         stmt.bindString(7, entity.getOption_four());
         stmt.bindString(8, entity.getAnswer());
-    }
-
-    @Override
-    protected void attachEntity(CSVQuestionTable entity) {
-        super.attachEntity(entity);
-        entity.__setDaoSession(daoSession);
+        stmt.bindLong(9, entity.getQuestion_set_id());
     }
 
     /** @inheritdoc */
@@ -106,7 +104,8 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
             cursor.getString(offset + 4), // option_two
             cursor.getString(offset + 5), // option_three
             cursor.getString(offset + 6), // option_four
-            cursor.getString(offset + 7) // answer
+            cursor.getString(offset + 7), // answer
+            cursor.getLong(offset + 8) // question_set_id
         );
         return entity;
     }
@@ -122,6 +121,7 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         entity.setOption_three(cursor.getString(offset + 5));
         entity.setOption_four(cursor.getString(offset + 6));
         entity.setAnswer(cursor.getString(offset + 7));
+        entity.setQuestion_set_id(cursor.getLong(offset + 8));
      }
     
     /** @inheritdoc */
@@ -147,4 +147,18 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         return true;
     }
     
+    /** Internal query to resolve the "questionSetToLanguage" to-many relationship of QuestionSetTable. */
+    public List<CSVQuestionTable> _queryQuestionSetTable_QuestionSetToLanguage(long question_set_id) {
+        synchronized (this) {
+            if (questionSetTable_QuestionSetToLanguageQuery == null) {
+                QueryBuilder<CSVQuestionTable> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.Question_set_id.eq(null));
+                questionSetTable_QuestionSetToLanguageQuery = queryBuilder.build();
+            }
+        }
+        Query<CSVQuestionTable> query = questionSetTable_QuestionSetToLanguageQuery.forCurrentThread();
+        query.setParameter(0, question_set_id);
+        return query.list();
+    }
+
 }
