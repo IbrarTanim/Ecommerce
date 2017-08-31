@@ -5,12 +5,9 @@ package com.educareapps.quiz.utilities;
  */
 
 import android.content.Context;
-import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -62,7 +59,7 @@ public class TextToSpeechManager {
                 String da = Locale.getDefault().getDisplayLanguage();
                 Log.e("lan", String.valueOf(da));
                 mTextToSpeech.setLanguage(Locale.getDefault());
-                mTextToSpeech.setSpeechRate(0.6f);
+                mTextToSpeech.setSpeechRate(0.5f);
                 isTTSInitialized = true;
                 mTextToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                     @Override

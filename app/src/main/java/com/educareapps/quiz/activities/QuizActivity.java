@@ -66,6 +66,8 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         csvQuestionList = databaseManager.listCSVQuestionTable();
         end = csvQuestionList.size();
         question = csvQuestionList.get(start);
+        quizStartTime = System.currentTimeMillis();
+
     }
 
     private void initViewWithQuestion() {
@@ -75,7 +77,6 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         rbtnOptionTwo.setText(question.getOption_two());
         rbtnOptionThree.setText(question.getOption_three());
         rbtnOptionFour.setText(question.getOption_four());
-        quizStartTime = System.currentTimeMillis();
     }
 
     int canPlay = 10;
@@ -102,6 +103,11 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
 
 
     void resetOptions() {
+        rbtnOptionOne.setClickable(false);
+        rbtnOptionTwo.setClickable(false);
+        rbtnOptionThree.setClickable(false);
+        rbtnOptionFour.setClickable(false);
+
         rbtnOptionOne.setChecked(false);
         rbtnOptionTwo.setChecked(false);
         rbtnOptionThree.setChecked(false);
