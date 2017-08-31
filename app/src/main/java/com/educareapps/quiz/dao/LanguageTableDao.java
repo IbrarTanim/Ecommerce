@@ -49,7 +49,7 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"LANG_ID\" INTEGER NOT NULL ," + // 1: lang_id
                 "\"LANG_NAME\" TEXT NOT NULL ," + // 2: lang_name
-                "\"STATUS\" TEXT NOT NULL ," + // 3: status
+                "\"STATUS\" TEXT," + // 3: status
                 "\"CREATED_AT\" TEXT NOT NULL );"); // 4: created_at
     }
 
@@ -70,7 +70,11 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
         }
         stmt.bindLong(2, entity.getLang_id());
         stmt.bindString(3, entity.getLang_name());
-        stmt.bindString(4, entity.getStatus());
+ 
+        String status = entity.getStatus();
+        if (status != null) {
+            stmt.bindString(4, status);
+        }
         stmt.bindString(5, entity.getCreated_at());
     }
 
@@ -93,7 +97,7 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getLong(offset + 1), // lang_id
             cursor.getString(offset + 2), // lang_name
-            cursor.getString(offset + 3), // status
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // status
             cursor.getString(offset + 4) // created_at
         );
         return entity;
@@ -105,7 +109,7 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setLang_id(cursor.getLong(offset + 1));
         entity.setLang_name(cursor.getString(offset + 2));
-        entity.setStatus(cursor.getString(offset + 3));
+        entity.setStatus(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setCreated_at(cursor.getString(offset + 4));
      }
     

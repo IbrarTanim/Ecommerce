@@ -59,6 +59,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     private void initViewWithQuestion() {
+        resetOptions();
         tvQuestion.setText(question.getQuestion());
         rbtnOptionOne.setText(question.getOption_one());
         rbtnOptionTwo.setText(question.getOption_two());
@@ -83,6 +84,13 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         textToSpeechManager.stopTextToSpeech();
         speechToTextUtil.destroySpeechToText();
         super.onDestroy();
+    }
+
+    void resetOptions() {
+        rbtnOptionOne.setChecked(false);
+        rbtnOptionTwo.setChecked(false);
+        rbtnOptionThree.setChecked(false);
+        rbtnOptionFour.setChecked(false);
     }
 
     @Override
@@ -142,11 +150,21 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
             checkRadioAnswer(question.getAnswer());
             textToSpeechManager.speak("Correct Answer. Moving For Next Question");
             isForAnswer = false;
-            movingToNextQuestion();
+            if (checkQuizOver()) {
+                textToSpeechManager.speak("Quiz Over");
+                isForAnswer = false;
+            } else {
+                movingToNextQuestion();
+            }
         } else {
             textToSpeechManager.speak("Wrong Answer. Moving For Next Question");
             isForAnswer = false;
-            movingToNextQuestion();
+            if (checkQuizOver()) {
+                textToSpeechManager.speak("Quiz Over");
+                isForAnswer = false;
+            } else {
+                movingToNextQuestion();
+            }
         }
     }
 
@@ -168,13 +186,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
 
     //// moving to next questions
     public void movingToNextQuestion() {
-        if (start != end) {
-            start++;
-        } else if (start == end) {
-            //// game over
-            textToSpeechManager.speak("Game Over");
-            isForAnswer = false;
-        }
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -183,6 +195,19 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
                 startQuize();
             }
         }, 4000);
+    }
+
+    private boolean checkQuizOver() {
+        boolean isOver = false;
+        if (start != end - 1) {
+            start++;
+
+        } else if (start == end) {
+            //// game over
+            isOver = true;
+
+        }
+        return isOver;
     }
 
     @Override
