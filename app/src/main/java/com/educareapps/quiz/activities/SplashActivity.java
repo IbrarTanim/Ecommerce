@@ -1,5 +1,6 @@
 package com.educareapps.quiz.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,12 +22,15 @@ public class SplashActivity extends BaseActivity {
 
     SplashActivity activity;
     private int SPLASH_TIME_OUT = 2000;
+    ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         activity = this;
+        progressDialog = new ProgressDialog(activity);
         makeRequest();
 
     }
@@ -62,6 +66,22 @@ public class SplashActivity extends BaseActivity {
         });
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
 
+    }
+
+    private void showProgress() {
+        if (progressDialog != null) {
+            progressDialog.setMessage("please wait...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+    }
+
+    private void hideProgress() {
+
+        if (progressDialog.isShowing()) {
+            progressDialog.hide();
+        }
     }
 
 
