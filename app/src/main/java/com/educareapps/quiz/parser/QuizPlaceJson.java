@@ -54,6 +54,7 @@ public class QuizPlaceJson {
 
         try {
             JSONArray quizArrObj = jsonLanguageArray.getJSONArray("quiz");
+
             if (quizArrObj != null)
                 for (int i = 0; i < quizArrObj.length(); i++) {
                     JSONObject jresponse = quizArrObj.getJSONObject(i);
@@ -65,8 +66,9 @@ public class QuizPlaceJson {
 
                     jsonQuestionSetArray = jresponse.getJSONArray(TAG_QUESTION_SET);
                     ArrayList<QuestionSetTable> questionSetArr = new ArrayList<>();
-                    if (jsonLanguageArray != null)
+                    if (jsonQuestionSetArray != null)
                         for (int j = 0; j < jsonQuestionSetArray.length(); j++) {
+
                             JSONObject questionSetJson = jsonQuestionSetArray.getJSONObject(j);
                             QuestionSetTable questionSetTable = new QuestionSetTable();
                             questionSetTable.setQuestion_set_id(Long.parseLong(questionSetJson.getString(TAG_QUESTION_SET_ID)));
