@@ -43,8 +43,10 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         setContentView(R.layout.activity_quiz);
         activity = this;
         databaseManager = new DatabaseManager(activity);
+
         textToSpeechManager = new TextToSpeechManager(activity, this);
         speechToTextUtil = new SpeechToTextUtil(activity, this);
+
         tvQuestion = (TextView) findViewById(R.id.tvQuestion);
         rbtnOptionOne = (RadioButton) findViewById(R.id.rbtnOptionOne);
         rbtnOptionTwo = (RadioButton) findViewById(R.id.rbtnOptionTwo);
@@ -73,6 +75,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         rbtnOptionTwo.setText(question.getOption_two());
         rbtnOptionThree.setText(question.getOption_three());
         rbtnOptionFour.setText(question.getOption_four());
+        quizStartTime = System.currentTimeMillis();
     }
 
     int canPlay = 10;
@@ -85,7 +88,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
     int totalScore = 0;
 
     public void startQuiz() {
-        quizStartTime = System.currentTimeMillis();
+
         textToSpeechManager.speak(question.getQuestion() + " " +
                 "The Options are: " +
                 "Option 1       " + rbtnOptionOne.getText().toString() +
