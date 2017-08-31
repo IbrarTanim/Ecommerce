@@ -55,11 +55,15 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         rbtnOptionTwo.setOnClickListener(this);
         rbtnOptionThree.setOnClickListener(this);
         rbtnOptionFour.setOnClickListener(this);
+        initQuizFromUser();
+        initViewWithQuestion();
+        startQuiz();
+    }
+
+    private void initQuizFromUser() {
         csvQuestionList = databaseManager.listCSVQuestionTable();
         end = csvQuestionList.size();
         question = csvQuestionList.get(start);
-        initViewWithQuestion();
-        startQuiz();
     }
 
     private void initViewWithQuestion() {
@@ -140,7 +144,6 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
                 if (isForAnswer) {/// if true start listening for geting answer from user
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -156,7 +159,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void getListeningResult(String result) {
         Log.e("detect", result);
-        if (result.equals(question.getAnswer())) {
+        if (isCorrectAnswer(result)) {
             checkRadioAnswer(question.getAnswer());
             textToSpeechManager.speak("Correct Answer");
             isForAnswer = false;
@@ -178,6 +181,34 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
                 movingToNextQuestion();
             }
         }
+    }
+
+    private boolean isCorrectAnswer(String userInput) {
+        boolean isAnswer = false;
+        if (userInput.equals("1")) {
+            if (rbtnOptionOne.getText().toString().equals(question.getAnswer())) {
+                isAnswer = true;
+            }
+        } else if (userInput.equals("2")) {
+            if (rbtnOptionTwo.getText().toString().equals(question.getAnswer())) {
+                isAnswer = true;
+
+            }
+
+        } else if (userInput.equals("3")) {
+            if (rbtnOptionThree.getText().toString().equals(question.getAnswer())) {
+                isAnswer = true;
+
+            }
+
+        } else if (userInput.equals("4")) {
+            if (rbtnOptionFour.getText().toString().equals(question.getAnswer())) {
+                isAnswer = true;
+
+            }
+
+        }
+        return isAnswer;
     }
 
     private void playQuizOver() {
@@ -252,16 +283,19 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         if (start != end - 1) {
             start++;
 
-        } else if (start == end-1) {
+        } else if (start == end - 1) {
             //// game over
             totalPlayed = start;
-
             quizEndTime = System.currentTimeMillis();
-            long totalDuration = quizEndTime - quizStartTime;
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            Date resultdate = new Date(totalDuration);
-            System.out.println(sdf.format(resultdate));
-            duration = sdf.format(resultdate);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            Date date1 = new Date(quizStartTime);
+            Date date2 = new Date(quizEndTime);
+            sdf.format(date1);
+            sdf.format(date2);
+            long difference = date2.getTime() - date1.getTime();
+            long diffMinutes = difference / (60 * 1000) % 60;
+            duration = String.valueOf(diffMinutes);
             isOver = true;
 
         }
