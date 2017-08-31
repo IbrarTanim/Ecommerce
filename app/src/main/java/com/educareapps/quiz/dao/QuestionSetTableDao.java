@@ -32,12 +32,12 @@ public class QuestionSetTableDao extends AbstractDao<QuestionSetTable, Long> {
         public final static Property Title = new Property(3, String.class, "title", false, "TITLE");
         public final static Property Photo = new Property(4, String.class, "photo", false, "PHOTO");
         public final static Property Created_at = new Property(5, String.class, "created_at", false, "CREATED_AT");
-        public final static Property Question_id = new Property(6, long.class, "question_id", false, "QUESTION_ID");
+        public final static Property Lang_id = new Property(6, long.class, "lang_id", false, "LANG_ID");
     };
 
     private DaoSession daoSession;
 
-    private Query<QuestionSetTable> cSVQuestionTable_CSVQuestionToquestionSetQuery;
+    private Query<QuestionSetTable> languageTable_QuestionSetToLanguageQuery;
 
     public QuestionSetTableDao(DaoConfig config) {
         super(config);
@@ -58,7 +58,7 @@ public class QuestionSetTableDao extends AbstractDao<QuestionSetTable, Long> {
                 "\"TITLE\" TEXT NOT NULL ," + // 3: title
                 "\"PHOTO\" TEXT NOT NULL ," + // 4: photo
                 "\"CREATED_AT\" TEXT NOT NULL ," + // 5: created_at
-                "\"QUESTION_ID\" INTEGER NOT NULL );"); // 6: question_id
+                "\"LANG_ID\" INTEGER NOT NULL );"); // 6: lang_id
     }
 
     /** Drops the underlying database table. */
@@ -81,7 +81,7 @@ public class QuestionSetTableDao extends AbstractDao<QuestionSetTable, Long> {
         stmt.bindString(4, entity.getTitle());
         stmt.bindString(5, entity.getPhoto());
         stmt.bindString(6, entity.getCreated_at());
-        stmt.bindLong(7, entity.getQuestion_id());
+        stmt.bindLong(7, entity.getLang_id());
     }
 
     @Override
@@ -106,7 +106,7 @@ public class QuestionSetTableDao extends AbstractDao<QuestionSetTable, Long> {
             cursor.getString(offset + 3), // title
             cursor.getString(offset + 4), // photo
             cursor.getString(offset + 5), // created_at
-            cursor.getLong(offset + 6) // question_id
+            cursor.getLong(offset + 6) // lang_id
         );
         return entity;
     }
@@ -120,7 +120,7 @@ public class QuestionSetTableDao extends AbstractDao<QuestionSetTable, Long> {
         entity.setTitle(cursor.getString(offset + 3));
         entity.setPhoto(cursor.getString(offset + 4));
         entity.setCreated_at(cursor.getString(offset + 5));
-        entity.setQuestion_id(cursor.getLong(offset + 6));
+        entity.setLang_id(cursor.getLong(offset + 6));
      }
     
     /** @inheritdoc */
@@ -146,17 +146,17 @@ public class QuestionSetTableDao extends AbstractDao<QuestionSetTable, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "CSVQuestionToquestionSet" to-many relationship of CSVQuestionTable. */
-    public List<QuestionSetTable> _queryCSVQuestionTable_CSVQuestionToquestionSet(long question_id) {
+    /** Internal query to resolve the "questionSetToLanguage" to-many relationship of LanguageTable. */
+    public List<QuestionSetTable> _queryLanguageTable_QuestionSetToLanguage(long lang_id) {
         synchronized (this) {
-            if (cSVQuestionTable_CSVQuestionToquestionSetQuery == null) {
+            if (languageTable_QuestionSetToLanguageQuery == null) {
                 QueryBuilder<QuestionSetTable> queryBuilder = queryBuilder();
-                queryBuilder.where(Properties.Question_id.eq(null));
-                cSVQuestionTable_CSVQuestionToquestionSetQuery = queryBuilder.build();
+                queryBuilder.where(Properties.Lang_id.eq(null));
+                languageTable_QuestionSetToLanguageQuery = queryBuilder.build();
             }
         }
-        Query<QuestionSetTable> query = cSVQuestionTable_CSVQuestionToquestionSetQuery.forCurrentThread();
-        query.setParameter(0, question_id);
+        Query<QuestionSetTable> query = languageTable_QuestionSetToLanguageQuery.forCurrentThread();
+        query.setParameter(0, lang_id);
         return query.list();
     }
 

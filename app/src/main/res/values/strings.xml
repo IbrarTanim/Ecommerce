@@ -3,5 +3,6 @@
 
     <string name="SorryText">SORRY! FOR SOMETHING WENT WRONG.</string>
     <string name="btnText">PLEASE REPORT TO US </string>
+    <string name="quiz_summery">Quiz Summery</string>
 
 </resources>

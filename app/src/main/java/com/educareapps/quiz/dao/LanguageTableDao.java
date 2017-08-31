@@ -1,6 +1,5 @@
 package com.educareapps.quiz.dao;
 
-import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
@@ -8,8 +7,6 @@ import android.database.sqlite.SQLiteStatement;
 import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.Property;
 import de.greenrobot.dao.internal.DaoConfig;
-import de.greenrobot.dao.query.Query;
-import de.greenrobot.dao.query.QueryBuilder;
 
 import com.educareapps.quiz.dao.LanguageTable;
 
@@ -31,10 +28,10 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
         public final static Property Lang_name = new Property(2, String.class, "lang_name", false, "LANG_NAME");
         public final static Property Status = new Property(3, String.class, "status", false, "STATUS");
         public final static Property Created_at = new Property(4, String.class, "created_at", false, "CREATED_AT");
-        public final static Property Question_set_id = new Property(5, long.class, "question_set_id", false, "QUESTION_SET_ID");
     };
 
-    private Query<LanguageTable> questionSetTable_QuestoinSetToLanguageQuery;
+    private DaoSession daoSession;
+
 
     public LanguageTableDao(DaoConfig config) {
         super(config);
@@ -42,6 +39,7 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
     
     public LanguageTableDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -52,8 +50,7 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
                 "\"LANG_ID\" INTEGER NOT NULL ," + // 1: lang_id
                 "\"LANG_NAME\" TEXT NOT NULL ," + // 2: lang_name
                 "\"STATUS\" TEXT NOT NULL ," + // 3: status
-                "\"CREATED_AT\" TEXT NOT NULL ," + // 4: created_at
-                "\"QUESTION_SET_ID\" INTEGER NOT NULL );"); // 5: question_set_id
+                "\"CREATED_AT\" TEXT NOT NULL );"); // 4: created_at
     }
 
     /** Drops the underlying database table. */
@@ -75,7 +72,12 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
         stmt.bindString(3, entity.getLang_name());
         stmt.bindString(4, entity.getStatus());
         stmt.bindString(5, entity.getCreated_at());
-        stmt.bindLong(6, entity.getQuestion_set_id());
+    }
+
+    @Override
+    protected void attachEntity(LanguageTable entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
@@ -92,8 +94,7 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
             cursor.getLong(offset + 1), // lang_id
             cursor.getString(offset + 2), // lang_name
             cursor.getString(offset + 3), // status
-            cursor.getString(offset + 4), // created_at
-            cursor.getLong(offset + 5) // question_set_id
+            cursor.getString(offset + 4) // created_at
         );
         return entity;
     }
@@ -106,7 +107,6 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
         entity.setLang_name(cursor.getString(offset + 2));
         entity.setStatus(cursor.getString(offset + 3));
         entity.setCreated_at(cursor.getString(offset + 4));
-        entity.setQuestion_set_id(cursor.getLong(offset + 5));
      }
     
     /** @inheritdoc */
@@ -132,18 +132,4 @@ public class LanguageTableDao extends AbstractDao<LanguageTable, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "questoinSetToLanguage" to-many relationship of QuestionSetTable. */
-    public List<LanguageTable> _queryQuestionSetTable_QuestoinSetToLanguage(long question_set_id) {
-        synchronized (this) {
-            if (questionSetTable_QuestoinSetToLanguageQuery == null) {
-                QueryBuilder<LanguageTable> queryBuilder = queryBuilder();
-                queryBuilder.where(Properties.Question_set_id.eq(null));
-                questionSetTable_QuestoinSetToLanguageQuery = queryBuilder.build();
-            }
-        }
-        Query<LanguageTable> query = questionSetTable_QuestoinSetToLanguageQuery.forCurrentThread();
-        query.setParameter(0, question_set_id);
-        return query.list();
-    }
-
 }

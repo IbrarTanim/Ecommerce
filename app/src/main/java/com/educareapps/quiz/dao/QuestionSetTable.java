@@ -20,7 +20,7 @@ public class QuestionSetTable {
     private String photo;
     /** Not-null value. */
     private String created_at;
-    private long question_id;
+    private long lang_id;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -28,7 +28,7 @@ public class QuestionSetTable {
     /** Used for active entity operations. */
     private transient QuestionSetTableDao myDao;
 
-    private List<LanguageTable> questoinSetToLanguage;
+    private List<CSVQuestionTable> questionSetToLanguage;
 
     public QuestionSetTable() {
     }
@@ -37,14 +37,14 @@ public class QuestionSetTable {
         this.id = id;
     }
 
-    public QuestionSetTable(Long id, long question_set_id, String question_set, String title, String photo, String created_at, long question_id) {
+    public QuestionSetTable(Long id, long question_set_id, String question_set, String title, String photo, String created_at, long lang_id) {
         this.id = id;
         this.question_set_id = question_set_id;
         this.question_set = question_set;
         this.title = title;
         this.photo = photo;
         this.created_at = created_at;
-        this.question_id = question_id;
+        this.lang_id = lang_id;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -109,34 +109,34 @@ public class QuestionSetTable {
         this.created_at = created_at;
     }
 
-    public long getQuestion_id() {
-        return question_id;
+    public long getLang_id() {
+        return lang_id;
     }
 
-    public void setQuestion_id(long question_id) {
-        this.question_id = question_id;
+    public void setLang_id(long lang_id) {
+        this.lang_id = lang_id;
     }
 
     /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
-    public List<LanguageTable> getQuestoinSetToLanguage() {
-        if (questoinSetToLanguage == null) {
+    public List<CSVQuestionTable> getQuestionSetToLanguage() {
+        if (questionSetToLanguage == null) {
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            LanguageTableDao targetDao = daoSession.getLanguageTableDao();
-            List<LanguageTable> questoinSetToLanguageNew = targetDao._queryQuestionSetTable_QuestoinSetToLanguage(id);
+            CSVQuestionTableDao targetDao = daoSession.getCSVQuestionTableDao();
+            List<CSVQuestionTable> questionSetToLanguageNew = targetDao._queryQuestionSetTable_QuestionSetToLanguage(id);
             synchronized (this) {
-                if(questoinSetToLanguage == null) {
-                    questoinSetToLanguage = questoinSetToLanguageNew;
+                if(questionSetToLanguage == null) {
+                    questionSetToLanguage = questionSetToLanguageNew;
                 }
             }
         }
-        return questoinSetToLanguage;
+        return questionSetToLanguage;
     }
 
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
-    public synchronized void resetQuestoinSetToLanguage() {
-        questoinSetToLanguage = null;
+    public synchronized void resetQuestionSetToLanguage() {
+        questionSetToLanguage = null;
     }
 
     /** Convenient call for {@link AbstractDao#delete(Object)}. Entity must attached to an entity context. */

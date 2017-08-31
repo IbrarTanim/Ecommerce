@@ -19,15 +19,15 @@ public class Generator {
 
     private static void addTables(Schema schema) {
         /* entities */
+        Entity language = addLanguageTable(schema);
+        Entity questionSet = addQuestionSetTable(schema, language);
+        Entity CSVQuestion = addCSVQuestionTable(schema, questionSet);
 
-        Entity CSVQuestion = addCSVQuestionTable(schema);
-        Entity QuestionSet = addQuestionSetTable(schema, CSVQuestion);
-        Entity Language = addLanguageTable(schema, QuestionSet);
 
     }
 
 
-    private static Entity addCSVQuestionTable(Schema schema) {
+    private static Entity addCSVQuestionTable(Schema schema, Entity questionSet) {
         Entity csvQuestionTble = schema.addEntity("CSVQuestionTable");
         csvQuestionTble.addIdProperty().primaryKey().autoincrement();
 
@@ -38,6 +38,10 @@ public class Generator {
         csvQuestionTble.addStringProperty("option_three").notNull();
         csvQuestionTble.addStringProperty("option_four").notNull();
         csvQuestionTble.addStringProperty("answer").notNull();
+
+        Property questionSetProperty = csvQuestionTble.addLongProperty("question_set_id").notNull().getProperty();
+        ToMany csvQuestionToQuestionSet = questionSet.addToMany(csvQuestionTble, questionSetProperty);
+        csvQuestionToQuestionSet.setName("questionSetToLanguage");
 
 
         return csvQuestionTble;
@@ -55,15 +59,15 @@ public class Generator {
         questionSet.addStringProperty("created_at").notNull();
 
 
-        Property questionSetProperty = questionSet.addLongProperty("question_id").notNull().getProperty();
-        ToMany questionSetToCSVQuestion = language.addToMany(questionSet, questionSetProperty);
-        questionSetToCSVQuestion.setName("CSVQuestionToquestionSet");
+        Property questionSetProperty = questionSet.addLongProperty("lang_id").notNull().getProperty();
+        ToMany questionSetToLanguage = language.addToMany(questionSet, questionSetProperty);
+        questionSetToLanguage.setName("questionSetToLanguage");
 
 
         return questionSet;
     }
 
-    private static Entity addLanguageTable(Schema schema, Entity questionSet) {
+    private static Entity addLanguageTable(Schema schema) {
         Entity question = schema.addEntity("LanguageTable");
         question.addIdProperty().primaryKey().autoincrement();
 
@@ -72,9 +76,9 @@ public class Generator {
         question.addStringProperty("status").notNull();
         question.addStringProperty("created_at").notNull();
 
-        Property languageProperty = question.addLongProperty("question_set_id").notNull().getProperty();
+       /* Property languageProperty = question.addLongProperty("question_set_id").notNull().getProperty();
         ToMany languageToquestionSet = questionSet.addToMany(question, languageProperty);
-        languageToquestionSet.setName("questoinSetToLanguage");
+        languageToquestionSet.setName("questoinSetToLanguage");*/
 
         return question;
     }
