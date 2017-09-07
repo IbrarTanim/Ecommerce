@@ -28,7 +28,8 @@ public class QuestionSetTable {
     /** Used for active entity operations. */
     private transient QuestionSetTableDao myDao;
 
-    private List<CSVQuestionTable> questionSetToLanguage;
+    private List<CSVQuestionTable> csvQuestionToQuestionSet;
+    private List<TestTable> testToQuestionSet;
 
     public QuestionSetTable() {
     }
@@ -118,25 +119,47 @@ public class QuestionSetTable {
     }
 
     /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
-    public List<CSVQuestionTable> getQuestionSetToLanguage() {
-        if (questionSetToLanguage == null) {
+    public List<CSVQuestionTable> getCsvQuestionToQuestionSet() {
+        if (csvQuestionToQuestionSet == null) {
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
             CSVQuestionTableDao targetDao = daoSession.getCSVQuestionTableDao();
-            List<CSVQuestionTable> questionSetToLanguageNew = targetDao._queryQuestionSetTable_QuestionSetToLanguage(id);
+            List<CSVQuestionTable> csvQuestionToQuestionSetNew = targetDao._queryQuestionSetTable_CsvQuestionToQuestionSet(id);
             synchronized (this) {
-                if(questionSetToLanguage == null) {
-                    questionSetToLanguage = questionSetToLanguageNew;
+                if(csvQuestionToQuestionSet == null) {
+                    csvQuestionToQuestionSet = csvQuestionToQuestionSetNew;
                 }
             }
         }
-        return questionSetToLanguage;
+        return csvQuestionToQuestionSet;
     }
 
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
-    public synchronized void resetQuestionSetToLanguage() {
-        questionSetToLanguage = null;
+    public synchronized void resetCsvQuestionToQuestionSet() {
+        csvQuestionToQuestionSet = null;
+    }
+
+    /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
+    public List<TestTable> getTestToQuestionSet() {
+        if (testToQuestionSet == null) {
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            TestTableDao targetDao = daoSession.getTestTableDao();
+            List<TestTable> testToQuestionSetNew = targetDao._queryQuestionSetTable_TestToQuestionSet(id);
+            synchronized (this) {
+                if(testToQuestionSet == null) {
+                    testToQuestionSet = testToQuestionSetNew;
+                }
+            }
+        }
+        return testToQuestionSet;
+    }
+
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    public synchronized void resetTestToQuestionSet() {
+        testToQuestionSet = null;
     }
 
     /** Convenient call for {@link AbstractDao#delete(Object)}. Entity must attached to an entity context. */

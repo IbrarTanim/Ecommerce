@@ -257,7 +257,6 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
     }
 
 
-
     @Override
     public QuestionSetTable getQuestionSetTableById(long id) {
 
@@ -343,7 +342,7 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
     public synchronized boolean deleteLanguageById(Long id) {
         try {
             openWritableDb();
-            LanguageTableDao  languageTableDao= daoSession.getLanguageTableDao();
+            LanguageTableDao languageTableDao = daoSession.getLanguageTableDao();
             languageTableDao.deleteByKey(id);
             daoSession.clear();
             return true;
@@ -352,11 +351,12 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             return false;
         }
     }
+
     @Override
     public synchronized boolean deleteQuestionSetById(Long userId) {
         try {
             openWritableDb();
-            QuestionSetTableDao  questionSetTableDao = daoSession.getQuestionSetTableDao();
+            QuestionSetTableDao questionSetTableDao = daoSession.getQuestionSetTableDao();
             questionSetTableDao.deleteByKey(userId);
             daoSession.clear();
             return true;
@@ -365,11 +365,12 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             return false;
         }
     }
+
     @Override
-    public synchronized boolean deleteQuestionById(Long id) {
+    public synchronized boolean deleteCSVQuestionById(Long id) {
         try {
             openWritableDb();
-            CSVQuestionTableDao  csvQuestionTableDao = daoSession.getCSVQuestionTableDao();
+            CSVQuestionTableDao csvQuestionTableDao = daoSession.getCSVQuestionTableDao();
             csvQuestionTableDao.deleteByKey(id);
             daoSession.clear();
             return true;

@@ -47,6 +47,11 @@ public interface IDatabaseManager {
 * */
     CSVQuestionTable getCsvQuestionTableById(long id);
 
+    /*
+   * deleteQuestionById
+   * */
+    boolean deleteCSVQuestionById(Long id);
+
 
       /*
     * insertQuestionSetTable
@@ -68,6 +73,12 @@ public interface IDatabaseManager {
 * getQuestionSetTableById
 * */
     QuestionSetTable getQuestionSetTableById(long id);
+
+
+    /*
+* deleteQuestionSetById
+* */
+    boolean deleteQuestionSetById(Long id);
 
 
       /*
@@ -92,13 +103,10 @@ public interface IDatabaseManager {
     LanguageTable getLanguageTableById(long id);
 
 
-
-
+    /*
+    * deleteLanguageById
+    * */
     boolean deleteLanguageById(Long id);
-
-    boolean deleteQuestionSetById(Long id);
-
-    boolean deleteQuestionById(Long id);
 
 
 }

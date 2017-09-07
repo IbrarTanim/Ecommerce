@@ -19,10 +19,12 @@ public class Generator {
 
     private static void addTables(Schema schema) {
         /* entities */
+        Entity user = addUserTable(schema);
         Entity language = addLanguageTable(schema);
         Entity questionSet = addQuestionSetTable(schema, language);
         Entity CSVQuestion = addCSVQuestionTable(schema, questionSet);
-
+        Entity test = addTestTable(schema, questionSet);
+        Entity leaderBoard = addLeaderBoardTable(schema, user,test);
 
     }
 
@@ -41,7 +43,7 @@ public class Generator {
 
         Property questionSetProperty = csvQuestionTble.addLongProperty("question_set_id").notNull().getProperty();
         ToMany csvQuestionToQuestionSet = questionSet.addToMany(csvQuestionTble, questionSetProperty);
-        csvQuestionToQuestionSet.setName("questionSetToLanguage");
+        csvQuestionToQuestionSet.setName("csvQuestionToQuestionSet");
 
 
         return csvQuestionTble;
@@ -76,11 +78,64 @@ public class Generator {
         question.addStringProperty("status");
         question.addStringProperty("created_at").notNull();
 
-       /* Property languageProperty = question.addLongProperty("question_set_id").notNull().getProperty();
-        ToMany languageToquestionSet = questionSet.addToMany(question, languageProperty);
-        languageToquestionSet.setName("questoinSetToLanguage");*/
-
         return question;
+    }
+
+
+    private static Entity addUserTable(Schema schema) {
+        Entity user = schema.addEntity("UserTable");
+        user.addIdProperty().primaryKey().autoincrement();
+
+        user.addLongProperty("user_id").notNull();
+        user.addStringProperty("user_name").notNull();
+        user.addStringProperty("email").notNull();
+        user.addStringProperty("address").notNull();
+        user.addStringProperty("occupation").notNull();
+        user.addStringProperty("contact_no").notNull();
+        user.addStringProperty("created_at").notNull();
+        user.addStringProperty("status");
+
+        return user;
+    }
+
+
+    private static Entity addLeaderBoardTable(Schema schema, Entity user, Entity test) {
+        Entity leaderBoard = schema.addEntity("LeaderBoardTable");
+        leaderBoard.addIdProperty().primaryKey().autoincrement();
+
+        leaderBoard.addLongProperty("board_id").notNull();
+        leaderBoard.addLongProperty("score").notNull();
+        leaderBoard.addStringProperty("total_duration").notNull();
+        leaderBoard.addStringProperty("negative").notNull();
+        leaderBoard.addBooleanProperty("isHighscore").notNull();
+
+        Property userProperty = leaderBoard.addLongProperty("user_id").notNull().getProperty();
+        ToMany leaderBoardToUser = user.addToMany(leaderBoard, userProperty);
+        leaderBoardToUser.setName("leaderBoardToUser");
+
+        Property testProperty = leaderBoard.addLongProperty("test_id").notNull().getProperty();
+        ToMany leaderBoardToTest = test.addToMany(leaderBoard, testProperty);
+        leaderBoardToTest.setName("leaderBoardToTest");
+
+        return leaderBoard;
+    }
+
+
+    private static Entity addTestTable(Schema schema, Entity questionSet) {
+        Entity test = schema.addEntity("TestTable");
+        test.addIdProperty().primaryKey().autoincrement();
+
+        test.addLongProperty("test_id").notNull();
+        test.addStringProperty("question_start_from").notNull();
+        test.addStringProperty("question_start_to").notNull();
+        test.addStringProperty("status");
+        test.addStringProperty("created_at");
+
+        Property questionSetProperty = test.addLongProperty("question_set_id").notNull().getProperty();
+        ToMany testToQuestionSet = questionSet.addToMany(test, questionSetProperty);
+        testToQuestionSet.setName("testToQuestionSet");
+
+        return test;
     }
 
 

@@ -37,7 +37,7 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         public final static Property Question_set_id = new Property(8, long.class, "question_set_id", false, "QUESTION_SET_ID");
     };
 
-    private Query<CSVQuestionTable> questionSetTable_QuestionSetToLanguageQuery;
+    private Query<CSVQuestionTable> questionSetTable_CsvQuestionToQuestionSetQuery;
 
     public CSVQuestionTableDao(DaoConfig config) {
         super(config);
@@ -147,16 +147,16 @@ public class CSVQuestionTableDao extends AbstractDao<CSVQuestionTable, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "questionSetToLanguage" to-many relationship of QuestionSetTable. */
-    public List<CSVQuestionTable> _queryQuestionSetTable_QuestionSetToLanguage(long question_set_id) {
+    /** Internal query to resolve the "csvQuestionToQuestionSet" to-many relationship of QuestionSetTable. */
+    public List<CSVQuestionTable> _queryQuestionSetTable_CsvQuestionToQuestionSet(long question_set_id) {
         synchronized (this) {
-            if (questionSetTable_QuestionSetToLanguageQuery == null) {
+            if (questionSetTable_CsvQuestionToQuestionSetQuery == null) {
                 QueryBuilder<CSVQuestionTable> queryBuilder = queryBuilder();
                 queryBuilder.where(Properties.Question_set_id.eq(null));
-                questionSetTable_QuestionSetToLanguageQuery = queryBuilder.build();
+                questionSetTable_CsvQuestionToQuestionSetQuery = queryBuilder.build();
             }
         }
-        Query<CSVQuestionTable> query = questionSetTable_QuestionSetToLanguageQuery.forCurrentThread();
+        Query<CSVQuestionTable> query = questionSetTable_CsvQuestionToQuestionSetQuery.forCurrentThread();
         query.setParameter(0, question_set_id);
         return query.list();
     }

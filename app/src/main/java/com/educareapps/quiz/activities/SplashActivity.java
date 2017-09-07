@@ -116,14 +116,13 @@ public class SplashActivity extends BaseActivity {
                         if (questionSetArr.size() > 0)
                             for (int j = 0; j < questionSetArr.size(); j++) {
 
-                                ArrayList<CSVQuestionTable> questionArr = new ArrayList<>(questionSetArr.get(i).getQuestionSetToLanguage());
+                                ArrayList<CSVQuestionTable> questionArr = new ArrayList<>(questionSetArr.get(i).getCsvQuestionToQuestionSet());
                                 databaseManager.deleteQuestionSetById(questionSetArr.get(i).getId());
 
                                 if (questionArr.size() > 0)
                                     for (int k = 0; k < questionArr.size(); k++) {
 
-                                        databaseManager.deleteQuestionById(questionArr.get(i).getId());
-
+                                        databaseManager.deleteCSVQuestionById(questionArr.get(i).getId());
                                     }
 
                             }
