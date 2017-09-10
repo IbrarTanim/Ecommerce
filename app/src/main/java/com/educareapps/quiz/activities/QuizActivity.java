@@ -243,6 +243,7 @@ public class QuizActivity extends BaseActivity implements View.OnClickListener, 
         resIntent.putExtra(StaticAccess.TAG_WRONG_ANSWER, wrongAnswer);
         resIntent.putExtra(StaticAccess.TAG_TOTAL_SCORE, totalScore);
         resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
+        resIntent.putExtra(StaticAccess.TAG_COME_FROM, 0);
         startActivity(resIntent);
         finish();
     }

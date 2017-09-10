@@ -179,6 +179,7 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
             resIntent.putExtra(StaticAccess.TAG_TOTAL_SCORE, correctQuestionList.size());
             resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
             resIntent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
+            resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
             startActivity(resIntent);
             finish();
         } else {
