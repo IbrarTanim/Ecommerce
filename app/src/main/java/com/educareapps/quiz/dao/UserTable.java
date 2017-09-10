@@ -15,6 +15,10 @@ public class UserTable {
     /** Not-null value. */
     private String user_name;
     /** Not-null value. */
+    private String user_first_name;
+    /** Not-null value. */
+    private String user_last_name;
+    /** Not-null value. */
     private String email;
     /** Not-null value. */
     private String address;
@@ -41,10 +45,12 @@ public class UserTable {
         this.id = id;
     }
 
-    public UserTable(Long id, long user_id, String user_name, String email, String address, String occupation, String contact_no, String created_at, String status) {
+    public UserTable(Long id, long user_id, String user_name, String user_first_name, String user_last_name, String email, String address, String occupation, String contact_no, String created_at, String status) {
         this.id = id;
         this.user_id = user_id;
         this.user_name = user_name;
+        this.user_first_name = user_first_name;
+        this.user_last_name = user_last_name;
         this.email = email;
         this.address = address;
         this.occupation = occupation;
@@ -83,6 +89,26 @@ public class UserTable {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    /** Not-null value. */
+    public String getUser_first_name() {
+        return user_first_name;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setUser_first_name(String user_first_name) {
+        this.user_first_name = user_first_name;
+    }
+
+    /** Not-null value. */
+    public String getUser_last_name() {
+        return user_last_name;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setUser_last_name(String user_last_name) {
+        this.user_last_name = user_last_name;
     }
 
     /** Not-null value. */
