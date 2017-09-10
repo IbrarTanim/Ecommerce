@@ -26,12 +26,14 @@ public class UserTableDao extends AbstractDao<UserTable, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property User_id = new Property(1, long.class, "user_id", false, "USER_ID");
         public final static Property User_name = new Property(2, String.class, "user_name", false, "USER_NAME");
-        public final static Property Email = new Property(3, String.class, "email", false, "EMAIL");
-        public final static Property Address = new Property(4, String.class, "address", false, "ADDRESS");
-        public final static Property Occupation = new Property(5, String.class, "occupation", false, "OCCUPATION");
-        public final static Property Contact_no = new Property(6, String.class, "contact_no", false, "CONTACT_NO");
-        public final static Property Created_at = new Property(7, String.class, "created_at", false, "CREATED_AT");
-        public final static Property Status = new Property(8, String.class, "status", false, "STATUS");
+        public final static Property User_first_name = new Property(3, String.class, "user_first_name", false, "USER_FIRST_NAME");
+        public final static Property User_last_name = new Property(4, String.class, "user_last_name", false, "USER_LAST_NAME");
+        public final static Property Email = new Property(5, String.class, "email", false, "EMAIL");
+        public final static Property Address = new Property(6, String.class, "address", false, "ADDRESS");
+        public final static Property Occupation = new Property(7, String.class, "occupation", false, "OCCUPATION");
+        public final static Property Contact_no = new Property(8, String.class, "contact_no", false, "CONTACT_NO");
+        public final static Property Created_at = new Property(9, String.class, "created_at", false, "CREATED_AT");
+        public final static Property Status = new Property(10, String.class, "status", false, "STATUS");
     };
 
     private DaoSession daoSession;
@@ -53,12 +55,14 @@ public class UserTableDao extends AbstractDao<UserTable, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"USER_ID\" INTEGER NOT NULL ," + // 1: user_id
                 "\"USER_NAME\" TEXT NOT NULL ," + // 2: user_name
-                "\"EMAIL\" TEXT NOT NULL ," + // 3: email
-                "\"ADDRESS\" TEXT NOT NULL ," + // 4: address
-                "\"OCCUPATION\" TEXT NOT NULL ," + // 5: occupation
-                "\"CONTACT_NO\" TEXT NOT NULL ," + // 6: contact_no
-                "\"CREATED_AT\" TEXT NOT NULL ," + // 7: created_at
-                "\"STATUS\" TEXT);"); // 8: status
+                "\"USER_FIRST_NAME\" TEXT NOT NULL ," + // 3: user_first_name
+                "\"USER_LAST_NAME\" TEXT NOT NULL ," + // 4: user_last_name
+                "\"EMAIL\" TEXT NOT NULL ," + // 5: email
+                "\"ADDRESS\" TEXT NOT NULL ," + // 6: address
+                "\"OCCUPATION\" TEXT NOT NULL ," + // 7: occupation
+                "\"CONTACT_NO\" TEXT NOT NULL ," + // 8: contact_no
+                "\"CREATED_AT\" TEXT NOT NULL ," + // 9: created_at
+                "\"STATUS\" TEXT);"); // 10: status
     }
 
     /** Drops the underlying database table. */
@@ -78,15 +82,17 @@ public class UserTableDao extends AbstractDao<UserTable, Long> {
         }
         stmt.bindLong(2, entity.getUser_id());
         stmt.bindString(3, entity.getUser_name());
-        stmt.bindString(4, entity.getEmail());
-        stmt.bindString(5, entity.getAddress());
-        stmt.bindString(6, entity.getOccupation());
-        stmt.bindString(7, entity.getContact_no());
-        stmt.bindString(8, entity.getCreated_at());
+        stmt.bindString(4, entity.getUser_first_name());
+        stmt.bindString(5, entity.getUser_last_name());
+        stmt.bindString(6, entity.getEmail());
+        stmt.bindString(7, entity.getAddress());
+        stmt.bindString(8, entity.getOccupation());
+        stmt.bindString(9, entity.getContact_no());
+        stmt.bindString(10, entity.getCreated_at());
  
         String status = entity.getStatus();
         if (status != null) {
-            stmt.bindString(9, status);
+            stmt.bindString(11, status);
         }
     }
 
@@ -109,12 +115,14 @@ public class UserTableDao extends AbstractDao<UserTable, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getLong(offset + 1), // user_id
             cursor.getString(offset + 2), // user_name
-            cursor.getString(offset + 3), // email
-            cursor.getString(offset + 4), // address
-            cursor.getString(offset + 5), // occupation
-            cursor.getString(offset + 6), // contact_no
-            cursor.getString(offset + 7), // created_at
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8) // status
+            cursor.getString(offset + 3), // user_first_name
+            cursor.getString(offset + 4), // user_last_name
+            cursor.getString(offset + 5), // email
+            cursor.getString(offset + 6), // address
+            cursor.getString(offset + 7), // occupation
+            cursor.getString(offset + 8), // contact_no
+            cursor.getString(offset + 9), // created_at
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // status
         );
         return entity;
     }
@@ -125,12 +133,14 @@ public class UserTableDao extends AbstractDao<UserTable, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUser_id(cursor.getLong(offset + 1));
         entity.setUser_name(cursor.getString(offset + 2));
-        entity.setEmail(cursor.getString(offset + 3));
-        entity.setAddress(cursor.getString(offset + 4));
-        entity.setOccupation(cursor.getString(offset + 5));
-        entity.setContact_no(cursor.getString(offset + 6));
-        entity.setCreated_at(cursor.getString(offset + 7));
-        entity.setStatus(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setUser_first_name(cursor.getString(offset + 3));
+        entity.setUser_last_name(cursor.getString(offset + 4));
+        entity.setEmail(cursor.getString(offset + 5));
+        entity.setAddress(cursor.getString(offset + 6));
+        entity.setOccupation(cursor.getString(offset + 7));
+        entity.setContact_no(cursor.getString(offset + 8));
+        entity.setCreated_at(cursor.getString(offset + 9));
+        entity.setStatus(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
      }
     
     /** @inheritdoc */
