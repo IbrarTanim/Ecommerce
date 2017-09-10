@@ -59,18 +59,7 @@ public class TestsAdapter extends BaseAdapter {
         holder.ivCoursePhoto = (ImageView) rowView.findViewById(R.id.ivCoursePhoto);
         holder.tvCourseTitle.setText(testList.get(position).getTest_name());
         holder.ivCoursePhoto.setImageResource(R.mipmap.ic_logo);
-        holder.ivCoursePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToTestActivity();
-            }
-
-
-        });
         return rowView;
     }
 
-    private void goToTestActivity() {
-
-    }
 }

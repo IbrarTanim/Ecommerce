@@ -60,18 +60,7 @@ public class CourseAdapter extends BaseAdapter {
         holder.ivCoursePhoto = (ImageView) rowView.findViewById(R.id.ivCoursePhoto);
         holder.tvCourseTitle.setText(questionSetTableArrayList.get(position).getTitle());
         Picasso.with(context).load(questionSetTableArrayList.get(position).getPhoto()).placeholder(R.drawable.ic_logo).error(R.drawable.ic_logo).into(holder.ivCoursePhoto);
-        holder.ivCoursePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToTestActivity();
-            }
-
-
-        });
         return rowView;
     }
 
-    private void goToTestActivity() {
-
-    }
 }
