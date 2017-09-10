@@ -2,16 +2,16 @@ package com.educareapps.quiz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import com.educareapps.quiz.R;
 
 public class MenuActivity extends BaseActivity {
 
     MenuActivity activity;
-    ImageButton ibtnMenue;
+    Button btnGeneral;
+    Button btnBlind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +19,27 @@ public class MenuActivity extends BaseActivity {
         setContentView(R.layout.activity_menu);
 
         activity = this;
-        ibtnMenue = (ImageButton) findViewById(R.id.ibtnMenue);
+        btnGeneral = (Button) findViewById(R.id.btnGeneral);
+        btnBlind = (Button) findViewById(R.id.btnBlind);
 
 
-        ibtnMenue.setOnClickListener(new View.OnClickListener() {
+        btnGeneral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(activity, QuizActivity.class));
+                startActivity(new Intent(activity, MainActivity.class));
+                finish();
 
             }
         });
+
+        btnBlind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, QuizActivity.class));
+                finish();
+
+            }
+        });
+
     }
 }

@@ -10,5 +10,10 @@
     <string name="wrong_answer">Wrong Answer</string>
     <string name="total_score">Total Score</string>
     <string name="total_duration">Total Duration</string>
+    <string name="general">General</string>
+    <string name="blind">Blind</string>
+    <string name="dashboard">DashBoard</string>
+    <string name="courses">Courses</string>
+    <string name="leaderboard">LeaderBoard</string>
 
 </resources>
