@@ -17,6 +17,7 @@ import com.educareapps.quiz.R;
 import com.educareapps.quiz.dao.CSVQuestionTable;
 import com.educareapps.quiz.dao.LanguageTable;
 import com.educareapps.quiz.dao.QuestionSetTable;
+import com.educareapps.quiz.dao.TestTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.manager.IDatabaseManager;
 import com.educareapps.quiz.parser.QuizPlaceJson;
@@ -116,14 +117,19 @@ public class SplashActivity extends BaseActivity {
                         if (questionSetArr.size() > 0)
                             for (int j = 0; j < questionSetArr.size(); j++) {
 
-                                ArrayList<CSVQuestionTable> questionArr = new ArrayList<>(questionSetArr.get(i).getCsvQuestionToQuestionSet());
-                                databaseManager.deleteQuestionSetById(questionSetArr.get(i).getId());
-
+                                ArrayList<CSVQuestionTable> questionArr = new ArrayList<>(questionSetArr.get(j).getCsvQuestionToQuestionSet());
                                 if (questionArr.size() > 0)
                                     for (int k = 0; k < questionArr.size(); k++) {
 
-                                        databaseManager.deleteCSVQuestionById(questionArr.get(i).getId());
+                                        databaseManager.deleteCSVQuestionById(questionArr.get(k).getId());
                                     }
+                                ArrayList<TestTable> testTablesArr = new ArrayList<>(questionSetArr.get(j).getTestToQuestionSet());
+                                if (testTablesArr.size() > 0)
+                                    for (int k = 0; k < testTablesArr.size(); k++) {
+
+                                        databaseManager.deleteTestById(testTablesArr.get(k).getId());
+                                    }
+                                databaseManager.deleteQuestionSetById(questionSetArr.get(j).getId());
 
                             }
                     }
