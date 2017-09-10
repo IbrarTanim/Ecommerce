@@ -45,7 +45,7 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.ResultActivity"
-            android:screenOrientation="sensorPortrait"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -53,25 +53,26 @@
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".activities.DashBoardActivity"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".activities.CourseActivity"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".activities.LeaderBoardActivity"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.TestListActivity" />
+        <activity
+            android:name=".activities.TestPlayerActivity"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

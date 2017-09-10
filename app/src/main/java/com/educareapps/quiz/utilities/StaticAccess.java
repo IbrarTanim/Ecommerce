@@ -11,6 +11,9 @@ public class StaticAccess {
     public static final String TAG_WRONG_ANSWER = "wrong_answer";
     public static final String TAG_TOTAL_SCORE = "total_score";
     public static final String TAG_TOTAL_DURATION = "total_duration";
+    public static final String QUESTION_SET_ID = "question_set_id";
+    public static final String TEST_ID = "test_id";
+    public static final String TAG_COME_FROM = "come_form";
     //net Check
     public static int TYPE_WIFI = 1;
     public static int TYPE_MOBILE = 2;

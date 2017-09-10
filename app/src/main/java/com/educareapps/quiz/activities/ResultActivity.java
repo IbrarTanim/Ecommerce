@@ -22,6 +22,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     int wrongAnswer = 0;
     String duration = "";
     int totalScore = 0;
+    int comeFrom = -1;
+    long question_set_id = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         wrongAnswer = getIntent().getIntExtra(StaticAccess.TAG_WRONG_ANSWER, 0);
         totalScore = getIntent().getIntExtra(StaticAccess.TAG_TOTAL_SCORE, 0);
         duration = getIntent().getStringExtra(StaticAccess.TAG_TOTAL_DURATION);
+        comeFrom = getIntent().getIntExtra(StaticAccess.TAG_COME_FROM, -1);
+        question_set_id = getIntent().getLongExtra(StaticAccess.QUESTION_SET_ID, -1);
 
 
         tvTotalPlayed = (TextView) findViewById(R.id.tvTotalPlayed);
@@ -50,7 +54,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void initResult() {
-        tvTotalPlayed.setText(String.valueOf(totalPlayed+1));
+        tvTotalPlayed.setText(String.valueOf(totalPlayed + 1));
         tvCorrectAnswer.setText(String.valueOf(correctAnswer));
         tvWrongAnswer.setText(String.valueOf(wrongAnswer));
         tvTotalScore.setText(String.valueOf(totalScore));
@@ -61,12 +65,29 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPlayAgain:
-                startActivity(new Intent(activity, QuizActivity.class));
+                if (comeFrom == 0) {
+                    startActivity(new Intent(activity, QuizActivity.class));
+                } else {
+                    if (question_set_id != -1) {
+                        Intent testIntent = new Intent(activity, TestListActivity.class);
+                        testIntent.putExtra(StaticAccess.QUESTION_SET_ID, question_set_id);
+                        startActivity(testIntent);
+                        finish();
+                    }
+                }
                 break;
 
             case R.id.ibtnCrossResult:
-                startActivity(new Intent(activity, MenuActivity.class));
-
+                if (comeFrom == 0) {
+                    startActivity(new Intent(activity, MenuActivity.class));
+                } else {
+                    if (question_set_id != -1) {
+                        Intent testIntent = new Intent(activity, TestListActivity.class);
+                        testIntent.putExtra(StaticAccess.QUESTION_SET_ID, question_set_id);
+                        startActivity(testIntent);
+                        finish();
+                    }
+                }
                 break;
         }
 

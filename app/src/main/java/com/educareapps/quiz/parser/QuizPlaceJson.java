@@ -124,12 +124,13 @@ public class QuizPlaceJson {
                                     JSONObject testJson = jsonTestArray.getJSONObject(m);
                                     TestTable testTable = new TestTable();
                                     testTable.setTest_id(Long.parseLong(testJson.getString(TAG_TEST_ID)));
-                                    testTable.setQuestion_set_id(Long.parseLong(testJson.getString(TAG_QUESTION_SET_ID_TEST)));
+                                    testTable.setQuestion_set_id(questionSetId);
                                     testTable.setTest_name(testJson.getString(TAG_TEST_NAME));
                                     testTable.setQuestion_start_from(testJson.getString(TAG_QUESTION_START_FROM));
                                     testTable.setQuestion_start_to(testJson.getString(TAG_QUESTION_START_TO));
                                     testTable.setStatus(testJson.getString(TAG_STATUS));
                                     testTable.setCreated_at(testJson.getString(TAG_CREATED_AT_TEST));
+                                    databaseManager.insertTestTable(testTable);
                                 }
                             }
 

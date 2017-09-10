@@ -126,7 +126,6 @@ public class SplashActivity extends BaseActivity {
                                 ArrayList<TestTable> testTablesArr = new ArrayList<>(questionSetArr.get(j).getTestToQuestionSet());
                                 if (testTablesArr.size() > 0)
                                     for (int k = 0; k < testTablesArr.size(); k++) {
-
                                         databaseManager.deleteTestById(testTablesArr.get(k).getId());
                                     }
                                 databaseManager.deleteQuestionSetById(questionSetArr.get(j).getId());
