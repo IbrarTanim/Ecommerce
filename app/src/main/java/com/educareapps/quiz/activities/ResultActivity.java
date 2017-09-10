@@ -54,11 +54,11 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void initResult() {
-        tvTotalPlayed.setText(String.valueOf(totalPlayed + 1));
+        tvTotalPlayed.setText(String.valueOf(totalPlayed));
         tvCorrectAnswer.setText(String.valueOf(correctAnswer));
         tvWrongAnswer.setText(String.valueOf(wrongAnswer));
         tvTotalScore.setText(String.valueOf(totalScore));
-        tvTotalDuration.setText(String.valueOf(duration));
+        tvTotalDuration.setText(String.valueOf(duration) + " min");
     }
 
     @Override
