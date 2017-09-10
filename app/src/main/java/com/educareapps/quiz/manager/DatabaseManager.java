@@ -10,8 +10,14 @@ import com.educareapps.quiz.dao.DaoMaster;
 import com.educareapps.quiz.dao.DaoSession;
 import com.educareapps.quiz.dao.LanguageTable;
 import com.educareapps.quiz.dao.LanguageTableDao;
+import com.educareapps.quiz.dao.LeaderBoardTable;
+import com.educareapps.quiz.dao.LeaderBoardTableDao;
 import com.educareapps.quiz.dao.QuestionSetTable;
 import com.educareapps.quiz.dao.QuestionSetTableDao;
+import com.educareapps.quiz.dao.TestTable;
+import com.educareapps.quiz.dao.TestTableDao;
+import com.educareapps.quiz.dao.UserTable;
+import com.educareapps.quiz.dao.UserTableDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,6 +143,8 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
      ************************************/
 
 
+    /************************************************ CSVQuestionTable **********************************************************/
+
     @Override
     public CSVQuestionTable insertCSVQuestionTable(CSVQuestionTable csvQuestionTable) {
         try {
@@ -201,6 +209,22 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
 
         return csvQuestionTable;
     }
+
+    @Override
+    public synchronized boolean deleteCSVQuestionById(Long id) {
+        try {
+            openWritableDb();
+            CSVQuestionTableDao csvQuestionTableDao = daoSession.getCSVQuestionTableDao();
+            csvQuestionTableDao.deleteByKey(id);
+            daoSession.clear();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /************************************************ QuestionSetTable **********************************************************/
 
     @Override
     public long insertQuestionSetTable(QuestionSetTable questionSetTable) {
@@ -272,6 +296,23 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
 
         return questionSetTable;
     }
+
+
+    @Override
+    public synchronized boolean deleteQuestionSetById(Long userId) {
+        try {
+            openWritableDb();
+            QuestionSetTableDao questionSetTableDao = daoSession.getQuestionSetTableDao();
+            questionSetTableDao.deleteByKey(userId);
+            daoSession.clear();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /************************************************ LanguageTable **********************************************************/
 
     @Override
     public long insertLanguageTable(LanguageTable languageTable) {
@@ -352,32 +393,260 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
         }
     }
 
+
+    /************************************************ UserTable **********************************************************/
+
     @Override
-    public synchronized boolean deleteQuestionSetById(Long userId) {
+    public long insertUserTable(UserTable userTable) {
+        long id = 0;
+        try {
+            if (userTable != null) {
+                openWritableDb();
+                UserTableDao userTableDao = daoSession.getUserTableDao();
+                id = userTableDao.insert(userTable);
+                daoSession.clear();
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    @Override
+    public Long updateUserTable(UserTable userTable) {
+        Long userKey = null;
+        try {
+            if (userTable != null) {
+                openWritableDb();
+                daoSession.update(userTable);
+                userKey = userTable.getId();
+                daoSession.clear();
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return userKey;
+    }
+
+    @Override
+    public ArrayList<UserTable> listUserTable() {
+
+        List<UserTable> listUserTable = null;
+        try {
+            openReadableDb();
+            UserTableDao userTableDao = daoSession.getUserTableDao();
+            listUserTable = userTableDao.loadAll();
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        if (listUserTable != null) {
+            return new ArrayList<>(listUserTable);
+        }
+
+        return null;
+    }
+
+    @Override
+    public UserTable getUserTableById(long id) {
+        UserTable userTable = null;
         try {
             openWritableDb();
-            QuestionSetTableDao questionSetTableDao = daoSession.getQuestionSetTableDao();
-            questionSetTableDao.deleteByKey(userId);
+            UserTableDao userTableDao = daoSession.getUserTableDao();
+            userTable = userTableDao.load(id);
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        return userTable;
+    }
+
+    @Override
+    public synchronized boolean deleteUserById(Long id) {
+        try {
+            openWritableDb();
+            UserTableDao userTableDao = daoSession.getUserTableDao();
+            userTableDao.deleteByKey(id);
             daoSession.clear();
             return true;
-        } catch (Exception e) {
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    /************************************************ TestTable **********************************************************/
+
+    @Override
+    public long insertTestTable(TestTable testTable) {
+        long id = 0;
+        try {
+            if (testTable != null) {
+                openWritableDb();
+                TestTableDao testTableDao = daoSession.getTestTableDao();
+                id = testTableDao.insert(testTable);
+                daoSession.clear();
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    @Override
+    public Long updateTestTable(TestTable testTable) {
+        Long testKey = null;
+        try {
+            if (testTable != null) {
+                openWritableDb();
+                daoSession.update(testTable);
+                testKey = testTable.getId();
+                daoSession.clear();
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return testKey;
+    }
+
+    @Override
+    public ArrayList<TestTable> listTestTable() {
+
+        List<TestTable> listTestTable = null;
+
+        try {
+            openReadableDb();
+            TestTableDao testTableDao = daoSession.getTestTableDao();
+            listTestTable = testTableDao.loadAll();
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        if (listTestTable != null) {
+            return new ArrayList<>(listTestTable);
+        }
+
+        return null;
+    }
+
+    @Override
+    public TestTable getTestTableById(long id) {
+
+        TestTable testTable = null;
+        try {
+            openWritableDb();
+            TestTableDao testTableDao = daoSession.getTestTableDao();
+            testTable = testTableDao.load(id);
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return testTable;
+    }
+
+    @Override
+    public synchronized boolean deleteTestById(Long id) {
+
+        try {
+            openWritableDb();
+            TestTableDao testTableDao = daoSession.getTestTableDao();
+            testTableDao.deleteByKey(id);
+            daoSession.clear();
+            return true;
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    /************************************************ LeaderBoardTable **********************************************************/
+
+    @Override
+    public long insertLeaderBoardTable(LeaderBoardTable leaderBoardTable) {
+        long id = 0;
+        try {
+            if (leaderBoardTable != null) {
+                openWritableDb();
+                LeaderBoardTableDao leaderBoardTableDao = daoSession.getLeaderBoardTableDao();
+                id = leaderBoardTableDao.insert(leaderBoardTable);
+                daoSession.clear();
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    @Override
+    public Long updateLeaderBoardtTable(LeaderBoardTable leaderBoardTable) {
+        Long leaderBoardKey = null;
+        try {
+            if (leaderBoardTable != null) {
+                openWritableDb();
+                daoSession.update(leaderBoardTable);
+                leaderBoardKey = leaderBoardTable.getId();
+                daoSession.clear();
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        return leaderBoardKey;
+    }
+
+    @Override
+    public ArrayList<LeaderBoardTable> listLeaderBoardTable() {
+
+        List<LeaderBoardTable> listLeaderBoardTable = null;
+
+        try {
+            openReadableDb();
+            LeaderBoardTableDao leaderBoardTableDao = daoSession.getLeaderBoardTableDao();
+            listLeaderBoardTable = leaderBoardTableDao.loadAll();
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        if (listLeaderBoardTable != null) {
+            return new ArrayList<>(listLeaderBoardTable);
+        }
+        return null;
+    }
+
+    @Override
+    public LeaderBoardTable getLeaderBoardTableById(long id) {
+
+        LeaderBoardTable leaderBoardTable = null;
+
+        try {
+            openWritableDb();
+            LeaderBoardTableDao leaderBoardTableDao = daoSession.getLeaderBoardTableDao();
+            leaderBoardTable = leaderBoardTableDao.load(id);
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        return leaderBoardTable;
+    }
+
+    @Override
+    public synchronized boolean deleteLeaderBoardById(Long id) {
+
+        try {
+            openWritableDb();
+            LeaderBoardTableDao leaderBoardTableDao = daoSession.getLeaderBoardTableDao();
+            leaderBoardTableDao.deleteByKey(id);
+            daoSession.clear();
+            return true;
+        } catch (SQLiteException e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    @Override
-    public synchronized boolean deleteCSVQuestionById(Long id) {
-        try {
-            openWritableDb();
-            CSVQuestionTableDao csvQuestionTableDao = daoSession.getCSVQuestionTableDao();
-            csvQuestionTableDao.deleteByKey(id);
-            daoSession.clear();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
 }

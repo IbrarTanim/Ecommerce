@@ -3,7 +3,10 @@ package com.educareapps.quiz.manager;
 
 import com.educareapps.quiz.dao.CSVQuestionTable;
 import com.educareapps.quiz.dao.LanguageTable;
+import com.educareapps.quiz.dao.LeaderBoardTable;
 import com.educareapps.quiz.dao.QuestionSetTable;
+import com.educareapps.quiz.dao.TestTable;
+import com.educareapps.quiz.dao.UserTable;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,7 @@ public interface IDatabaseManager {
     void dropDatabase();
 
 
+    /************************************************ CSVQuestionTable **********************************************************/
 
     /*
     * insertCSVQuestionTable
@@ -53,6 +57,8 @@ public interface IDatabaseManager {
     boolean deleteCSVQuestionById(Long id);
 
 
+    /************************************************ QuestionSetTable **********************************************************/
+
       /*
     * insertQuestionSetTable
     * */
@@ -74,12 +80,12 @@ public interface IDatabaseManager {
 * */
     QuestionSetTable getQuestionSetTableById(long id);
 
-
     /*
 * deleteQuestionSetById
 * */
     boolean deleteQuestionSetById(Long id);
 
+    /************************************************ LanguageTable **********************************************************/
 
       /*
     * insertLanguageTable
@@ -88,8 +94,8 @@ public interface IDatabaseManager {
     long insertLanguageTable(LanguageTable languageTable);
 
     /*
-* updateLanguageTable
-* */
+   * updateLanguageTable
+    * */
     Long updateLanguageTable(LanguageTable languageTable);
 
     /*
@@ -98,15 +104,107 @@ public interface IDatabaseManager {
     ArrayList<LanguageTable> listLanguageTable();
 
     /*
-* getLanguageTableById
-* */
+   * getLanguageTableById
+    * */
     LanguageTable getLanguageTableById(long id);
-
 
     /*
     * deleteLanguageById
     * */
     boolean deleteLanguageById(Long id);
+
+
+    /************************************************ UserTable**********************************************************/
+
+      /*
+    * insertUserTable
+    * */
+
+    long insertUserTable(UserTable userTable);
+
+    /*
+   * updateUserTable
+    * */
+    Long updateUserTable(UserTable userTable);
+
+    /*
+   * listUserTable
+   * */
+    ArrayList<UserTable> listUserTable();
+
+
+    /*
+   * getUserTableById
+    * */
+    UserTable getUserTableById(long id);
+
+
+    /*
+    * deleteLanguageById
+    * */
+    boolean deleteUserById(Long id);
+
+
+    /************************************************ TestTable**********************************************************/
+
+      /*
+    * insertTestTable
+    * */
+
+    long insertTestTable(TestTable testTable);
+
+    /*
+   * updateTestTable
+    * */
+    Long updateTestTable(TestTable testTable);
+
+
+    /*
+   * listTestTable
+   * */
+    ArrayList<TestTable> listTestTable();
+
+
+    /*
+   * getTestTableById
+    * */
+    TestTable getTestTableById(long id);
+
+
+    /*
+    * deleteTestById
+    * */
+    boolean deleteTestById(Long id);
+
+
+    /************************************************ LeaderBoardTable**********************************************************/
+
+      /*
+    * insertLeaderBoardTable
+    * */
+    long insertLeaderBoardTable(LeaderBoardTable leaderBoardTable);
+
+    /*
+   * updateLeaderBoardtTable
+    * */
+    Long updateLeaderBoardtTable(LeaderBoardTable leaderBoardTable);
+
+
+    /*
+   * listLeaderBoardTable
+   * */
+    ArrayList<LeaderBoardTable> listLeaderBoardTable();
+
+    /*
+   * getLeaderBoardTableById
+    * */
+    LeaderBoardTable getLeaderBoardTableById(long id);
+
+
+    /*
+    * deleteLeaderBoardById
+    * */
+    boolean deleteLeaderBoardById(Long id);
 
 
 }
