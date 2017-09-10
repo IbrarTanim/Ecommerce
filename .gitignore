@@ -83,3 +83,5 @@ build/android-profile/profile-2017-08-28-13-46-06-174.rawproto
 .idea/workspace.xml
 build/android-profile/profile-2017-09-06-12-02-31-767.rawproto
 build/android-profile/profile-2017-09-06-12-03-26-077.rawproto
+.gradle/3.3/taskArtifacts/fileHashes.bin
+.gradle/3.3/taskArtifacts/fileSnapshots.bin

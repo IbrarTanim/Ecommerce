@@ -13,6 +13,8 @@ public class TestTable {
     private Long id;
     private long test_id;
     /** Not-null value. */
+    private String test_name;
+    /** Not-null value. */
     private String question_start_from;
     /** Not-null value. */
     private String question_start_to;
@@ -35,9 +37,10 @@ public class TestTable {
         this.id = id;
     }
 
-    public TestTable(Long id, long test_id, String question_start_from, String question_start_to, String status, String created_at, long question_set_id) {
+    public TestTable(Long id, long test_id, String test_name, String question_start_from, String question_start_to, String status, String created_at, long question_set_id) {
         this.id = id;
         this.test_id = test_id;
+        this.test_name = test_name;
         this.question_start_from = question_start_from;
         this.question_start_to = question_start_to;
         this.status = status;
@@ -65,6 +68,16 @@ public class TestTable {
 
     public void setTest_id(long test_id) {
         this.test_id = test_id;
+    }
+
+    /** Not-null value. */
+    public String getTest_name() {
+        return test_name;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setTest_name(String test_name) {
+        this.test_name = test_name;
     }
 
     /** Not-null value. */

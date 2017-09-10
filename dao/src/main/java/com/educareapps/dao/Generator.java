@@ -88,6 +88,8 @@ public class Generator {
 
         user.addLongProperty("user_id").notNull();
         user.addStringProperty("user_name").notNull();
+        user.addStringProperty("user_first_name").notNull();
+        user.addStringProperty("user_last_name").notNull();
         user.addStringProperty("email").notNull();
         user.addStringProperty("address").notNull();
         user.addStringProperty("occupation").notNull();
@@ -126,6 +128,7 @@ public class Generator {
         test.addIdProperty().primaryKey().autoincrement();
 
         test.addLongProperty("test_id").notNull();
+        test.addStringProperty("test_name").notNull();
         test.addStringProperty("question_start_from").notNull();
         test.addStringProperty("question_start_to").notNull();
         test.addStringProperty("status");
