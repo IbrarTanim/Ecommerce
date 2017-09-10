@@ -2,26 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/five"
+    android:weightSum="1">
 
-    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight=".8"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ivCoursePhoto"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:src="@mipmap/ic_logo" />
+        <ImageView
+            android:id="@+id/ivCoursePhoto"
+            android:layout_width="@dimen/seventy"
+            android:layout_height="@dimen/seventy"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_logo" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tvCourseTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:gravity="center"
+        android:layout_weight=".2"
         android:text=""
-        android:textSize="15dp" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/ten" />
 
 </LinearLayout> 

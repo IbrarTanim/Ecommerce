@@ -16,5 +16,7 @@
     <string name="courses">Courses</string>
     <string name="leaderboard">LeaderBoard</string>
     <string name="edit">Edit</string>
+    <string name="live_leaderboard">Live LeaderBoard</string>
+    <string name="cources">Courses</string>
 
 </resources>

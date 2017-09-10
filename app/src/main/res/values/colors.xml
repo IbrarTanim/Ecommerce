@@ -22,12 +22,12 @@
     <color name="lilac">#693AB8</color>
     <color name="black">#1A1A1A</color>
     <color name="OkButtonColor">#69B8E9</color>
-    <color name="grey">#999999</color>
+    <color name="grey">#444444</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00ffffff</color>
     <color name="light_purple">#EFE3EF</color>
-    <color name="greyDLight">#30999999</color>
-    <color name="greyLight">#20999999</color>
+    <color name="greyDLight">#BBBBBB</color>
+    <color name="greyLight">#646464</color>
     <color name="transActivityColor">#E64A4D54</color>
     <color name="transActivityOffColor">#80000000</color>
     <color name="transparent_blue">#330000FF</color>
