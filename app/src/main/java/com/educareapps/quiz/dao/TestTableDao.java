@@ -28,11 +28,12 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Test_id = new Property(1, long.class, "test_id", false, "TEST_ID");
-        public final static Property Question_start_from = new Property(2, String.class, "question_start_from", false, "QUESTION_START_FROM");
-        public final static Property Question_start_to = new Property(3, String.class, "question_start_to", false, "QUESTION_START_TO");
-        public final static Property Status = new Property(4, String.class, "status", false, "STATUS");
-        public final static Property Created_at = new Property(5, String.class, "created_at", false, "CREATED_AT");
-        public final static Property Question_set_id = new Property(6, long.class, "question_set_id", false, "QUESTION_SET_ID");
+        public final static Property Test_name = new Property(2, String.class, "test_name", false, "TEST_NAME");
+        public final static Property Question_start_from = new Property(3, String.class, "question_start_from", false, "QUESTION_START_FROM");
+        public final static Property Question_start_to = new Property(4, String.class, "question_start_to", false, "QUESTION_START_TO");
+        public final static Property Status = new Property(5, String.class, "status", false, "STATUS");
+        public final static Property Created_at = new Property(6, String.class, "created_at", false, "CREATED_AT");
+        public final static Property Question_set_id = new Property(7, long.class, "question_set_id", false, "QUESTION_SET_ID");
     };
 
     private DaoSession daoSession;
@@ -54,11 +55,12 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"TEST_TABLE\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"TEST_ID\" INTEGER NOT NULL ," + // 1: test_id
-                "\"QUESTION_START_FROM\" TEXT NOT NULL ," + // 2: question_start_from
-                "\"QUESTION_START_TO\" TEXT NOT NULL ," + // 3: question_start_to
-                "\"STATUS\" TEXT," + // 4: status
-                "\"CREATED_AT\" TEXT," + // 5: created_at
-                "\"QUESTION_SET_ID\" INTEGER NOT NULL );"); // 6: question_set_id
+                "\"TEST_NAME\" TEXT NOT NULL ," + // 2: test_name
+                "\"QUESTION_START_FROM\" TEXT NOT NULL ," + // 3: question_start_from
+                "\"QUESTION_START_TO\" TEXT NOT NULL ," + // 4: question_start_to
+                "\"STATUS\" TEXT," + // 5: status
+                "\"CREATED_AT\" TEXT," + // 6: created_at
+                "\"QUESTION_SET_ID\" INTEGER NOT NULL );"); // 7: question_set_id
     }
 
     /** Drops the underlying database table. */
@@ -77,19 +79,20 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
             stmt.bindLong(1, id);
         }
         stmt.bindLong(2, entity.getTest_id());
-        stmt.bindString(3, entity.getQuestion_start_from());
-        stmt.bindString(4, entity.getQuestion_start_to());
+        stmt.bindString(3, entity.getTest_name());
+        stmt.bindString(4, entity.getQuestion_start_from());
+        stmt.bindString(5, entity.getQuestion_start_to());
  
         String status = entity.getStatus();
         if (status != null) {
-            stmt.bindString(5, status);
+            stmt.bindString(6, status);
         }
  
         String created_at = entity.getCreated_at();
         if (created_at != null) {
-            stmt.bindString(6, created_at);
+            stmt.bindString(7, created_at);
         }
-        stmt.bindLong(7, entity.getQuestion_set_id());
+        stmt.bindLong(8, entity.getQuestion_set_id());
     }
 
     @Override
@@ -110,11 +113,12 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
         TestTable entity = new TestTable( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getLong(offset + 1), // test_id
-            cursor.getString(offset + 2), // question_start_from
-            cursor.getString(offset + 3), // question_start_to
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // status
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // created_at
-            cursor.getLong(offset + 6) // question_set_id
+            cursor.getString(offset + 2), // test_name
+            cursor.getString(offset + 3), // question_start_from
+            cursor.getString(offset + 4), // question_start_to
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // status
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // created_at
+            cursor.getLong(offset + 7) // question_set_id
         );
         return entity;
     }
@@ -124,11 +128,12 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
     public void readEntity(Cursor cursor, TestTable entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setTest_id(cursor.getLong(offset + 1));
-        entity.setQuestion_start_from(cursor.getString(offset + 2));
-        entity.setQuestion_start_to(cursor.getString(offset + 3));
-        entity.setStatus(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setCreated_at(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setQuestion_set_id(cursor.getLong(offset + 6));
+        entity.setTest_name(cursor.getString(offset + 2));
+        entity.setQuestion_start_from(cursor.getString(offset + 3));
+        entity.setQuestion_start_to(cursor.getString(offset + 4));
+        entity.setStatus(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setCreated_at(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setQuestion_set_id(cursor.getLong(offset + 7));
      }
     
     /** @inheritdoc */
