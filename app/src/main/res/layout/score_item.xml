@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     android:padding="@dimen/ten">
 
-
     <TextView
+
         android:id="@+id/tvCourseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:padding="@dimen/five"
         android:text="Bangla" />
 
@@ -18,8 +17,7 @@
         android:id="@+id/tvTestName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvCourseName"
-        android:layout_marginTop="@dimen/twenty"
+        android:layout_alignParentBottom="true"
         android:padding="@dimen/five"
         android:text="Bangla" />
 
@@ -28,7 +26,7 @@
         android:layout_width="@dimen/sixty"
         android:layout_height="@dimen/sixty"
         android:layout_alignParentRight="true"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/ic_percentage"
         android:gravity="center"
         android:padding="@dimen/five"
@@ -39,7 +37,7 @@
         android:layout_width="@dimen/sixty"
         android:layout_height="@dimen/sixty"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvPercentage"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
         android:padding="@dimen/five"
         android:text="5 min " />
