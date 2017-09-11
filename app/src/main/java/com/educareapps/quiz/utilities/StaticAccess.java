@@ -16,6 +16,9 @@ public class StaticAccess {
     public static final String TAG_COME_FROM = "come_form";
     public static final String TAG_USER_ID = "user_id";
     public static final String TAG_TEST_ID = "test_id";
+    public static final String TAG_USER_VALID_STATUS = "response";
+    public static final String TAG_RESPONSE_MSG = "msg";
+    public static final String USER_KEY_TAG = "user";
     //net Check
     public static int TYPE_WIFI = 1;
     public static int TYPE_MOBILE = 2;

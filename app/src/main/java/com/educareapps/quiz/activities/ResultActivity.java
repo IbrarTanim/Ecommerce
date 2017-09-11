@@ -46,7 +46,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         comeFrom = getIntent().getIntExtra(StaticAccess.TAG_COME_FROM, -1);
         question_set_id = getIntent().getLongExtra(StaticAccess.QUESTION_SET_ID, -1);
         user_id = getIntent().getLongExtra(StaticAccess.TAG_USER_ID, -1);
-        test_id = getIntent().getLongExtra(StaticAccess.TAG_TEST_ID, -1);
+        test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
 
 
         tvTotalPlayed = (TextView) findViewById(R.id.tvTotalPlayed);

@@ -14,6 +14,7 @@ import com.educareapps.quiz.R;
 import com.educareapps.quiz.dao.CSVQuestionTable;
 import com.educareapps.quiz.dao.TestTable;
 import com.educareapps.quiz.manager.DatabaseManager;
+import com.educareapps.quiz.utilities.SharedPreferenceValue;
 import com.educareapps.quiz.utilities.StaticAccess;
 
 import java.text.SimpleDateFormat;
@@ -66,7 +67,7 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         rbtnOptionFour.setOnClickListener(this);
         ibtnNextQuestion.setOnClickListener(this);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
-        user_id = getIntent().getLongExtra(StaticAccess.TAG_USER_ID, -1);
+        user_id = SharedPreferenceValue.getUserID(activity);
         if (test_id != -1) {
             questionsForPlay = new ArrayList<>();
             correctQuestionList = new ArrayList<>();
@@ -214,8 +215,8 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
             resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
             resIntent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
             resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
-            resIntent.putExtra(StaticAccess.TAG_USER_ID, -1);
-            resIntent.putExtra(StaticAccess.TAG_TEST_ID, -1);
+            resIntent.putExtra(StaticAccess.TAG_USER_ID, user_id);
+            resIntent.putExtra(StaticAccess.TEST_ID, test_id);
             startActivity(resIntent);
             finish();
         } else {

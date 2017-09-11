@@ -145,6 +145,7 @@ public interface IDatabaseManager {
     * */
     boolean deleteUserById(Long id);
 
+    UserTable getUserByServerUserID(long user_id);
 
     /************************************************ TestTable**********************************************************/
 

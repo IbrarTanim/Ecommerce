@@ -26,6 +26,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import de.greenrobot.dao.async.AsyncOperation;
 import de.greenrobot.dao.async.AsyncOperationListener;
 import de.greenrobot.dao.async.AsyncSession;
+import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * @author Octa
@@ -475,6 +476,26 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             return false;
         }
 
+    }
+
+    @Override
+    public UserTable getUserByServerUserID(long user_id) {
+        UserTable userTable = null;
+        try {
+            openWritableDb();
+            UserTableDao userTableDao = daoSession.getUserTableDao();
+            QueryBuilder<UserTable> queryBuilder = userTableDao.queryBuilder().where(UserTableDao.Properties.User_id.eq(user_id));
+            List<UserTable> users = queryBuilder.list();
+           // List<UserTable> users2 = userTableDao.loadAll();
+            if (users.size() > 0) {
+                userTable = users.get(0);
+            }
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        return userTable;
     }
 
     /************************************************ TestTable **********************************************************/

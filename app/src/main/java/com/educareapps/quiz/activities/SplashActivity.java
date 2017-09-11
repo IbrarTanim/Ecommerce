@@ -25,6 +25,7 @@ import com.educareapps.quiz.utilities.AppController;
 import com.educareapps.quiz.utilities.DialogNavBarHide;
 import com.educareapps.quiz.utilities.InternetAvailabilityCheck;
 import com.educareapps.quiz.utilities.RootUrl;
+import com.educareapps.quiz.utilities.SharedPreferenceValue;
 import com.educareapps.quiz.utilities.StaticAccess;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
@@ -61,8 +62,13 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(activity, LoginActivity.class));
-                finish();
+                if (SharedPreferenceValue.getUserID(activity) != -1) {
+                    startActivity(new Intent(activity, DashBoardActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(activity, LoginActivity.class));
+                    finish();
+                }
             }
         }, SPLASH_TIME_OUT);
     }
@@ -155,13 +161,14 @@ public class SplashActivity extends BaseActivity {
             } else
                 hideProgress();
         }
+
     }
 
     private void showProgress() {
         if (progressDialog != null) {
             progressDialog.setMessage("please wait...");
             progressDialog.setCancelable(false);
-            DialogNavBarHide.navBarHide(activity,progressDialog);
+            DialogNavBarHide.navBarHide(activity, progressDialog);
         }
 
     }

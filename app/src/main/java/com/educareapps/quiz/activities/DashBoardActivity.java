@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.educareapps.quiz.R;
 import com.educareapps.quiz.adapter.ScoreBoardAdapter;
 import com.educareapps.quiz.dao.LeaderBoardTable;
+import com.educareapps.quiz.dao.UserTable;
 import com.educareapps.quiz.manager.DatabaseManager;
+import com.educareapps.quiz.utilities.SharedPreferenceValue;
 
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     long user_id = -1;
     DatabaseManager databaseManager;
     List<LeaderBoardTable> scoreList;
+    UserTable user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,15 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         lvScoreBoard = (ListView) findViewById(R.id.lvScoreBoard);
         ibtnBackDashBoard = (ImageButton) findViewById(R.id.ibtnBackDashBoard);
         ivProfilePic = (ImageView) findViewById(R.id.ivProfilePic);
+        user_id = SharedPreferenceValue.getUserID(activity);
         if (user_id != -1) {
-            scoreList = databaseManager.getUserTableById(user_id).getLeaderBoardToUser();
-            scoreBoardAdapter = new ScoreBoardAdapter(scoreList, activity);
-            lvScoreBoard.setAdapter(scoreBoardAdapter);
+            user = databaseManager.getUserTableById(user_id);
+            tvEmailDashboard.setText(user.getEmail());
+            scoreList = user.getLeaderBoardToUser();
+            if (scoreList != null) {
+                scoreBoardAdapter = new ScoreBoardAdapter(scoreList, activity);
+                lvScoreBoard.setAdapter(scoreBoardAdapter);
+            }
         }
         ibtnBackDashBoard.setOnClickListener(this);
         btnStart.setOnClickListener(this);
