@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.educareapps.quiz.R;
 import com.educareapps.quiz.dao.CSVQuestionTable;
@@ -51,8 +52,8 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         databaseManager = new DatabaseManager(activity);
         tvStatus = (TextView) findViewById(R.id.tvStatus);
         tvQuestion = (TextView) findViewById(R.id.tvQuestion);
-      /*  ibtnPreviousQuestion = (ImageButton) findViewById(R.id.ibtnPreviousQuestion);
-        ibtnNextQuestion = (ImageButton) findViewById(R.id.ibtnNextQuestion);*/
+//        ibtnPreviousQuestion = (ImageButton) findViewById(R.id.ibtnPreviousQuestion);
+        ibtnNextQuestion = (ImageButton) findViewById(R.id.ibtnNextQuestion);
         rbtnOptionOne = (RadioButton) findViewById(R.id.rbtnOptionOne);
         rbtnOptionTwo = (RadioButton) findViewById(R.id.rbtnOptionTwo);
         rbtnOptionThree = (RadioButton) findViewById(R.id.rbtnOptionThree);
@@ -62,6 +63,7 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         rbtnOptionTwo.setOnClickListener(this);
         rbtnOptionThree.setOnClickListener(this);
         rbtnOptionFour.setOnClickListener(this);
+        ibtnNextQuestion.setOnClickListener(this);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
         if (test_id != -1) {
             questionsForPlay = new ArrayList<>();
@@ -98,46 +100,75 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         rbtnOptionFour.setChecked(false);
     }
 
+    int btnRadioClicked = 0;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rbtnOptionOne:
+                btnRadioClicked = 1;
                 rbtnOptionTwo.setChecked(false);
                 rbtnOptionThree.setChecked(false);
                 rbtnOptionFour.setChecked(false);
-                //startActivity(new Intent(activity, ResultActivity.class));
-                checkCorrectAnswer(rbtnOptionOne.getText().toString());
+
                 break;
             case R.id.rbtnOptionTwo:
+                btnRadioClicked = 2;
                 rbtnOptionOne.setChecked(false);
                 rbtnOptionThree.setChecked(false);
                 rbtnOptionFour.setChecked(false);
-                checkCorrectAnswer(rbtnOptionTwo.getText().toString());
+
 
                 break;
             case R.id.rbtnOptionThree:
+                btnRadioClicked = 3;
                 rbtnOptionOne.setChecked(false);
                 rbtnOptionTwo.setChecked(false);
                 rbtnOptionFour.setChecked(false);
-                checkCorrectAnswer(rbtnOptionThree.getText().toString());
+
 
                 break;
             case R.id.rbtnOptionFour:
+                btnRadioClicked = 4;
                 rbtnOptionOne.setChecked(false);
                 rbtnOptionTwo.setChecked(false);
                 rbtnOptionThree.setChecked(false);
-                checkCorrectAnswer(rbtnOptionFour.getText().toString());
+
 
                 break;
-            /*case R.id.ibtnPreviousQuestion:
-                break;
+//            case R.id.ibtnPreviousQuestion:
+//                break;
             case R.id.ibtnNextQuestion:
-                break;*/
+                switch (btnRadioClicked) {
+                    case 1:
+                        checkCorrectAnswer(rbtnOptionOne.getText().toString());
+                        break;
+                    case 2:
+                        checkCorrectAnswer(rbtnOptionTwo.getText().toString());
+                        break;
+                    case 3:
+                        checkCorrectAnswer(rbtnOptionThree.getText().toString());
+                        break;
+                    case 4:
+                        checkCorrectAnswer(rbtnOptionFour.getText().toString());
+                        break;
+                    default:
+                        Toast.makeText(activity, "Select an option first!", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+                break;
 
 
         }
     }
 
+    void makeAllClickAble() {
+        rbtnOptionOne.setClickable(true);
+        rbtnOptionTwo.setClickable(true);
+        rbtnOptionThree.setClickable(true);
+        rbtnOptionFour.setClickable(true);
+    }
 
     private void checkCorrectAnswer(String userSayingAnswer) {
         if (userSayingAnswer.equals(question.getAnswer())) {
@@ -188,9 +219,10 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    makeAllClickAble();
                     initViewWithQuestion();
                 }
-            }, 1500);
+            }, 1000);
         }
     }
 
