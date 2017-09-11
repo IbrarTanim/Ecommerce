@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,7 +26,7 @@ public class LoginActivity extends BaseActivity {
 
     EditText etEmailUsername, etPassword;
     Button btnLogin;
-    TextView tvLink_signup;
+    Button tvLink_signup;
     ProgressDialog progressDialog;
     LoginActivity activity;
 
@@ -40,7 +39,15 @@ public class LoginActivity extends BaseActivity {
         etEmailUsername = (EditText) findViewById(R.id.etEmailUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        tvLink_signup = (TextView) findViewById(R.id.tvLink_signup);
+        tvLink_signup = (Button) findViewById(R.id.tvLink_signup);
+        tvLink_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, DashBoardActivity.class));
+                finish();
+            }
+        });
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

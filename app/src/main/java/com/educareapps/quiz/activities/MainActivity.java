@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDashBoard:
-                startActivity(new Intent(activity, DashBoardActivity.class));
+                startActivity(new Intent(activity, LoginActivity.class));
                 finish();
                 break;
 

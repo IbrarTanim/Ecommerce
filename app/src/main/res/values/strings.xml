@@ -18,5 +18,10 @@
     <string name="edit">Edit</string>
     <string name="live_leaderboard">Live LeaderBoard</string>
     <string name="cources">Courses</string>
+    <string name="eduquiz">EDU\nQUIZ</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_account_yet_create_one">No account yet? Create account</string>
 
 </resources>
