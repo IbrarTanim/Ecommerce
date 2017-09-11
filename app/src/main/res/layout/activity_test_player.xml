@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.educareapps.quiz.activities.QuizActivity">
+    android:background="@color/grey">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,148 +12,256 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1"
-            android:gravity="left|center"
-            android:text="" />
 
-        <TextView
-            android:id="@+id/tvQuestion"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_gravity="center"
-            android:layout_weight=".2"
-            android:gravity="center"
-            android:text="What is the name of your favorite cricket team?"
-            android:textColor="@color/black"
-            android:textSize="@dimen/twenty_five" />
+            android:layout_weight=".3"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/app_color"
+                    android:gravity="center"
+                    android:text="Questions"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/forty" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".6">
+            android:layout_weight=".7"
+            android:background="@color/greyDLight"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <RadioGroup
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".01"
+                android:background="@color/greyLight"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="1">
+                android:textColor="@color/white"
+                android:textSize="@dimen/twenty_five" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".99"
+                android:fillViewport="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_gravity="center"
-                    android:layout_weight=".5"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="5">
 
-                    <View
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".15" />
+                    <LinearLayout
+                        android:id="@+id/llOptionOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_margin="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
-                    <RadioButton
-                        android:id="@+id/rbtnOptionOne"
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight=".4"
-                        android:checked="false"
-                        android:text="Australia"
+                        <TextView
+                            android:id="@+id/tvOptionOne"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionOneTick"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/ten"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llOptionTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_margin="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionTwo"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionTwo"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/ten"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llOptionThree"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_margin="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionThree"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionThree"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/ten"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llOptionFour"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_margin="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionFour"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionFour"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/ten"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnNextQuestion"
+                        android:layout_width="@dimen/hundred"
+                        android:layout_height="@dimen/zero"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="@dimen/ten"
+                        android:layout_weight=".7"
+                        android:text="Next"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/twenty" />
 
-                    <RadioButton
-                        android:id="@+id/rbtnOptionTwo"
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight=".4"
-                        android:checked="false"
-                        android:text="Bangladesh"
-                        android:textSize="@dimen/twenty" />
-
                     <View
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".05" />
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_weight=".3" />
+
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_gravity="center"
-                    android:layout_weight=".5"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <View
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".15" />
-
-                    <RadioButton
-                        android:id="@+id/rbtnOptionThree"
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight=".4"
-                        android:checked="false"
-                        android:text="India"
-                        android:textSize="@dimen/twenty" />
-
-                    <RadioButton
-                        android:id="@+id/rbtnOptionFour"
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight=".4"
-                        android:checked="false"
-                        android:text="England"
-                        android:textSize="@dimen/twenty" />
-
-                    <View
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".05" />
-                </LinearLayout>
-
-
-            </RadioGroup>
-
+            </ScrollView>
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1" />
 
 
     </LinearLayout>
 
-    <!--<ImageButton-->
-        <!--android:id="@+id/ibtnPreviousQuestion"-->
-        <!--android:layout_width="@dimen/seventy"-->
-        <!--android:layout_height="@dimen/sixty"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:background="@color/transparent"-->
-        <!--android:src="@android:drawable/ic_media_previous" />-->
 
     <ImageButton
-        android:id="@+id/ibtnNextQuestion"
-        android:layout_width="@dimen/seventy"
-        android:layout_height="@dimen/sixty"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/blueLight"
-        android:src="@android:drawable/ic_media_next"
-        android:layout_margin="@dimen/ten"/>
+        android:layout_width="@dimen/fifty"
+        android:layout_height="@dimen/fifty"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/five"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back" />
 
 </RelativeLayout>

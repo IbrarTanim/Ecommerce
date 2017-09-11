@@ -61,7 +61,7 @@ public class CourseActivity extends BaseActivity {
     }
 
     private void backToPrevious() {
-        startActivity(new Intent(activity, MainActivity.class));
+        startActivity(new Intent(activity, DashBoardActivity.class));
         finish();
     }
 }

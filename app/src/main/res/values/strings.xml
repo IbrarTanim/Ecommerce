@@ -28,6 +28,8 @@
     <string name="no_account_yet_create_one">OR\n Do you want to register</string>
     <string name="loginOption">OR\n Do you want to Login</string>
     <string name="register">Register</string>
+    <string name="select_subject">Select Subject</string>
+    <string name="select_test">Select Test</string>
 
 
 </resources>
