@@ -18,5 +18,7 @@
     <string name="edit">Edit</string>
     <string name="live_leaderboard">Live LeaderBoard</string>
     <string name="cources">Courses</string>
+    <string name="start">Start</string>
+    <string name="abc_gmail_com">abc@gmail.com</string>
 
 </resources>

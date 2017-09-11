@@ -23,6 +23,7 @@ import java.util.Date;
 public class TestPlayerActivity extends Activity implements View.OnClickListener {
 
     long test_id = -1;
+    long user_id = -1;
     TextView tvQuestion;
     RadioButton rbtnOptionOne, rbtnOptionTwo, rbtnOptionThree, rbtnOptionFour;
     ArrayList<CSVQuestionTable> allQuestions, questionsForPlay;
@@ -65,6 +66,7 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         rbtnOptionFour.setOnClickListener(this);
         ibtnNextQuestion.setOnClickListener(this);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
+        user_id = getIntent().getLongExtra(StaticAccess.TAG_USER_ID, -1);
         if (test_id != -1) {
             questionsForPlay = new ArrayList<>();
             correctQuestionList = new ArrayList<>();
@@ -98,6 +100,7 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         rbtnOptionTwo.setChecked(false);
         rbtnOptionThree.setChecked(false);
         rbtnOptionFour.setChecked(false);
+        btnRadioClicked = 0;
     }
 
     int btnRadioClicked = 0;
@@ -211,6 +214,8 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
             resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
             resIntent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
             resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
+            resIntent.putExtra(StaticAccess.TAG_USER_ID, -1);
+            resIntent.putExtra(StaticAccess.TAG_TEST_ID, -1);
             startActivity(resIntent);
             finish();
         } else {

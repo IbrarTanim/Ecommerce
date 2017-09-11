@@ -4,174 +4,58 @@
     android:layout_height="match_parent"
     android:background="@color/grey">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rlDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hundred_fifty"
+        android:background="@color/app_color">
+
+        <ImageView
+            android:id="@+id/ivProfilePic"
+            android:layout_width="@dimen/seventy"
+            android:layout_height="@dimen/seventy"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/twenty"
+            android:background="@drawable/ic_profile_pic"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logo" />
+
+        <TextView
+            android:id="@+id/tvEmailDashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivProfilePic"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/ten"
+            android:text="@string/abc_gmail_com"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/two"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_color"
+        android:padding="@dimen/five"
+        android:text="@string/start"
+        android:textColor="@color/white"
+        android:textSize="@dimen/twenty_five" />
+
+    <ListView
+        android:id="@+id/lvScoreBoard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:weightSum="1">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".3">
-
-            <ImageView
-                android:id="@+id/ivProfilePic"
-                android:layout_width="@dimen/seventy"
-                android:layout_height="@dimen/seventy"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/twenty"
-                android:background="@drawable/ic_profile_pic"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_logo" />
-
-            <TextView
-                android:id="@+id/tvEmailDashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ivProfilePic"
-                android:layout_centerInParent="true"
-                android:layout_margin="@dimen/ten"
-                android:text="abc@gmail.com"
-                android:textColor="@color/white" />
-        </RelativeLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/seventy"
-            android:layout_centerInParent="true"
-            android:layout_weight=".5"
-            android:orientation="horizontal"
-            android:weightSum="25">
-
-            <LinearLayout
-                android:layout_width="@dimen/zero"
-                android:layout_height="match_parent"
-                android:layout_weight="10"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".65"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_boy" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".15"
-                    android:text="@string/edit"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fifteen" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="@dimen/zero"
-                android:layout_height="match_parent"
-                android:layout_weight="15"
-                android:orientation="vertical"
-                android:weightSum="1.4">
-
-                <TextView
-                    android:id="@+id/tvFullNAme"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="Name"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-                <TextView
-                    android:id="@+id/tvFirstName"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="First Name"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-                <TextView
-                    android:id="@+id/tvLastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="Last Name"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="Email"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="Address"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-                <TextView
-                    android:id="@+id/tvOccupation"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="Occupation"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-                <TextView
-                    android:id="@+id/tvPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/zero"
-                    android:layout_weight=".2"
-                    android:gravity="center|left"
-                    android:text="Phone"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1" />
-
-    </LinearLayout>
+        android:layout_above="@+id/btnStart"
+        android:layout_below="@+id/rlDashboard"
+        android:background="@color/quiz_play_bg_color" />
 
 
     <ImageButton

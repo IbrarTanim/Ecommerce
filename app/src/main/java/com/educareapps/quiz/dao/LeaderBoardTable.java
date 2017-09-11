@@ -7,7 +7,7 @@ package com.educareapps.quiz.dao;
 public class LeaderBoardTable {
 
     private Long id;
-    private long board_id;
+    private Integer board_id;
     private long score;
     /** Not-null value. */
     private String total_duration;
@@ -24,7 +24,7 @@ public class LeaderBoardTable {
         this.id = id;
     }
 
-    public LeaderBoardTable(Long id, long board_id, long score, String total_duration, String negative, boolean isHighscore, long user_id, long test_id) {
+    public LeaderBoardTable(Long id, Integer board_id, long score, String total_duration, String negative, boolean isHighscore, long user_id, long test_id) {
         this.id = id;
         this.board_id = board_id;
         this.score = score;
@@ -43,11 +43,11 @@ public class LeaderBoardTable {
         this.id = id;
     }
 
-    public long getBoard_id() {
+    public Integer getBoard_id() {
         return board_id;
     }
 
-    public void setBoard_id(long board_id) {
+    public void setBoard_id(Integer board_id) {
         this.board_id = board_id;
     }
 

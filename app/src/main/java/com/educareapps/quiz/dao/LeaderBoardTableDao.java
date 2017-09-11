@@ -27,7 +27,7 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Board_id = new Property(1, long.class, "board_id", false, "BOARD_ID");
+        public final static Property Board_id = new Property(1, Integer.class, "board_id", false, "BOARD_ID");
         public final static Property Score = new Property(2, long.class, "score", false, "SCORE");
         public final static Property Total_duration = new Property(3, String.class, "total_duration", false, "TOTAL_DURATION");
         public final static Property Negative = new Property(4, String.class, "negative", false, "NEGATIVE");
@@ -52,7 +52,7 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"LEADER_BOARD_TABLE\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"BOARD_ID\" INTEGER NOT NULL ," + // 1: board_id
+                "\"BOARD_ID\" INTEGER," + // 1: board_id
                 "\"SCORE\" INTEGER NOT NULL ," + // 2: score
                 "\"TOTAL_DURATION\" TEXT NOT NULL ," + // 3: total_duration
                 "\"NEGATIVE\" TEXT NOT NULL ," + // 4: negative
@@ -76,7 +76,11 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindLong(2, entity.getBoard_id());
+ 
+        Integer board_id = entity.getBoard_id();
+        if (board_id != null) {
+            stmt.bindLong(2, board_id);
+        }
         stmt.bindLong(3, entity.getScore());
         stmt.bindString(4, entity.getTotal_duration());
         stmt.bindString(5, entity.getNegative());
@@ -96,7 +100,7 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
     public LeaderBoardTable readEntity(Cursor cursor, int offset) {
         LeaderBoardTable entity = new LeaderBoardTable( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getLong(offset + 1), // board_id
+            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // board_id
             cursor.getLong(offset + 2), // score
             cursor.getString(offset + 3), // total_duration
             cursor.getString(offset + 4), // negative
@@ -111,7 +115,7 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
     @Override
     public void readEntity(Cursor cursor, LeaderBoardTable entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setBoard_id(cursor.getLong(offset + 1));
+        entity.setBoard_id(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
         entity.setScore(cursor.getLong(offset + 2));
         entity.setTotal_duration(cursor.getString(offset + 3));
         entity.setNegative(cursor.getString(offset + 4));
