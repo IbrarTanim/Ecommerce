@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greyLight"
+    android:background="@color/white"
     tools:context="com.educareapps.quiz.activities.QuizActivity">
 
     <LinearLayout
@@ -137,22 +137,23 @@
 
     </LinearLayout>
 
-    <!--  <ImageButton
-          android:id="@+id/ibtnPreviousQuestion"
-          android:layout_width="@dimen/seventy"
-          android:layout_height="@dimen/sixty"
-          android:layout_alignParentBottom="true"
-          android:layout_alignParentLeft="true"
-          android:background="@color/transparent"
-          android:src="@android:drawable/ic_media_previous" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/ibtnPreviousQuestion"-->
+        <!--android:layout_width="@dimen/seventy"-->
+        <!--android:layout_height="@dimen/sixty"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:background="@color/transparent"-->
+        <!--android:src="@android:drawable/ic_media_previous" />-->
 
-      <ImageButton
-          android:id="@+id/ibtnNextQuestion"
-          android:layout_width="@dimen/seventy"
-          android:layout_height="@dimen/sixty"
-          android:layout_alignParentBottom="true"
-          android:layout_alignParentRight="true"
-          android:background="@color/transparent"
-          android:src="@android:drawable/ic_media_next" />-->
+    <ImageButton
+        android:id="@+id/ibtnNextQuestion"
+        android:layout_width="@dimen/seventy"
+        android:layout_height="@dimen/sixty"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/blueLight"
+        android:src="@android:drawable/ic_media_next"
+        android:layout_margin="@dimen/ten"/>
 
 </RelativeLayout>
