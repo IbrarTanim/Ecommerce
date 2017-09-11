@@ -20,5 +20,10 @@
     <string name="cources">Courses</string>
     <string name="start">Start</string>
     <string name="abc_gmail_com">abc@gmail.com</string>
-
+    <string name="eduquiz">EDU\nQUIZ</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_account_yet_create_one">No account yet? Create account</string>
+    
 </resources>
