@@ -4,32 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green">
+    android:background="@color/app_color">
 
-    <!--<ImageButton
-        android:layout_width="@dimen/three_hundred"
-        android:layout_height="@dimen/two_hundred"
-        android:layout_centerInParent="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_logo" />-->
 
-    <TextView
-        android:layout_width="@dimen/three_hundred"
+    <com.educareapps.quiz.utilities.CircularTextView
+        android:layout_width="@dimen/two_hundred"
         android:layout_height="@dimen/two_hundred"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:text="@string/eduquiz"
         android:textColor="@color/white"
-        android:textSize="@dimen/fifty" />
+        android:textSize="@dimen/fifty"
+        android:textStyle="bold" />
 
 
-    <ImageView
-        android:layout_width="@dimen/hundred"
-        android:layout_height="@dimen/hundred"
-        android:padding="@dimen/ten"
-        android:scaleType="fitCenter"
-        android:src="@mipmap/ic_logo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="9">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="2.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <View
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".5" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"
+                android:gravity="right"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="@dimen/seventy"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".3" />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="5.5" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/forty"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/powerdBy"
+        android:textColor="@color/white"
+        android:textSize="@dimen/twenty_five" />
 
 
 </RelativeLayout>
