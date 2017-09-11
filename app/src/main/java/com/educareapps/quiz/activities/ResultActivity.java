@@ -12,6 +12,8 @@ import com.educareapps.quiz.dao.LeaderBoardTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.utilities.StaticAccess;
 
+import java.util.Date;
+
 public class ResultActivity extends BaseActivity implements View.OnClickListener {
 
     ResultActivity activity;
@@ -72,6 +74,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         leaderBoardTable.setTotal_duration(String.valueOf(duration));
         leaderBoardTable.setUser_id(user_id);
         leaderBoardTable.setTest_id(test_id);
+        leaderBoardTable.setCreated_at(new Date());
         databaseManager.insertLeaderBoardTable(leaderBoardTable);
     }
 

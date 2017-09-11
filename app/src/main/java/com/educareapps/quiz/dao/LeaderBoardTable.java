@@ -14,6 +14,8 @@ public class LeaderBoardTable {
     /** Not-null value. */
     private String negative;
     private boolean isHighscore;
+    /** Not-null value. */
+    private java.util.Date created_at;
     private long user_id;
     private long test_id;
 
@@ -24,13 +26,14 @@ public class LeaderBoardTable {
         this.id = id;
     }
 
-    public LeaderBoardTable(Long id, Integer board_id, long score, String total_duration, String negative, boolean isHighscore, long user_id, long test_id) {
+    public LeaderBoardTable(Long id, Integer board_id, long score, String total_duration, String negative, boolean isHighscore, java.util.Date created_at, long user_id, long test_id) {
         this.id = id;
         this.board_id = board_id;
         this.score = score;
         this.total_duration = total_duration;
         this.negative = negative;
         this.isHighscore = isHighscore;
+        this.created_at = created_at;
         this.user_id = user_id;
         this.test_id = test_id;
     }
@@ -85,6 +88,16 @@ public class LeaderBoardTable {
 
     public void setIsHighscore(boolean isHighscore) {
         this.isHighscore = isHighscore;
+    }
+
+    /** Not-null value. */
+    public java.util.Date getCreated_at() {
+        return created_at;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setCreated_at(java.util.Date created_at) {
+        this.created_at = created_at;
     }
 
     public long getUser_id() {

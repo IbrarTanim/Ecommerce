@@ -110,6 +110,7 @@ public class Generator {
         leaderBoard.addStringProperty("total_duration").notNull();
         leaderBoard.addStringProperty("negative").notNull();
         leaderBoard.addBooleanProperty("isHighscore").notNull();
+        leaderBoard.addDateProperty("created_at").notNull();
 
         Property userProperty = leaderBoard.addLongProperty("user_id").notNull().getProperty();
         ToMany leaderBoardToUser = user.addToMany(leaderBoard, userProperty);

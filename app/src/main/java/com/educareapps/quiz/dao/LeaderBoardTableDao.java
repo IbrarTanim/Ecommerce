@@ -32,8 +32,9 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
         public final static Property Total_duration = new Property(3, String.class, "total_duration", false, "TOTAL_DURATION");
         public final static Property Negative = new Property(4, String.class, "negative", false, "NEGATIVE");
         public final static Property IsHighscore = new Property(5, boolean.class, "isHighscore", false, "IS_HIGHSCORE");
-        public final static Property User_id = new Property(6, long.class, "user_id", false, "USER_ID");
-        public final static Property Test_id = new Property(7, long.class, "test_id", false, "TEST_ID");
+        public final static Property Created_at = new Property(6, java.util.Date.class, "created_at", false, "CREATED_AT");
+        public final static Property User_id = new Property(7, long.class, "user_id", false, "USER_ID");
+        public final static Property Test_id = new Property(8, long.class, "test_id", false, "TEST_ID");
     };
 
     private Query<LeaderBoardTable> userTable_LeaderBoardToUserQuery;
@@ -57,8 +58,9 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
                 "\"TOTAL_DURATION\" TEXT NOT NULL ," + // 3: total_duration
                 "\"NEGATIVE\" TEXT NOT NULL ," + // 4: negative
                 "\"IS_HIGHSCORE\" INTEGER NOT NULL ," + // 5: isHighscore
-                "\"USER_ID\" INTEGER NOT NULL ," + // 6: user_id
-                "\"TEST_ID\" INTEGER NOT NULL );"); // 7: test_id
+                "\"CREATED_AT\" INTEGER NOT NULL ," + // 6: created_at
+                "\"USER_ID\" INTEGER NOT NULL ," + // 7: user_id
+                "\"TEST_ID\" INTEGER NOT NULL );"); // 8: test_id
     }
 
     /** Drops the underlying database table. */
@@ -85,8 +87,9 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
         stmt.bindString(4, entity.getTotal_duration());
         stmt.bindString(5, entity.getNegative());
         stmt.bindLong(6, entity.getIsHighscore() ? 1L: 0L);
-        stmt.bindLong(7, entity.getUser_id());
-        stmt.bindLong(8, entity.getTest_id());
+        stmt.bindLong(7, entity.getCreated_at().getTime());
+        stmt.bindLong(8, entity.getUser_id());
+        stmt.bindLong(9, entity.getTest_id());
     }
 
     /** @inheritdoc */
@@ -105,8 +108,9 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
             cursor.getString(offset + 3), // total_duration
             cursor.getString(offset + 4), // negative
             cursor.getShort(offset + 5) != 0, // isHighscore
-            cursor.getLong(offset + 6), // user_id
-            cursor.getLong(offset + 7) // test_id
+            new java.util.Date(cursor.getLong(offset + 6)), // created_at
+            cursor.getLong(offset + 7), // user_id
+            cursor.getLong(offset + 8) // test_id
         );
         return entity;
     }
@@ -120,8 +124,9 @@ public class LeaderBoardTableDao extends AbstractDao<LeaderBoardTable, Long> {
         entity.setTotal_duration(cursor.getString(offset + 3));
         entity.setNegative(cursor.getString(offset + 4));
         entity.setIsHighscore(cursor.getShort(offset + 5) != 0);
-        entity.setUser_id(cursor.getLong(offset + 6));
-        entity.setTest_id(cursor.getLong(offset + 7));
+        entity.setCreated_at(new java.util.Date(cursor.getLong(offset + 6)));
+        entity.setUser_id(cursor.getLong(offset + 7));
+        entity.setTest_id(cursor.getLong(offset + 8));
      }
     
     /** @inheritdoc */
