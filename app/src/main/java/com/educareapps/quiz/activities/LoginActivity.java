@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,11 +35,13 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity {
 
     EditText etEmailUsername, etPassword;
-    Button btnLogin, btnRegister;
+    Button btnLogin, btnRegister, btnFB, btnGmail;
     Button tvLink_signup, btnAlreadyRegistered;
     ProgressDialog progressDialog;
     LoginActivity activity;
     DatabaseManager databaseManager;
+    TextView tvRegister, tvLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,14 @@ public class LoginActivity extends BaseActivity {
         progressDialog = new ProgressDialog(activity);
         etEmailUsername = (EditText) findViewById(R.id.etEmailUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
-
+        btnFB = (Button) findViewById(R.id.btnFB);
+        btnGmail = (Button) findViewById(R.id.btnGmail);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         tvLink_signup = (Button) findViewById(R.id.tvLink_signup);
         btnAlreadyRegistered = (Button) findViewById(R.id.btnAlreadyRegistered);
-
+        tvRegister = (TextView) findViewById(R.id.tvRegister);
+        tvLogin = (TextView) findViewById(R.id.tvLogin);
         tvLink_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +68,10 @@ public class LoginActivity extends BaseActivity {
                 tvLink_signup.setVisibility(View.GONE);
                 btnAlreadyRegistered.setVisibility(View.VISIBLE);
                 btnRegister.setVisibility(View.VISIBLE);
-
+               /* btnFB.setVisibility(View.GONE);
+                btnGmail.setVisibility(View.GONE);*/
+                tvRegister.setVisibility(View.VISIBLE);
+                tvLogin.setVisibility(View.GONE);
 
             }
         });
@@ -75,7 +83,11 @@ public class LoginActivity extends BaseActivity {
                 tvLink_signup.setVisibility(View.VISIBLE);
                 btnAlreadyRegistered.setVisibility(View.GONE);
                 btnRegister.setVisibility(View.GONE);
+                /*btnFB.setVisibility(View.VISIBLE);
+                btnGmail.setVisibility(View.VISIBLE);*/
 
+                tvRegister.setVisibility(View.GONE);
+                tvLogin.setVisibility(View.VISIBLE);
             }
         });
 

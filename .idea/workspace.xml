@@ -69,16 +69,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="260" column="57" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
+            <state relative-caret-position="226">
+              <caret line="276" column="5" selection-start-line="276" selection-start-column="5" selection-end-line="276" selection-end-column="5" />
               <folding>
-                <element signature="e#2837#3436#0" expanded="true" />
-                <element signature="e#3435#3436#0" expanded="true" />
-                <marker date="1505131901867" expanded="false" signature="7764:7780" ph="&lt;~&gt;" />
-                <marker date="1505131901867" expanded="false" signature="10037:10053" ph="&lt;~&gt;" />
+                <element signature="e#2355#2912#0" expanded="true" />
+                <element signature="e#2911#2912#0" expanded="true" />
+                <element signature="e#2963#3526#0" expanded="true" />
+                <element signature="e#3525#3526#0" expanded="true" />
+                <element signature="e#3570#4169#0" expanded="true" />
+                <element signature="e#4168#4169#0" expanded="true" />
+                <marker date="1505133833471" expanded="false" signature="4209:4301" ph="(v) → {" />
+                <marker date="1505133833471" expanded="false" signature="4809:4824" ph="}" />
+                <marker date="1505133833471" expanded="false" signature="8179:8195" ph="&lt;~&gt;" />
+                <marker date="1505133833471" expanded="false" signature="8497:8513" ph="&lt;~&gt;" />
+                <marker date="1505133833471" expanded="false" signature="10436:10452" ph="&lt;~&gt;" />
+                <marker date="1505133833471" expanded="false" signature="10770:10786" ph="&lt;~&gt;" />
               </folding>
             </state>
           </provider>
@@ -114,7 +122,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
@@ -2379,12 +2387,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/utilities/StaticAccess.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/utilities/SharedPreferenceValue.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/IDatabaseManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/DashBoardActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/TestPlayerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/adapter/ScoreBoardAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/DatabaseManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java" />
       </list>
     </option>
   </component>
@@ -3138,31 +3146,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java</url>
-          <line>104</line>
+          <line>116</line>
           <properties />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java</url>
-          <line>87</line>
+          <line>99</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java</url>
-          <line>124</line>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java</url>
-          <line>168</line>
+          <line>180</line>
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java</url>
-          <line>167</line>
+          <line>179</line>
           <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
@@ -3174,7 +3182,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java</url>
-          <line>197</line>
+          <line>209</line>
           <properties />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
@@ -3577,19 +3585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="260" column="57" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
-          <folding>
-            <element signature="e#2837#3436#0" expanded="true" />
-            <element signature="e#3435#3436#0" expanded="true" />
-            <marker date="1505131901867" expanded="false" signature="7764:7780" ph="&lt;~&gt;" />
-            <marker date="1505131901867" expanded="false" signature="10037:10053" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/CourseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -3651,6 +3646,27 @@
         <state relative-caret-position="176">
           <caret line="561" column="46" selection-start-line="561" selection-start-column="46" selection-end-line="561" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="276" column="5" selection-start-line="276" selection-start-column="5" selection-end-line="276" selection-end-column="5" />
+          <folding>
+            <element signature="e#2355#2912#0" expanded="true" />
+            <element signature="e#2911#2912#0" expanded="true" />
+            <element signature="e#2963#3526#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3570#4169#0" expanded="true" />
+            <element signature="e#4168#4169#0" expanded="true" />
+            <marker date="1505133833471" expanded="false" signature="4209:4301" ph="(v) → {" />
+            <marker date="1505133833471" expanded="false" signature="4809:4824" ph="}" />
+            <marker date="1505133833471" expanded="false" signature="8179:8195" ph="&lt;~&gt;" />
+            <marker date="1505133833471" expanded="false" signature="8497:8513" ph="&lt;~&gt;" />
+            <marker date="1505133833471" expanded="false" signature="10436:10452" ph="&lt;~&gt;" />
+            <marker date="1505133833471" expanded="false" signature="10770:10786" ph="&lt;~&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>
