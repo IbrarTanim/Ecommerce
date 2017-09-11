@@ -216,7 +216,7 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
             resIntent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
             resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
             resIntent.putExtra(StaticAccess.TAG_USER_ID, user_id);
-            resIntent.putExtra(StaticAccess.TAG_TEST_ID, test_id);
+            resIntent.putExtra(StaticAccess.TEST_ID, test_id);
             startActivity(resIntent);
             finish();
         } else {
