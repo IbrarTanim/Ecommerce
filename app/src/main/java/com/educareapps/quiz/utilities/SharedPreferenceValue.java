@@ -22,5 +22,16 @@ public class SharedPreferenceValue {
         editor.commit();
     }
 
+    public static boolean getDownloadSuccess(Context context) {
+        SharedPreferences settings = context.getSharedPreferences("SPLASH_DOWNLOAD", 0);
+        boolean mFlag = settings.getBoolean("is_download_complete", false);
+        return mFlag;
+    }
 
+    public static void setDownloadSuccess(Context context, boolean isDownloadSuccess) {
+        SharedPreferences settings = context.getSharedPreferences("SPLASH_DOWNLOAD", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("is_download_complete", isDownloadSuccess);
+        editor.commit();
+    }
 }

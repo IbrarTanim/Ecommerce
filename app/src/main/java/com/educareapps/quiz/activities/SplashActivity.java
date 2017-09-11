@@ -83,6 +83,7 @@ public class SplashActivity extends BaseActivity {
                 QuizPlaceJson quizPlaceJson = new QuizPlaceJson(activity, response);
                 boolean isDone = quizPlaceJson.parser();
                 if (isDone) {
+                    SharedPreferenceValue.setDownloadSuccess(activity, true);
                     goToNextActivity();
                 }
             }
@@ -188,7 +189,11 @@ public class SplashActivity extends BaseActivity {
             public void onPermissionGranted() {
                 isAllPermissionGranted = true;
                 if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
-                    new DeleteAsyncTask().execute();
+                    if (!SharedPreferenceValue.getDownloadSuccess(activity)) {
+                        new DeleteAsyncTask().execute();
+                    }else{
+                        goToNextActivity();
+                    }
                 }
             }
 
