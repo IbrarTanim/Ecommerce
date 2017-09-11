@@ -12,14 +12,15 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-        <ImageView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".3"
-            android:background="@android:color/transparent"
-            android:padding="@dimen/twenty"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_logo" />
+            android:background="@color/app_color"
+            android:text="@string/select_subject"
+            android:textSize="@dimen/forty"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_weight=".3" />
 
 
         <LinearLayout
@@ -33,17 +34,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
-                android:layout_weight=".1"
+                android:layout_weight=".01"
                 android:background="@color/greyLight"
                 android:gravity="center"
-                android:text="@string/cources"
                 android:textColor="@color/white"
                 android:textSize="@dimen/twenty_five" />
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
-                android:layout_weight=".9"
+                android:layout_weight=".99"
                 android:fillViewport="true">
 
                 <LinearLayout

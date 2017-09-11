@@ -48,6 +48,12 @@ public class LoginActivity extends BaseActivity {
         btnAlreadyRegistered = (Button) findViewById(R.id.btnAlreadyRegistered);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
         tvLogin = (TextView) findViewById(R.id.tvLogin);
+        btnGmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, DashBoardActivity.class));
+            }
+        });
         tvLink_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
