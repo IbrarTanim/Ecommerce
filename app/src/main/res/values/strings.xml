@@ -23,6 +23,6 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="no_account_yet_create_one">No account yet? Create account</string>
+    <string name="no_account_yet_create_one">OR\n Do you want to register\n By</string>
 
 </resources>

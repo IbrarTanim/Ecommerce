@@ -2,34 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/app_color"
     android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:layout_margin="@dimen/twenty"
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".05" />
+            android:layout_weight=".1" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight=".2"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_logo" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".05" />
 
         <EditText
             android:id="@+id/etEmailUsername"
@@ -59,17 +46,29 @@
             <View
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".5" />
+                android:layout_weight=".7" />
 
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:text="@string/login" />
+                android:layout_weight=".3"
+                android:background="@color/greyDLight"
+                android:text="@string/login"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".003"
+            android:background="@color/grey" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".05" />
 
         <Button
             android:id="@+id/tvLink_signup"
@@ -86,32 +85,25 @@
             android:layout_height="@dimen/zero"
             android:layout_weight=".05" />
 
-        <ImageButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_gravity="center_horizontal"
             android:layout_weight=".1"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_logo" />
+            android:background="#4A6EA9"
+            android:text="FB"
+            android:textColor="@color/white"
+            android:textSize="@dimen/thirty" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".025" />
-
-        <ImageButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_gravity="center_horizontal"
             android:layout_weight=".1"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_logo" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".025" />
+            android:background="#D24438"
+            android:text="G+"
+            android:textColor="@color/white"
+            android:textSize="@dimen/thirty" />
+        
     </LinearLayout>
 </RelativeLayout>

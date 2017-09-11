@@ -22,6 +22,7 @@ import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.manager.IDatabaseManager;
 import com.educareapps.quiz.parser.QuizPlaceJson;
 import com.educareapps.quiz.utilities.AppController;
+import com.educareapps.quiz.utilities.DialogNavBarHide;
 import com.educareapps.quiz.utilities.InternetAvailabilityCheck;
 import com.educareapps.quiz.utilities.RootUrl;
 import com.educareapps.quiz.utilities.StaticAccess;
@@ -60,7 +61,7 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(activity, MenuActivity.class));
+                startActivity(new Intent(activity, LoginActivity.class));
                 finish();
             }
         }, SPLASH_TIME_OUT);
@@ -160,7 +161,7 @@ public class SplashActivity extends BaseActivity {
         if (progressDialog != null) {
             progressDialog.setMessage("please wait...");
             progressDialog.setCancelable(false);
-            progressDialog.show();
+            DialogNavBarHide.navBarHide(activity,progressDialog);
         }
 
     }
