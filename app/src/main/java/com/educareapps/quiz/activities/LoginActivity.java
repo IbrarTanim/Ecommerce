@@ -16,9 +16,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.educareapps.quiz.R;
+import com.educareapps.quiz.dao.UserTable;
+import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.utilities.AppController;
 import com.educareapps.quiz.utilities.RootUrl;
+import com.educareapps.quiz.utilities.SharedPreferenceValue;
+import com.educareapps.quiz.utilities.StaticAccess;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,12 +38,14 @@ public class LoginActivity extends BaseActivity {
     Button tvLink_signup, btnAlreadyRegistered;
     ProgressDialog progressDialog;
     LoginActivity activity;
+    DatabaseManager databaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         activity = this;
+        databaseManager = new DatabaseManager(activity);
         progressDialog = new ProgressDialog(activity);
         etEmailUsername = (EditText) findViewById(R.id.etEmailUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
@@ -69,13 +80,19 @@ public class LoginActivity extends BaseActivity {
         });
 
 
-
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = etEmailUsername.getText().toString();
+                String password = etPassword.getText().toString();
+                if (TextUtils.isEmpty(email)) {
+                    etEmailUsername.setError("Field can not be empty !");
+                } else if (TextUtils.isEmpty(password)) {
+                    etPassword.setError("Field can not be empty !");
 
-                tvLink_signup.setVisibility(View.GONE);
-
+                } else {
+                    doRegistration(email, password);
+                }
 
             }
         });
@@ -97,11 +114,101 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
+    private void doRegistration(final String email, final String password) {
+        showProgress();
+        StringRequest loginReq = new StringRequest(Request.Method.POST, RootUrl.REGISTRATION_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject jsonObject = null;
+                try {
+                    String msg = "";
+                    jsonObject = new JSONObject(response);
+                    String svrResponse = jsonObject.getString(StaticAccess.TAG_USER_VALID_STATUS);
+                    if (svrResponse.equals("error")) {
+                        msg = jsonObject.getString(StaticAccess.TAG_RESPONSE_MSG);
+                        Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        JSONObject user = jsonObject.getJSONObject(StaticAccess.USER_KEY_TAG);
+                        int user_id = user.getInt("user_id");
+                        String user_name = user.getString("user_name");
+                        String user_first_name = user.getString("user_first_name");
+                        String user_last_name = user.getString("user_first_name");
+                        String email = user.getString("email");
+                        String address = user.getString("address");
+                        String occupation = user.getString("occupation");
+                        String contact_no = user.getString("contact_no");
+                        int status = user.getInt("status");
+                        String datetime = new SimpleDateFormat("dd-mm-yyy").format(new Date());
+                        UserTable aUser = new UserTable();
+                        aUser.setUser_id(user_id);
+                        aUser.setUser_name(user_name == null ? "" : user_name);
+                        aUser.setUser_first_name(user_first_name == null ? "" : user_first_name);
+                        aUser.setUser_last_name(user_last_name == null ? "" : user_last_name);
+                        aUser.setEmail(email);
+                        aUser.setAddress(address == null ? "" : address);
+                        aUser.setOccupation(occupation == null ? "" : occupation);
+                        aUser.setContact_no(contact_no == null ? "" : contact_no);
+                        aUser.setStatus(String.valueOf(status));
+                        aUser.setCreated_at(datetime);
+                        databaseManager.insertUserTable(aUser);
+                        Toast.makeText(activity, "Registration Successful", Toast.LENGTH_SHORT).show();
+                        etEmailUsername.getText().clear();
+                        etPassword.getText().clear();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                hideProgress();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideProgress();
+                Toast.makeText(activity, String.valueOf(error.getMessage()), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email);
+                params.put("password", password);
+                return params;
+            }
+
+           /* @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json; charset=utf-8");
+                return params;
+            }*/
+        };
+        AppController.getInstance().addToRequestQueue(loginReq);
+    }
+
     private void doLogin(final String userNameEmail, final String password) {
         showProgress();
         StringRequest loginReq = new StringRequest(Request.Method.POST, RootUrl.LOGIN_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(response);
+                    String svrResponse = jsonObject.getString(StaticAccess.TAG_USER_VALID_STATUS);
+                    if (svrResponse.equals("error")) {
+                        Toast.makeText(activity, "Wrong credential", Toast.LENGTH_SHORT).show();
+                    } else {
+                        JSONObject user = jsonObject.getJSONObject(StaticAccess.USER_KEY_TAG);
+                        int user_id = user.getInt("user_id");
+                        UserTable userTable = databaseManager.getUserByServerUserID(user_id);
+                        SharedPreferenceValue.setUserID(activity, userTable.getId());
+                        goToNextActivity();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 hideProgress();
             }
         }, new Response.ErrorListener() {
@@ -120,12 +227,12 @@ public class LoginActivity extends BaseActivity {
                 return params;
             }
 
-            @Override
+           /* @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("Content-Type", "application/x-www-form-urlencoded");
+                params.put("Content-Type", "application/json; charset=utf-8");
                 return params;
-            }
+            }*/
         };
         AppController.getInstance().addToRequestQueue(loginReq);
 
@@ -151,7 +258,7 @@ public class LoginActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(activity, MenuActivity.class));
+                startActivity(new Intent(activity, DashBoardActivity.class));
                 finish();
             }
         }, 1000);
