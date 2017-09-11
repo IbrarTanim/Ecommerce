@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,16 +22,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class TestPlayerActivity extends Activity implements View.OnClickListener {
 
     long test_id = -1;
     long user_id = -1;
     TextView tvQuestion;
-    RadioButton rbtnOptionOne, rbtnOptionTwo, rbtnOptionThree, rbtnOptionFour;
+    //RadioButton rbtnOptionOne, rbtnOptionTwo, rbtnOptionThree, rbtnOptionFour;
+
     ArrayList<CSVQuestionTable> allQuestions, questionsForPlay;
     DatabaseManager databaseManager;
     TestPlayerActivity activity;
-    ImageButton ibtnPreviousQuestion, ibtnNextQuestion;
+    ImageButton ibtnPreviousQuestion;
+    Button btnNextQuestion;
     CSVQuestionTable question;
     TestTable aTest;
     /// for generating a question list as per test rules
@@ -46,26 +50,42 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
     ArrayList<CSVQuestionTable> wrongQuestionList;
     TextView tvStatus;
 
+    LinearLayout llOptionOne, llOptionTwo, llOptionThree, llOptionFour;
+    TextView tvOptionOne, tvOptionTwo, tvOptionThree, tvOptionFour;
+    ImageButton ibtnOptionOneTick, ibtnOptionTwo, ibtnOptionThree, ibtnOptionFour;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_player);
         activity = this;
         databaseManager = new DatabaseManager(activity);
-        tvStatus = (TextView) findViewById(R.id.tvStatus);
         tvQuestion = (TextView) findViewById(R.id.tvQuestion);
-//        ibtnPreviousQuestion = (ImageButton) findViewById(R.id.ibtnPreviousQuestion);
-        ibtnNextQuestion = (ImageButton) findViewById(R.id.ibtnNextQuestion);
-        rbtnOptionOne = (RadioButton) findViewById(R.id.rbtnOptionOne);
-        rbtnOptionTwo = (RadioButton) findViewById(R.id.rbtnOptionTwo);
-        rbtnOptionThree = (RadioButton) findViewById(R.id.rbtnOptionThree);
-        rbtnOptionFour = (RadioButton) findViewById(R.id.rbtnOptionFour);
+        btnNextQuestion = (Button) findViewById(R.id.btnNextQuestion);
 
-        rbtnOptionOne.setOnClickListener(this);
-        rbtnOptionTwo.setOnClickListener(this);
-        rbtnOptionThree.setOnClickListener(this);
-        rbtnOptionFour.setOnClickListener(this);
-        ibtnNextQuestion.setOnClickListener(this);
+        llOptionOne = (LinearLayout) findViewById(R.id.llOptionOne);
+        llOptionTwo = (LinearLayout) findViewById(R.id.llOptionTwo);
+        llOptionThree = (LinearLayout) findViewById(R.id.llOptionThree);
+        llOptionFour = (LinearLayout) findViewById(R.id.llOptionFour);
+
+        tvOptionOne = (TextView) findViewById(R.id.tvOptionOne);
+        tvOptionTwo = (TextView) findViewById(R.id.tvOptionTwo);
+        tvOptionThree = (TextView) findViewById(R.id.tvOptionThree);
+        tvOptionFour = (TextView) findViewById(R.id.tvOptionFour);
+        tvStatus = (TextView) findViewById(R.id.tvStatus);
+
+        ibtnOptionOneTick = (ImageButton) findViewById(R.id.ibtnOptionOneTick);
+        ibtnOptionTwo = (ImageButton) findViewById(R.id.ibtnOptionTwo);
+        ibtnOptionThree = (ImageButton) findViewById(R.id.ibtnOptionThree);
+        ibtnOptionFour = (ImageButton) findViewById(R.id.ibtnOptionFour);
+
+
+        llOptionOne.setOnClickListener(this);
+        llOptionTwo.setOnClickListener(this);
+        llOptionThree.setOnClickListener(this);
+        llOptionFour.setOnClickListener(this);
+
+        btnNextQuestion.setOnClickListener(this);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
         user_id = SharedPreferenceValue.getUserID(activity);
         if (test_id != -1) {
@@ -90,17 +110,25 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
         resetOptions();
         tvStatus.setText("Total played: " + String.valueOf(startingQuestionIndex + 1) + "/" + String.valueOf(endingQuestionIndex));
         tvQuestion.setText(question.getQuestion());
-        rbtnOptionOne.setText(question.getOption_one());
-        rbtnOptionTwo.setText(question.getOption_two());
-        rbtnOptionThree.setText(question.getOption_three());
-        rbtnOptionFour.setText(question.getOption_four());
+
+        tvOptionOne.setText(question.getOption_one());
+        tvOptionTwo.setText(question.getOption_two());
+        tvOptionThree.setText(question.getOption_three());
+        tvOptionFour.setText(question.getOption_four());
     }
 
+
     void resetOptions() {
-        rbtnOptionOne.setChecked(false);
-        rbtnOptionTwo.setChecked(false);
-        rbtnOptionThree.setChecked(false);
-        rbtnOptionFour.setChecked(false);
+
+        ibtnOptionOneTick.setVisibility(View.GONE);
+        ibtnOptionTwo.setVisibility(View.GONE);
+        ibtnOptionThree.setVisibility(View.GONE);
+        ibtnOptionFour.setVisibility(View.GONE);
+       /* llOptionOne.setClickable(false);
+        llOptionTwo.setClickable(false);
+        llOptionThree.setClickable(false);
+        llOptionFour.setClickable(false);*/
+
         btnRadioClicked = 0;
     }
 
@@ -109,52 +137,55 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.rbtnOptionOne:
+            case R.id.llOptionOne:
                 btnRadioClicked = 1;
-                rbtnOptionTwo.setChecked(false);
-                rbtnOptionThree.setChecked(false);
-                rbtnOptionFour.setChecked(false);
+                ibtnOptionOneTick.setVisibility(View.VISIBLE);
+                llOptionTwo.setClickable(false);
+                llOptionThree.setClickable(false);
+                llOptionThree.setClickable(false);
+
 
                 break;
-            case R.id.rbtnOptionTwo:
+            case R.id.llOptionTwo:
                 btnRadioClicked = 2;
-                rbtnOptionOne.setChecked(false);
-                rbtnOptionThree.setChecked(false);
-                rbtnOptionFour.setChecked(false);
-
+                ibtnOptionTwo.setVisibility(View.VISIBLE);
+                llOptionOne.setClickable(false);
+                llOptionThree.setClickable(false);
+                llOptionFour.setClickable(false);
 
                 break;
-            case R.id.rbtnOptionThree:
+            case R.id.llOptionThree:
                 btnRadioClicked = 3;
-                rbtnOptionOne.setChecked(false);
-                rbtnOptionTwo.setChecked(false);
-                rbtnOptionFour.setChecked(false);
-
+                ibtnOptionThree.setVisibility(View.VISIBLE);
+                llOptionOne.setClickable(false);
+                llOptionTwo.setClickable(false);
+                llOptionFour.setClickable(false);
 
                 break;
-            case R.id.rbtnOptionFour:
+            case R.id.llOptionFour:
                 btnRadioClicked = 4;
-                rbtnOptionOne.setChecked(false);
-                rbtnOptionTwo.setChecked(false);
-                rbtnOptionThree.setChecked(false);
+                ibtnOptionFour.setVisibility(View.VISIBLE);
+                llOptionOne.setClickable(false);
+                llOptionTwo.setClickable(false);
+                llOptionThree.setClickable(false);
 
 
                 break;
 //            case R.id.ibtnPreviousQuestion:
 //                break;
-            case R.id.ibtnNextQuestion:
+            case R.id.btnNextQuestion:
                 switch (btnRadioClicked) {
                     case 1:
-                        checkCorrectAnswer(rbtnOptionOne.getText().toString());
+                        checkCorrectAnswer(tvOptionOne.getText().toString());
                         break;
                     case 2:
-                        checkCorrectAnswer(rbtnOptionTwo.getText().toString());
+                        checkCorrectAnswer(tvOptionTwo.getText().toString());
                         break;
                     case 3:
-                        checkCorrectAnswer(rbtnOptionThree.getText().toString());
+                        checkCorrectAnswer(tvOptionThree.getText().toString());
                         break;
                     case 4:
-                        checkCorrectAnswer(rbtnOptionFour.getText().toString());
+                        checkCorrectAnswer(tvOptionFour.getText().toString());
                         break;
                     default:
                         Toast.makeText(activity, "Select an option first!", Toast.LENGTH_SHORT).show();
@@ -168,10 +199,10 @@ public class TestPlayerActivity extends Activity implements View.OnClickListener
     }
 
     void makeAllClickAble() {
-        rbtnOptionOne.setClickable(true);
-        rbtnOptionTwo.setClickable(true);
-        rbtnOptionThree.setClickable(true);
-        rbtnOptionFour.setClickable(true);
+        llOptionOne.setClickable(true);
+        llOptionTwo.setClickable(true);
+        llOptionThree.setClickable(true);
+        llOptionFour.setClickable(true);
     }
 
     private void checkCorrectAnswer(String userSayingAnswer) {
