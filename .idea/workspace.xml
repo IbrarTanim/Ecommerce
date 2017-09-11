@@ -49,36 +49,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="activity_splash.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
-              <folding>
-                <element signature="e#2325#2634#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="249">
+              <caret line="27" column="73" selection-start-line="27" selection-start-column="73" selection-end-line="27" selection-end-column="73" />
+              <folding />
             </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1696">
-              <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
+            <state relative-caret-position="79">
+              <caret line="107" column="53" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="53" />
               <folding>
-                <element signature="e#411#426#0" expanded="true" />
-                <element signature="e#1254#2039#0" expanded="false" />
-                <element signature="e#2137#2150#0" expanded="true" />
-                <element signature="e#2337#2350#0" expanded="true" />
-                <element signature="e#2712#2747#0" expanded="true" />
-                <element signature="e#3050#3063#0" expanded="true" />
-                <element signature="e#3303#3318#0" expanded="true" />
-                <element signature="e#3421#3434#0" expanded="true" />
-                <element signature="e#3674#3689#0" expanded="true" />
+                <element signature="e#411#423#0" expanded="true" />
+                <element signature="e#1719#1732#0" expanded="true" />
+                <element signature="e#2156#2174#0" expanded="true" />
+                <element signature="e#2605#2620#0" expanded="true" />
+                <element signature="e#2765#2778#0" expanded="true" />
+                <element signature="e#3001#3014#0" expanded="true" />
+                <element signature="e#3155#3168#0" expanded="true" />
+                <element signature="e#3355#3368#0" expanded="true" />
+                <element signature="e#3519#3532#0" expanded="true" />
+                <element signature="e#3889#3910#0" expanded="true" />
+                <element signature="e#3944#3960#0" expanded="true" />
+                <element signature="e#4319#4354#0" expanded="true" />
+                <element signature="e#4388#4404#0" expanded="true" />
+                <element signature="e#4690#4703#0" expanded="true" />
+                <element signature="e#4943#4958#0" expanded="true" />
+                <element signature="e#5061#5074#0" expanded="true" />
+                <element signature="e#5314#5329#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,24 +90,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/SplashActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+            <state relative-caret-position="381">
+              <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
               <folding>
-                <element signature="e#1955#2149#0" expanded="true" />
-                <element signature="e#2148#2149#0" expanded="true" />
+                <element signature="e#1624#1973#0" expanded="true" />
+                <element signature="e#1972#1973#0" expanded="true" />
+                <element signature="e#2024#2372#0" expanded="true" />
+                <element signature="e#2371#2372#0" expanded="true" />
+                <element signature="e#2417#2592#0" expanded="true" />
+                <element signature="e#2591#2592#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2331,11 +2328,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/adapter/TestsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/DashBoardActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/utilities/CircularTextView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       </list>
     </option>
@@ -3157,19 +3154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding>
-            <element signature="e#1443#1663#0" expanded="false" />
-            <element signature="e#1662#1663#0" expanded="false" />
-            <element signature="e#1703#2318#0" expanded="false" />
-            <element signature="e#2317#2318#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/adapter/TestsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -3218,18 +3202,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1696">
-          <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
+        <state relative-caret-position="79">
+          <caret line="107" column="53" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="53" />
           <folding>
-            <element signature="e#411#426#0" expanded="true" />
-            <element signature="e#1254#2039#0" expanded="false" />
-            <element signature="e#2137#2150#0" expanded="true" />
-            <element signature="e#2337#2350#0" expanded="true" />
-            <element signature="e#2712#2747#0" expanded="true" />
-            <element signature="e#3050#3063#0" expanded="true" />
-            <element signature="e#3303#3318#0" expanded="true" />
-            <element signature="e#3421#3434#0" expanded="true" />
-            <element signature="e#3674#3689#0" expanded="true" />
+            <element signature="e#411#423#0" expanded="true" />
+            <element signature="e#1719#1732#0" expanded="true" />
+            <element signature="e#2156#2174#0" expanded="true" />
+            <element signature="e#2605#2620#0" expanded="true" />
+            <element signature="e#2765#2778#0" expanded="true" />
+            <element signature="e#3001#3014#0" expanded="true" />
+            <element signature="e#3155#3168#0" expanded="true" />
+            <element signature="e#3355#3368#0" expanded="true" />
+            <element signature="e#3519#3532#0" expanded="true" />
+            <element signature="e#3889#3910#0" expanded="true" />
+            <element signature="e#3944#3960#0" expanded="true" />
+            <element signature="e#4319#4354#0" expanded="true" />
+            <element signature="e#4388#4404#0" expanded="true" />
+            <element signature="e#4690#4703#0" expanded="true" />
+            <element signature="e#4943#4958#0" expanded="true" />
+            <element signature="e#5061#5074#0" expanded="true" />
+            <element signature="e#5314#5329#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3237,10 +3229,25 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
+          <folding>
+            <element signature="e#1624#1973#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2024#2372#0" expanded="true" />
+            <element signature="e#2371#2372#0" expanded="true" />
+            <element signature="e#2417#2592#0" expanded="true" />
+            <element signature="e#2591#2592#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="249">
+          <caret line="27" column="73" selection-start-line="27" selection-start-column="73" selection-end-line="27" selection-end-column="73" />
           <folding />
         </state>
       </provider>

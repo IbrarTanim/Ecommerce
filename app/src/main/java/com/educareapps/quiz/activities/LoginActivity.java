@@ -25,8 +25,8 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity {
 
     EditText etEmailUsername, etPassword;
-    Button btnLogin;
-    Button tvLink_signup;
+    Button btnLogin, btnRegister;
+    Button tvLink_signup, btnAlreadyRegistered;
     ProgressDialog progressDialog;
     LoginActivity activity;
 
@@ -38,13 +38,45 @@ public class LoginActivity extends BaseActivity {
         progressDialog = new ProgressDialog(activity);
         etEmailUsername = (EditText) findViewById(R.id.etEmailUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
+
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnRegister = (Button) findViewById(R.id.btnRegister);
         tvLink_signup = (Button) findViewById(R.id.tvLink_signup);
+        btnAlreadyRegistered = (Button) findViewById(R.id.btnAlreadyRegistered);
+
         tvLink_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(activity, DashBoardActivity.class));
-                finish();
+
+                btnLogin.setVisibility(View.GONE);
+                tvLink_signup.setVisibility(View.GONE);
+                btnAlreadyRegistered.setVisibility(View.VISIBLE);
+                btnRegister.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+        btnAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                btnLogin.setVisibility(View.VISIBLE);
+                tvLink_signup.setVisibility(View.VISIBLE);
+                btnAlreadyRegistered.setVisibility(View.GONE);
+                btnRegister.setVisibility(View.GONE);
+
+            }
+        });
+
+
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                tvLink_signup.setVisibility(View.GONE);
+
+
             }
         });
 

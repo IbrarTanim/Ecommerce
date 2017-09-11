@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/twenty"
+        android:layout_margin="@dimen/ten"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -39,25 +39,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".1"
+            android:layout_weight=".05"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:weightSum="1.05">
 
             <View
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight=".7" />
 
-            <Button
-                android:id="@+id/btnLogin"
+            <RelativeLayout
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".3"
-                android:background="@color/greyDLight"
-                android:text="@string/login"
-                android:textColor="@color/white" />
+                android:layout_weight=".3">
+
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:background="@color/app_color"
+                    android:text="@string/register"
+                    android:textColor="@color/white"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:background="@color/app_color"
+                    android:text="@string/login"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight=".05" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".05" />
 
         <View
             android:layout_width="match_parent"
@@ -70,15 +98,34 @@
             android:layout_height="@dimen/zero"
             android:layout_weight=".05" />
 
-        <Button
-            android:id="@+id/tvLink_signup"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".1"
-            android:background="@android:color/transparent"
-            android:gravity="center"
-            android:text="@string/no_account_yet_create_one"
-            android:textSize="@dimen/fifteen" />
+            android:layout_weight=".1">
+
+
+            <Button
+                android:id="@+id/btnAlreadyRegistered"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/loginOption"
+                android:textSize="@dimen/fifteen"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/tvLink_signup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/no_account_yet_create_one"
+                android:textSize="@dimen/fifteen" />
+
+
+        </RelativeLayout>
+
 
         <View
             android:layout_width="match_parent"
@@ -104,6 +151,6 @@
             android:text="G+"
             android:textColor="@color/white"
             android:textSize="@dimen/thirty" />
-        
+
     </LinearLayout>
 </RelativeLayout>
