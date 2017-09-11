@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.educareapps.quiz.R;
+import com.educareapps.quiz.dao.LeaderBoardTable;
+import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.utilities.StaticAccess;
 
 public class ResultActivity extends BaseActivity implements View.OnClickListener {
@@ -24,13 +26,16 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     int totalScore = 0;
     int comeFrom = -1;
     long question_set_id = -1;
+    long user_id = -1;
+    long test_id = -1;
+    DatabaseManager databaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         activity = this;
-
+        databaseManager = new DatabaseManager(activity);
         totalPlayed = getIntent().getIntExtra(StaticAccess.TAG_TOTAL_PLAYED, -1);
         correctAnswer = getIntent().getIntExtra(StaticAccess.TAG_CORRECT_ANSWER, 0);
         wrongAnswer = getIntent().getIntExtra(StaticAccess.TAG_WRONG_ANSWER, 0);
@@ -38,6 +43,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         duration = getIntent().getStringExtra(StaticAccess.TAG_TOTAL_DURATION);
         comeFrom = getIntent().getIntExtra(StaticAccess.TAG_COME_FROM, -1);
         question_set_id = getIntent().getLongExtra(StaticAccess.QUESTION_SET_ID, -1);
+        user_id = getIntent().getLongExtra(StaticAccess.TAG_USER_ID, -1);
+        test_id = getIntent().getLongExtra(StaticAccess.TAG_TEST_ID, -1);
 
 
         tvTotalPlayed = (TextView) findViewById(R.id.tvTotalPlayed);
@@ -59,6 +66,13 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         tvWrongAnswer.setText(String.valueOf(wrongAnswer));
         tvTotalScore.setText(String.valueOf(totalScore));
         tvTotalDuration.setText(String.valueOf(duration) + " min");
+        LeaderBoardTable leaderBoardTable = new LeaderBoardTable();
+        leaderBoardTable.setScore(correctAnswer);
+        leaderBoardTable.setNegative(String.valueOf(wrongAnswer));
+        leaderBoardTable.setTotal_duration(String.valueOf(duration));
+        leaderBoardTable.setUser_id(user_id);
+        leaderBoardTable.setTest_id(test_id);
+        databaseManager.insertLeaderBoardTable(leaderBoardTable);
     }
 
     @Override

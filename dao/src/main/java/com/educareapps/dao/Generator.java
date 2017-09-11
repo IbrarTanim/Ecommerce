@@ -105,7 +105,7 @@ public class Generator {
         Entity leaderBoard = schema.addEntity("LeaderBoardTable");
         leaderBoard.addIdProperty().primaryKey().autoincrement();
 
-        leaderBoard.addLongProperty("board_id").notNull();
+        leaderBoard.addIntProperty("board_id");
         leaderBoard.addLongProperty("score").notNull();
         leaderBoard.addStringProperty("total_duration").notNull();
         leaderBoard.addStringProperty("negative").notNull();
