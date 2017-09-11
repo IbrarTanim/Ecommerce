@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
         btnGmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(activity, DashBoardActivity.class));
+                //startActivity(new Intent(activity, DashBoardActivity.class));
             }
         });
         tvLink_signup.setOnClickListener(new View.OnClickListener() {
