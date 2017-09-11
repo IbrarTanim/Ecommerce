@@ -560,6 +560,7 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             openWritableDb();
             TestTableDao testTableDao = daoSession.getTestTableDao();
             testTable = testTableDao.load(id);
+            List<TestTable> testTables=testTableDao.loadAll();
             daoSession.clear();
         } catch (SQLiteException e) {
             e.printStackTrace();

@@ -221,7 +221,33 @@ public class LoginActivity extends BaseActivity {
                         JSONObject user = jsonObject.getJSONObject(StaticAccess.USER_KEY_TAG);
                         int user_id = user.getInt("user_id");
                         UserTable userTable = databaseManager.getUserByServerUserID(user_id);
-                        SharedPreferenceValue.setUserID(activity, userTable.getId());
+                        if (userTable == null) {
+                            String user_name = user.getString("user_name");
+                            String user_first_name = user.getString("user_first_name");
+                            String user_last_name = user.getString("user_first_name");
+                            String email = user.getString("email");
+                            String address = user.getString("address");
+                            String occupation = user.getString("occupation");
+                            String contact_no = user.getString("contact_no");
+                            int status = user.getInt("status");
+                            String datetime = new SimpleDateFormat("dd-mm-yyy").format(new Date());
+                            UserTable aUser = new UserTable();
+                            aUser.setUser_id(user_id);
+                            aUser.setUser_name(user_name == null ? "" : user_name);
+                            aUser.setUser_first_name(user_first_name == null ? "" : user_first_name);
+                            aUser.setUser_last_name(user_last_name == null ? "" : user_last_name);
+                            aUser.setEmail(email);
+                            aUser.setAddress(address == null ? "" : address);
+                            aUser.setOccupation(occupation == null ? "" : occupation);
+                            aUser.setContact_no(contact_no == null ? "" : contact_no);
+                            aUser.setStatus(String.valueOf(status));
+                            aUser.setCreated_at(datetime);
+                            long id = databaseManager.insertUserTable(aUser);
+                            SharedPreferenceValue.setUserID(activity, id);
+
+                        } else {
+                            SharedPreferenceValue.setUserID(activity, userTable.getId());
+                        }
                         goToNextActivity();
                     }
                 } catch (JSONException e) {
