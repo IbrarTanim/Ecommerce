@@ -134,6 +134,8 @@ public class Generator {
         test.addStringProperty("question_start_to").notNull();
         test.addStringProperty("status");
         test.addStringProperty("created_at");
+        test.addStringProperty("total_time").notNull();
+        test.addStringProperty("total_mark").notNull();
 
         Property questionSetProperty = test.addLongProperty("question_set_id").notNull().getProperty();
         ToMany testToQuestionSet = questionSet.addToMany(test, questionSetProperty);

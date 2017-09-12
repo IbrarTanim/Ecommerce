@@ -33,7 +33,9 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
         public final static Property Question_start_to = new Property(4, String.class, "question_start_to", false, "QUESTION_START_TO");
         public final static Property Status = new Property(5, String.class, "status", false, "STATUS");
         public final static Property Created_at = new Property(6, String.class, "created_at", false, "CREATED_AT");
-        public final static Property Question_set_id = new Property(7, long.class, "question_set_id", false, "QUESTION_SET_ID");
+        public final static Property Total_time = new Property(7, String.class, "total_time", false, "TOTAL_TIME");
+        public final static Property Total_mark = new Property(8, String.class, "total_mark", false, "TOTAL_MARK");
+        public final static Property Question_set_id = new Property(9, long.class, "question_set_id", false, "QUESTION_SET_ID");
     };
 
     private DaoSession daoSession;
@@ -60,7 +62,9 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
                 "\"QUESTION_START_TO\" TEXT NOT NULL ," + // 4: question_start_to
                 "\"STATUS\" TEXT," + // 5: status
                 "\"CREATED_AT\" TEXT," + // 6: created_at
-                "\"QUESTION_SET_ID\" INTEGER NOT NULL );"); // 7: question_set_id
+                "\"TOTAL_TIME\" TEXT NOT NULL ," + // 7: total_time
+                "\"TOTAL_MARK\" TEXT NOT NULL ," + // 8: total_mark
+                "\"QUESTION_SET_ID\" INTEGER NOT NULL );"); // 9: question_set_id
     }
 
     /** Drops the underlying database table. */
@@ -92,7 +96,9 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
         if (created_at != null) {
             stmt.bindString(7, created_at);
         }
-        stmt.bindLong(8, entity.getQuestion_set_id());
+        stmt.bindString(8, entity.getTotal_time());
+        stmt.bindString(9, entity.getTotal_mark());
+        stmt.bindLong(10, entity.getQuestion_set_id());
     }
 
     @Override
@@ -118,7 +124,9 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
             cursor.getString(offset + 4), // question_start_to
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // status
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // created_at
-            cursor.getLong(offset + 7) // question_set_id
+            cursor.getString(offset + 7), // total_time
+            cursor.getString(offset + 8), // total_mark
+            cursor.getLong(offset + 9) // question_set_id
         );
         return entity;
     }
@@ -133,7 +141,9 @@ public class TestTableDao extends AbstractDao<TestTable, Long> {
         entity.setQuestion_start_to(cursor.getString(offset + 4));
         entity.setStatus(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setCreated_at(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setQuestion_set_id(cursor.getLong(offset + 7));
+        entity.setTotal_time(cursor.getString(offset + 7));
+        entity.setTotal_mark(cursor.getString(offset + 8));
+        entity.setQuestion_set_id(cursor.getLong(offset + 9));
      }
     
     /** @inheritdoc */

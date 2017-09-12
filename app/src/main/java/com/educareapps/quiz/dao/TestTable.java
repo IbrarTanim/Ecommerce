@@ -20,6 +20,10 @@ public class TestTable {
     private String question_start_to;
     private String status;
     private String created_at;
+    /** Not-null value. */
+    private String total_time;
+    /** Not-null value. */
+    private String total_mark;
     private long question_set_id;
 
     /** Used to resolve relations */
@@ -37,7 +41,7 @@ public class TestTable {
         this.id = id;
     }
 
-    public TestTable(Long id, long test_id, String test_name, String question_start_from, String question_start_to, String status, String created_at, long question_set_id) {
+    public TestTable(Long id, long test_id, String test_name, String question_start_from, String question_start_to, String status, String created_at, String total_time, String total_mark, long question_set_id) {
         this.id = id;
         this.test_id = test_id;
         this.test_name = test_name;
@@ -45,6 +49,8 @@ public class TestTable {
         this.question_start_to = question_start_to;
         this.status = status;
         this.created_at = created_at;
+        this.total_time = total_time;
+        this.total_mark = total_mark;
         this.question_set_id = question_set_id;
     }
 
@@ -114,6 +120,26 @@ public class TestTable {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    /** Not-null value. */
+    public String getTotal_time() {
+        return total_time;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setTotal_time(String total_time) {
+        this.total_time = total_time;
+    }
+
+    /** Not-null value. */
+    public String getTotal_mark() {
+        return total_mark;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setTotal_mark(String total_mark) {
+        this.total_mark = total_mark;
     }
 
     public long getQuestion_set_id() {
