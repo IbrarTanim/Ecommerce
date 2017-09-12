@@ -1,46 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/ten">
+    android:layout_height="match_parent">
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/cell_bg">
 
-        android:id="@+id/tvCourseName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:padding="@dimen/five"
-        android:text="Bangla" />
 
-    <TextView
-        android:id="@+id/tvTestName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvCourseName"
-        android:layout_marginTop="@dimen/thirty"
-        android:padding="@dimen/five"
-        android:text="Bangla"
-        />
+        <TextView
+            android:id="@+id/tvCourseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/five"
+            android:text="Bangla" />
 
-    <TextView
-        android:id="@+id/tvPercentage"
-        android:layout_width="@dimen/sixty"
-        android:layout_height="@dimen/sixty"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/ic_percentage"
-        android:gravity="center"
-        android:padding="@dimen/five"
-        android:text="50%" />
+        <TextView
+            android:id="@+id/tvTestName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCourseName"
+            android:layout_marginTop="@dimen/thirty"
+            android:padding="@dimen/five"
+            android:text="Bangla" />
 
-    <TextView
-        android:id="@+id/tvDuration"
-        android:layout_width="@dimen/sixty"
-        android:layout_height="@dimen/forty"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/tvPercentage"
-        android:gravity="center"
-        android:padding="@dimen/five"
-        android:text="5 min " />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tvPercentage"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/sixty"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ic_percentage"
+            android:gravity="center"
+            android:padding="@dimen/five"
+            android:text="50%" />
+
+        <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/forty"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tvPercentage"
+            android:gravity="center"
+            android:padding="@dimen/five"
+            android:text="5 min " />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

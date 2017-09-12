@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/quiz_play_bg_color">
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +28,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/app_color"
-                    android:gravity="center"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/ten"
+                    android:paddingRight="@dimen/ten"
                     android:text="Questions"
                     android:textColor="@color/white"
                     android:textSize="@dimen/twenty_five" />
@@ -42,30 +44,22 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight=".7"
-            android:background="@color/greyDLight"
+            android:background="@color/quiz_play_bg_color"
             android:orientation="vertical"
             android:weightSum="1">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/zero"
-                android:layout_weight=".01"
-                android:background="@color/greyLight"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/twenty_five" />
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
-                android:layout_weight=".99"
+                android:layout_weight="1"
                 android:fillViewport="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:weightSum="5">
+                    android:weightSum="4.7">
 
                     <LinearLayout
                         android:id="@+id/llOptionOne"
@@ -73,7 +67,7 @@
                         android:layout_height="@dimen/zero"
                         android:layout_margin="@dimen/five"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="@drawable/cell_bg"
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -81,11 +75,11 @@
                             android:id="@+id/tvOptionOne"
                             android:layout_width="@dimen/zero"
                             android:layout_height="match_parent"
-                            android:layout_weight=".8"
                             android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
                             android:gravity="left|center"
                             android:text="Option One"
-                            android:textColor="@color/black"
+                            android:textColor="@color/greyLight"
                             android:textSize="@dimen/twenty" />
 
                         <RelativeLayout
@@ -99,7 +93,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:background="@android:color/transparent"
-                                android:padding="@dimen/ten"
+                                android:padding="@dimen/fifteen"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/ic_tick" />
 
@@ -112,9 +106,11 @@
                         android:id="@+id/llOptionTwo"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/zero"
-                        android:layout_margin="@dimen/five"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginLeft="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="@drawable/cell_bg"
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -122,11 +118,11 @@
                             android:id="@+id/tvOptionTwo"
                             android:layout_width="@dimen/zero"
                             android:layout_height="match_parent"
-                            android:layout_weight=".8"
                             android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
                             android:gravity="left|center"
                             android:text="Option One"
-                            android:textColor="@color/black"
+                            android:textColor="@color/greyLight"
                             android:textSize="@dimen/twenty" />
 
                         <RelativeLayout
@@ -140,7 +136,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:background="@android:color/transparent"
-                                android:padding="@dimen/ten"
+                                android:padding="@dimen/fifteen"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/ic_tick" />
 
@@ -153,9 +149,11 @@
                         android:id="@+id/llOptionThree"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/zero"
-                        android:layout_margin="@dimen/five"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginLeft="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="@drawable/cell_bg"
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -163,11 +161,11 @@
                             android:id="@+id/tvOptionThree"
                             android:layout_width="@dimen/zero"
                             android:layout_height="match_parent"
-                            android:layout_weight=".8"
                             android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
                             android:gravity="left|center"
                             android:text="Option One"
-                            android:textColor="@color/black"
+                            android:textColor="@color/greyLight"
                             android:textSize="@dimen/twenty" />
 
                         <RelativeLayout
@@ -181,7 +179,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:background="@android:color/transparent"
-                                android:padding="@dimen/ten"
+                                android:padding="@dimen/fifteen"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/ic_tick" />
 
@@ -195,9 +193,11 @@
                         android:id="@+id/llOptionFour"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/zero"
-                        android:layout_margin="@dimen/five"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginLeft="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
                         android:layout_weight="1"
-                        android:background="@color/white"
+                        android:background="@drawable/cell_bg"
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -209,7 +209,7 @@
                             android:layout_weight=".8"
                             android:gravity="left|center"
                             android:text="Option One"
-                            android:textColor="@color/black"
+                            android:textColor="@color/greyLight"
                             android:textSize="@dimen/twenty" />
 
                         <RelativeLayout
@@ -223,7 +223,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:background="@android:color/transparent"
-                                android:padding="@dimen/ten"
+                                android:padding="@dimen/fifteen"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/ic_tick" />
 
@@ -232,22 +232,24 @@
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_weight=".2" />
+
                     <Button
                         android:id="@+id/btnNextQuestion"
                         android:layout_width="@dimen/hundred"
                         android:layout_height="@dimen/zero"
                         android:layout_gravity="right"
-                        android:layout_marginRight="@dimen/ten"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
                         android:layout_weight=".5"
-                        android:text="Next"
                         android:background="@drawable/button_bg"
+                        android:text="Next"
                         android:textColor="@color/white"
                         android:textSize="@dimen/twenty" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/zero"
-                        android:layout_weight=".5" />
 
                 </LinearLayout>
             </ScrollView>
@@ -260,8 +262,8 @@
 
     <ImageButton
         android:id="@+id/ibtnTestPlayerBack"
-        android:layout_width="@dimen/fifty"
-        android:layout_height="@dimen/fifty"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
@@ -270,22 +272,23 @@
         android:src="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/tvTimer"
         android:layout_width="@dimen/hundred_fifty"
         android:layout_height="@dimen/thirty"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:gravity="center"
+        android:gravity="right|center"
+        android:layout_marginRight="@dimen/ten"
         android:text="abc"
         android:textColor="@color/white"
         android:textSize="@dimen/fifteen" />
 
     <TextView
-        android:id="@+id/tvTimer"
+        android:id="@+id/tvStatus"
         android:layout_width="@dimen/hundred_fifty"
         android:layout_height="@dimen/thirty"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:gravity="left|center"
         android:text="abc"
         android:textColor="@color/white"

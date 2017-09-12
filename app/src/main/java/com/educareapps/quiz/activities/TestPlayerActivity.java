@@ -113,7 +113,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     /// init view with proper question
     private void initViewWithQuestion() {
         resetOptions();
-        tvStatus.setText("Total played: " + String.valueOf(startingQuestionIndex + 1) + "/" + String.valueOf(endingQuestionIndex));
+        tvStatus.setText("Played: " + String.valueOf(startingQuestionIndex + 1) + "/" + String.valueOf(endingQuestionIndex));
         tvQuestion.setText(question.getQuestion());
 
         tvOptionOne.setText(question.getOption_one());
@@ -288,7 +288,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
                 int minutes = seconds / 60;
                 seconds = seconds % 60;
                 tvTimer.setText("Time : " + String.format("%02d", minutes)
-                        + ":" + String.format("%02d", seconds) + " of " + aTest.getTotal_time() + " min");
+                        + ":" + String.format("%02d", seconds));
             }
 
             public void onFinish() {

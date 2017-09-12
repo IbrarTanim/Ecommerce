@@ -1,42 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/rlDashboard"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/hundred_fifty"
-        android:background="@color/app_color">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/ivProfilePic"
-            android:layout_width="@dimen/seventy"
-            android:layout_height="@dimen/seventy"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/twenty"
-            android:background="@drawable/ic_profile_pic"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_logo" />
-
-        <TextView
-            android:id="@+id/tvEmailDashboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ivProfilePic"
-            android:layout_centerInParent="true"
-            android:layout_margin="@dimen/ten"
-            android:text="@string/abc_gmail_com"
-            android:textColor="@color/white" />
-
-        <View
+        <RelativeLayout
+            android:id="@+id/rlDashboard"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/two"
-            android:layout_alignParentBottom="true"
-            android:background="@color/white" />
-    </RelativeLayout>
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".3"
+            android:background="@color/app_color">
+
+            <ImageView
+                android:id="@+id/ivProfilePic"
+                android:layout_width="@dimen/hundred"
+                android:layout_height="@dimen/hundred"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/twenty"
+                android:background="@drawable/ic_profile_pic"
+                android:padding="@dimen/twelve"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_boy" />
+
+            <TextView
+                android:id="@+id/tvEmailDashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivProfilePic"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/ten"
+                android:text="@string/abc_gmail_com"
+                android:textSize="@dimen/fifteen"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".7"
+            android:background="@color/quiz_play_bg_color">
+
+            <ListView
+                android:id="@+id/lvScoreBoard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/five"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="5.0dp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btnStart"
@@ -49,19 +75,11 @@
         android:textColor="@color/white"
         android:textSize="@dimen/twenty_five" />
 
-    <ListView
-        android:id="@+id/lvScoreBoard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/btnStart"
-        android:layout_below="@+id/rlDashboard"
-        android:background="@color/quiz_play_bg_color" />
-
 
     <ImageButton
         android:id="@+id/ibtnBackDashBoard"
-        android:layout_width="@dimen/fifty"
-        android:layout_height="@dimen/fifty"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
