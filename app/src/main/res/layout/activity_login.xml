@@ -9,8 +9,7 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/ten"
-        android:layout_marginRight="@dimen/ten"
+        android:layout_margin="@dimen/ten"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -86,7 +85,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight=".3"
-                    android:background="@color/app_color"
+                    android:background="@drawable/button_bg"
+                    android:layout_marginRight="@dimen/five"
                     android:text="@string/register"
                     android:textColor="@color/white"
                     android:visibility="invisible" />
@@ -96,7 +96,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight=".3"
-                    android:background="@color/app_color"
+                    android:layout_marginRight="@dimen/five"
+                    android:background="@drawable/button_bg"
                     android:text="@string/login"
                     android:textColor="@color/white" />
 
@@ -114,6 +115,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight=".003"
+            android:layout_marginLeft="@dimen/thirty"
+            android:layout_marginRight="@dimen/thirty"
             android:background="@color/grey" />
 
         <View

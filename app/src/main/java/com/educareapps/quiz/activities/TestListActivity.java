@@ -1,12 +1,12 @@
 package com.educareapps.quiz.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.educareapps.quiz.R;
 import com.educareapps.quiz.adapter.TestsAdapter;
@@ -36,6 +36,8 @@ public class TestListActivity extends BaseActivity {
         ibtnBackTests = (ImageButton) findViewById(R.id.ibtnBackTests);
         question_set_id = getIntent().getLongExtra(StaticAccess.QUESTION_SET_ID, -1);
         if (question_set_id != -1) {
+           TextView tvsetName= (TextView)findViewById(R.id.tvSet);
+            tvsetName.setText(databaseManager.getQuestionSetTableById(question_set_id).getTitle());
             testList =  new ArrayList<TestTable>( databaseManager.getQuestionSetTableById(question_set_id).getTestToQuestionSet());
             if (testList != null) {
                 testsAdapter = new TestsAdapter(testList, activity);
