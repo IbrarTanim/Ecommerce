@@ -84,7 +84,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
             /// for making server req we must need this two id to reset other wise server system may fucked up
             leaderBoardTable.setUser_id(databaseManager.getUserTableById(user_id).getUser_id());
             leaderBoardTable.setTest_id(databaseManager.getTestTableById(test_id).getTest_id());
-            leaderBoardUpdater.insertUserLeaderboard(leaderBoardTable);
+            leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
         } else {
             leaderBoardTable.setId(previousLeaderBoard.getId());
             databaseManager.updateLeaderBoardtTable(leaderBoardTable);
