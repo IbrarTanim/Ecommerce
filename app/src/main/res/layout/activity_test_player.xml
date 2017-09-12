@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/quiz_play_bg_color">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -277,6 +276,17 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
+        android:text="abc"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fifteen" />
+
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="@dimen/hundred_fifty"
+        android:layout_height="@dimen/thirty"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:gravity="left|center"
         android:text="abc"
         android:textColor="@color/white"
         android:textSize="@dimen/fifteen" />

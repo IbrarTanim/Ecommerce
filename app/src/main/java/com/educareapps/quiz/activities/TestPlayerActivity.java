@@ -2,7 +2,7 @@ package com.educareapps.quiz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -45,7 +45,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     //// for getting correct answer & wrong answer question list
     ArrayList<CSVQuestionTable> correctQuestionList;
     ArrayList<CSVQuestionTable> wrongQuestionList;
-    TextView tvStatus;
+    TextView tvStatus, tvTimer;
 
     LinearLayout llOptionOne, llOptionTwo, llOptionThree, llOptionFour;
     TextView tvOptionOne, tvOptionTwo, tvOptionThree, tvOptionFour;
@@ -70,6 +70,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         tvOptionThree = (TextView) findViewById(R.id.tvOptionThree);
         tvOptionFour = (TextView) findViewById(R.id.tvOptionFour);
         tvStatus = (TextView) findViewById(R.id.tvStatus);
+        tvTimer = (TextView) findViewById(R.id.tvTimer);
 
         ibtnOptionOneTick = (ImageButton) findViewById(R.id.ibtnOptionOneTick);
         ibtnOptionTwo = (ImageButton) findViewById(R.id.ibtnOptionTwo);
@@ -104,9 +105,12 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
             question = questionsForPlay.get(startingQuestionIndex);
             quizStartTime = System.currentTimeMillis();
             initViewWithQuestion();
+            startTimer(); ///star timer
+
         }
     }
 
+    /// init view with proper question
     private void initViewWithQuestion() {
         resetOptions();
         tvStatus.setText("Total played: " + String.valueOf(startingQuestionIndex + 1) + "/" + String.valueOf(endingQuestionIndex));
@@ -118,7 +122,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         tvOptionFour.setText(question.getOption_four());
     }
 
-
+    /// reset all option tick icon
     void resetOptions() {
 
         ibtnOptionOneTick.setVisibility(View.GONE);
@@ -204,6 +208,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+    /// make all options clickable
     void makeAllClickAble() {
         llOptionOne.setClickable(true);
         llOptionTwo.setClickable(true);
@@ -211,6 +216,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         llOptionFour.setClickable(true);
     }
 
+    /// check the user answer is correct or not
     private void checkCorrectAnswer(String userSayingAnswer) {
         if (userSayingAnswer.equals(question.getAnswer())) {
             /// add correct question in the list first
@@ -229,44 +235,79 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     long quizEndTime = -1;
     String duration = "";
 
+    /// check if test is over or not and go to next question by increasing the index
     void checkTestOver() {
         if (startingQuestionIndex == endingQuestionIndex - 1) {
-
-            quizEndTime = System.currentTimeMillis();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-            Date date1 = new Date(quizStartTime);
-            Date date2 = new Date(quizEndTime);
-            sdf.format(date1);
-            sdf.format(date2);
-            long difference = date2.getTime() - date1.getTime();
-            long diffMinutes = difference / (60 * 1000) % 60;
-            duration = String.valueOf(diffMinutes);
-
-            /// go for result activity
-            Intent resIntent = new Intent(activity, ResultActivity.class);
-            resIntent.putExtra(StaticAccess.TAG_TOTAL_PLAYED, startingQuestionIndex + 1);
-            resIntent.putExtra(StaticAccess.TAG_CORRECT_ANSWER, correctQuestionList.size());
-            resIntent.putExtra(StaticAccess.TAG_WRONG_ANSWER, wrongQuestionList.size());
-            resIntent.putExtra(StaticAccess.TAG_TOTAL_SCORE, correctQuestionList.size());
-            resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
-            resIntent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
-            resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
-            resIntent.putExtra(StaticAccess.TAG_USER_ID, user_id);
-            resIntent.putExtra(StaticAccess.TEST_ID, test_id);
-            startActivity(resIntent);
-            finish();
+            finishTheTest();
         } else {
             startingQuestionIndex++;
             question = questionsForPlay.get(startingQuestionIndex);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    makeAllClickAble();
-                    initViewWithQuestion();
-                }
-            }, 1000);
+            makeAllClickAble();
+            initViewWithQuestion();
         }
     }
 
+    /// finish the test finally
+    private void finishTheTest() {
+        quizEndTime = System.currentTimeMillis();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Date date1 = new Date(quizStartTime);
+        Date date2 = new Date(quizEndTime);
+        sdf.format(date1);
+        sdf.format(date2);
+        long difference = date2.getTime() - date1.getTime();
+        long diffMinutes = difference / (60 * 1000) % 60;
+        duration = String.valueOf(diffMinutes);
+
+        /// go for result activity
+        Intent resIntent = new Intent(activity, ResultActivity.class);
+        resIntent.putExtra(StaticAccess.TAG_TOTAL_PLAYED, startingQuestionIndex + 1);
+        resIntent.putExtra(StaticAccess.TAG_CORRECT_ANSWER, correctQuestionList.size());
+        resIntent.putExtra(StaticAccess.TAG_WRONG_ANSWER, wrongQuestionList.size());
+        resIntent.putExtra(StaticAccess.TAG_TOTAL_SCORE, correctQuestionList.size());
+        resIntent.putExtra(StaticAccess.TAG_TOTAL_DURATION, duration);
+        resIntent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
+        resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
+        resIntent.putExtra(StaticAccess.TAG_USER_ID, user_id);
+        resIntent.putExtra(StaticAccess.TEST_ID, test_id);
+        startActivity(resIntent);
+        finish();
+    }
+
+    //Declare timer
+    CountDownTimer cTimer = null;
+
+    //start timer function
+    void startTimer() {
+        long totalTime = Integer.parseInt(aTest.getTotal_time()) * 60 * 1000;
+        cTimer = new CountDownTimer(totalTime, 1000) {
+            public void onTick(long millisUntilFinished) {
+                //tvTimer.setText("Remaining: " + ((millisUntilFinished / 1000) / 60) + " min");
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                tvTimer.setText("Time : " + String.format("%02d", minutes)
+                        + ":" + String.format("%02d", seconds) + " of " + aTest.getTotal_time() + " min");
+            }
+
+            public void onFinish() {
+                checkTestOver();
+            }
+        };
+        cTimer.start();
+    }
+
+
+    //cancel timer
+    void cancelTimer() {
+        if (cTimer != null)
+            cTimer.cancel();
+    }
+
+    @Override
+    protected void onDestroy() {
+        cancelTimer();
+        super.onDestroy();
+    }
 }
