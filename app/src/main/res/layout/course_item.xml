@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/ivCoursePhoto"
-            android:layout_width="@dimen/seventy"
-            android:layout_height="@dimen/seventy"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
             android:background="@android:color/transparent"
             android:layout_gravity="center"
             android:scaleType="fitCenter"

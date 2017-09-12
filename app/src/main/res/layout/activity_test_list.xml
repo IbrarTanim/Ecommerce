@@ -13,6 +13,7 @@
         android:weightSum="1">
 
         <TextView
+            android:id="@+id/tvSet"
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:background="@color/app_color"

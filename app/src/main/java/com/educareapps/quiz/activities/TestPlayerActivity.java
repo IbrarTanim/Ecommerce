@@ -1,6 +1,5 @@
 package com.educareapps.quiz.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,12 +27,10 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     long test_id = -1;
     long user_id = -1;
     TextView tvQuestion;
-    //RadioButton rbtnOptionOne, rbtnOptionTwo, rbtnOptionThree, rbtnOptionFour;
-
     ArrayList<CSVQuestionTable> allQuestions, questionsForPlay;
     DatabaseManager databaseManager;
     TestPlayerActivity activity;
-    ImageButton ibtnPreviousQuestion;
+    ImageButton ibtnTestPlayerBack;
     Button btnNextQuestion;
     CSVQuestionTable question;
     TestTable aTest;
@@ -79,11 +76,15 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         ibtnOptionThree = (ImageButton) findViewById(R.id.ibtnOptionThree);
         ibtnOptionFour = (ImageButton) findViewById(R.id.ibtnOptionFour);
 
+        ibtnTestPlayerBack = (ImageButton) findViewById(R.id.ibtnTestPlayerBack);
+
 
         llOptionOne.setOnClickListener(this);
         llOptionTwo.setOnClickListener(this);
         llOptionThree.setOnClickListener(this);
         llOptionFour.setOnClickListener(this);
+
+        ibtnTestPlayerBack.setOnClickListener(this);
 
         btnNextQuestion.setOnClickListener(this);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
@@ -171,8 +172,13 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
 
 
                 break;
-//            case R.id.ibtnPreviousQuestion:
-//                break;
+            case R.id.ibtnTestPlayerBack:
+                Intent intent = new Intent(activity, TestListActivity.class);
+                intent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
+                startActivity(intent);
+
+                break;
+
             case R.id.btnNextQuestion:
                 switch (btnRadioClicked) {
                     case 1:
