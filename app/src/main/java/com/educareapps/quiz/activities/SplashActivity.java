@@ -191,6 +191,8 @@ public class SplashActivity extends BaseActivity {
                 if (!SharedPreferenceValue.getDownloadSuccess(activity)) {
                     if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
                         new DeleteAsyncTask().execute();
+                    } else {
+                        Toast.makeText(activity, "Connect with internet then try again", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     goToNextActivity();
