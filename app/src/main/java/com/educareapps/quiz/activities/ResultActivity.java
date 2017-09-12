@@ -105,12 +105,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
                 if (comeFrom == 0) {
                     startActivity(new Intent(activity, MenuActivity.class));
                 } else {
-                    if (question_set_id != -1) {
-                        Intent testIntent = new Intent(activity, TestListActivity.class);
-                        testIntent.putExtra(StaticAccess.QUESTION_SET_ID, question_set_id);
-                        startActivity(testIntent);
-                        finish();
-                    }
+                    startActivity(new Intent(activity, DashBoardActivity.class));
+                    finish();
                 }
                 break;
         }
