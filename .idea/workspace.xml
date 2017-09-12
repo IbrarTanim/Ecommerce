@@ -51,12 +51,12 @@
       <file leaf-file-name="TestPlayerActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/TestPlayerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="238" column="16" selection-start-line="238" selection-start-column="16" selection-end-line="238" selection-end-column="16" />
+            <state relative-caret-position="179">
+              <caret line="244" column="31" selection-start-line="244" selection-start-column="31" selection-end-line="244" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11441#11442#0" expanded="true" />
-                <element signature="e#11488#11489#0" expanded="true" />
+                <element signature="e#11465#11466#0" expanded="true" />
+                <element signature="e#11512#11513#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -3541,12 +3541,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/TestPlayerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="238" column="16" selection-start-line="238" selection-start-column="16" selection-end-line="238" selection-end-column="16" />
+        <state relative-caret-position="179">
+          <caret line="244" column="31" selection-start-line="244" selection-start-column="31" selection-end-line="244" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11441#11442#0" expanded="true" />
-            <element signature="e#11488#11489#0" expanded="true" />
+            <element signature="e#11465#11466#0" expanded="true" />
+            <element signature="e#11512#11513#0" expanded="true" />
           </folding>
         </state>
       </provider>

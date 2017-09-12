@@ -122,7 +122,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         tvOptionFour.setText(question.getOption_four());
     }
 
-/// reset all option tick icon
+    /// reset all option tick icon
     void resetOptions() {
 
         ibtnOptionOneTick.setVisibility(View.GONE);
@@ -207,14 +207,16 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
 
         }
     }
-/// make all options clickable
+
+    /// make all options clickable
     void makeAllClickAble() {
         llOptionOne.setClickable(true);
         llOptionTwo.setClickable(true);
         llOptionThree.setClickable(true);
         llOptionFour.setClickable(true);
     }
-/// check the user answer is correct or not
+
+    /// check the user answer is correct or not
     private void checkCorrectAnswer(String userSayingAnswer) {
         if (userSayingAnswer.equals(question.getAnswer())) {
             /// add correct question in the list first
@@ -232,7 +234,8 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     long quizStartTime = -1;
     long quizEndTime = -1;
     String duration = "";
-/// check if test is over or not and go to next question by increasing the index
+
+    /// check if test is over or not and go to next question by increasing the index
     void checkTestOver() {
         if (startingQuestionIndex == endingQuestionIndex - 1) {
             finishTheTest();
@@ -243,7 +246,8 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
             initViewWithQuestion();
         }
     }
-/// finish the test finally
+
+    /// finish the test finally
     private void finishTheTest() {
         quizEndTime = System.currentTimeMillis();
 
