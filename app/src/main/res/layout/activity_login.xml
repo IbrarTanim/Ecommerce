@@ -1,184 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/app_color">
+    android:layout_height="fill_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="@dimen/ten"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1">
-
-            <TextView
-                android:id="@+id/tvRegister"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|top"
-                android:text="Register"
-                android:textColor="@color/black"
-                android:textSize="@dimen/twenty"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/tvLogin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|top"
-                android:text="Log in"
-                android:textColor="@color/black"
-                android:textSize="@dimen/twenty" />
-
-        </RelativeLayout>
-
-
-        <EditText
-            android:id="@+id/etEmailUsername"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
-
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
-
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight=".05"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <View
-                android:layout_width="@dimen/zero"
-                android:layout_height="match_parent"
-                android:layout_weight=".7" />
+            android:layout_weight=".3"
+            android:background="@color/app_color"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="@dimen/zero"
-                android:layout_height="match_parent"
-                android:layout_weight=".3">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btnRegister"
+                <TextView
+                    android:id="@+id/tvRegister"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight=".3"
-                    android:background="@drawable/button_bg"
-                    android:layout_marginRight="@dimen/five"
-                    android:text="@string/register"
+                    android:gravity="center"
+                    android:text="Register"
                     android:textColor="@color/white"
+                    android:textSize="@dimen/thirty"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Log in"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/thirty" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".7"
+            android:background="@color/quiz_play_bg_color"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etEmailUsername"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".1"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".1"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".07"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <View
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7" />
+
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3">
+
+                    <Button
+                        android:id="@+id/btnRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_weight=".3"
+                        android:background="@drawable/button_bg"
+                        android:text="@string/register"
+                        android:textColor="@color/white"
+                        android:visibility="invisible" />
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_weight=".3"
+                        android:background="@drawable/button_bg"
+                        android:text="@string/login"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".05" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_marginLeft="@dimen/thirty"
+                android:layout_marginRight="@dimen/thirty"
+                android:layout_weight=".003"
+                android:background="@color/greyLight" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".05" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".1">
+
+
+                <Button
+                    android:id="@+id/btnAlreadyRegistered"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="@string/loginOption"
+                    android:textColor="@color/greyLight"
+                    android:textSize="@dimen/fifteen"
                     android:visibility="invisible" />
 
                 <Button
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/tvLink_signup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight=".3"
-                    android:layout_marginRight="@dimen/five"
-                    android:background="@drawable/button_bg"
-                    android:text="@string/login"
-                    android:textColor="@color/white" />
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="@string/no_account_yet_create_one"
+                    android:textColor="@color/greyLight"
+                    android:textSize="@dimen/fifteen" />
+
 
             </RelativeLayout>
 
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight=".05" />
+
+            <Button
+                android:id="@+id/btnFB"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight=".1"
+                android:background="#4A6EA9"
+                android:text="FB"
+                android:textColor="@color/white"
+                android:textSize="@dimen/thirty" />
+
+            <Button
+                android:id="@+id/btnGmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight=".1"
+                android:background="#D24438"
+                android:text="G+"
+                android:textColor="@color/white"
+                android:textSize="@dimen/thirty" />
+
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".05" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".003"
-            android:layout_marginLeft="@dimen/thirty"
-            android:layout_marginRight="@dimen/thirty"
-            android:background="@color/grey" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".05" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".1">
-
-
-            <Button
-                android:id="@+id/btnAlreadyRegistered"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:text="@string/loginOption"
-                android:textSize="@dimen/fifteen"
-                android:visibility="invisible" />
-
-            <Button
-                android:id="@+id/tvLink_signup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:text="@string/no_account_yet_create_one"
-                android:textSize="@dimen/fifteen" />
-
-
-        </RelativeLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_weight=".05" />
-
-        <Button
-            android:id="@+id/btnFB"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight=".1"
-            android:background="#4A6EA9"
-            android:text="FB"
-            android:textColor="@color/white"
-            android:textSize="@dimen/thirty" />
-
-        <Button
-            android:id="@+id/btnGmail"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/zero"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight=".1"
-            android:background="#D24438"
-            android:text="G+"
-            android:textColor="@color/white"
-            android:textSize="@dimen/thirty" />
-
     </LinearLayout>
+
+
 </RelativeLayout>

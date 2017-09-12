@@ -145,34 +145,50 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
             case R.id.llOptionOne:
                 btnRadioClicked = 1;
                 ibtnOptionOneTick.setVisibility(View.VISIBLE);
-                llOptionTwo.setClickable(false);
+                ibtnOptionTwo.setVisibility(View.GONE);
+                ibtnOptionThree.setVisibility(View.GONE);
+                ibtnOptionFour.setVisibility(View.GONE);
+
+                /*llOptionTwo.setClickable(false);
                 llOptionThree.setClickable(false);
-                llOptionThree.setClickable(false);
+                llOptionThree.setClickable(false);*/
 
 
                 break;
             case R.id.llOptionTwo:
                 btnRadioClicked = 2;
                 ibtnOptionTwo.setVisibility(View.VISIBLE);
-                llOptionOne.setClickable(false);
+                ibtnOptionOneTick.setVisibility(View.GONE);
+                ibtnOptionThree.setVisibility(View.GONE);
+                ibtnOptionFour.setVisibility(View.GONE);
+
+                /*llOptionOne.setClickable(false);
                 llOptionThree.setClickable(false);
-                llOptionFour.setClickable(false);
+                llOptionFour.setClickable(false);*/
 
                 break;
             case R.id.llOptionThree:
                 btnRadioClicked = 3;
                 ibtnOptionThree.setVisibility(View.VISIBLE);
-                llOptionOne.setClickable(false);
+                ibtnOptionOneTick.setVisibility(View.GONE);
+                ibtnOptionTwo.setVisibility(View.GONE);
+                ibtnOptionFour.setVisibility(View.GONE);
+
+                /*llOptionOne.setClickable(false);
                 llOptionTwo.setClickable(false);
-                llOptionFour.setClickable(false);
+                llOptionFour.setClickable(false);*/
 
                 break;
             case R.id.llOptionFour:
                 btnRadioClicked = 4;
                 ibtnOptionFour.setVisibility(View.VISIBLE);
-                llOptionOne.setClickable(false);
+                ibtnOptionOneTick.setVisibility(View.GONE);
+                ibtnOptionTwo.setVisibility(View.GONE);
+                ibtnOptionThree.setVisibility(View.GONE);
+
+                /*llOptionOne.setClickable(false);
                 llOptionTwo.setClickable(false);
-                llOptionThree.setClickable(false);
+                llOptionThree.setClickable(false);*/
 
 
                 break;
