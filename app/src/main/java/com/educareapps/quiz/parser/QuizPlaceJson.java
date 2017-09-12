@@ -54,6 +54,8 @@ public class QuizPlaceJson {
     public static final String TAG_QUESTION_START_TO = "question_start_to";
     public static final String TAG_STATUS = "status";
     public static final String TAG_CREATED_AT_TEST = "created_at";
+    private static final String TAG_TOTAL_TIME = "total_time";
+    private static final String TAG_TOTAL_MARK = "total_mark";
 
 
     IDatabaseManager databaseManager;
@@ -130,6 +132,8 @@ public class QuizPlaceJson {
                                     testTable.setQuestion_start_to(testJson.getString(TAG_QUESTION_START_TO));
                                     testTable.setStatus(testJson.getString(TAG_STATUS));
                                     testTable.setCreated_at(testJson.getString(TAG_CREATED_AT_TEST));
+                                    testTable.setTotal_time(testJson.getString(TAG_TOTAL_TIME));
+                                    testTable.setTotal_mark(testJson.getString(TAG_TOTAL_MARK));
                                     databaseManager.insertTestTable(testTable);
                                 }
                             }
