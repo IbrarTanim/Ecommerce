@@ -208,5 +208,5 @@ public interface IDatabaseManager {
     * */
     boolean deleteLeaderBoardById(Long id);
 
-
+LeaderBoardTable getLeaderBoardByUserID(long user_id,long testID);
 }

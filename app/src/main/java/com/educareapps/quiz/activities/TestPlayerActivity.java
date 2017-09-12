@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class TestPlayerActivity extends Activity implements View.OnClickListener {
+public class TestPlayerActivity extends BaseActivity implements View.OnClickListener {
 
     long test_id = -1;
     long user_id = -1;

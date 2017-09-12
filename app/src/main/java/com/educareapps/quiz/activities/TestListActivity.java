@@ -16,7 +16,7 @@ import com.educareapps.quiz.utilities.StaticAccess;
 
 import java.util.ArrayList;
 
-public class TestListActivity extends Activity {
+public class TestListActivity extends BaseActivity {
 
     long question_set_id = -1;
     ArrayList<TestTable> testList;

@@ -188,12 +188,12 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onPermissionGranted() {
                 isAllPermissionGranted = true;
-                if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
-                    if (!SharedPreferenceValue.getDownloadSuccess(activity)) {
+                if (!SharedPreferenceValue.getDownloadSuccess(activity)) {
+                    if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
                         new DeleteAsyncTask().execute();
-                    }else{
-                        goToNextActivity();
                     }
+                } else {
+                    goToNextActivity();
                 }
             }
 
