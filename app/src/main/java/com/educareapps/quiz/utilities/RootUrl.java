@@ -10,4 +10,6 @@ public class RootUrl {
 
     public static final String LOGIN_URL = RootUrl + "Users/Login/";
     public static final String REGISTRATION_URL = RootUrl + "Users/Registration/";
+    public static final String UPDATE_LEADER_BOARD_URL = RootUrl + "Users/UpdateLeaderBoard";
+    public static final String INSERT_LEADER_BOARD_URL = RootUrl + "Users/InsertLeaderBoard";
 }
