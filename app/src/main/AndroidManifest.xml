@@ -45,7 +45,7 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.ResultActivity"
-            android:screenOrientation="sensorLandscape"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
         <activity
