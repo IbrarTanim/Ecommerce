@@ -486,7 +486,7 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             UserTableDao userTableDao = daoSession.getUserTableDao();
             QueryBuilder<UserTable> queryBuilder = userTableDao.queryBuilder().where(UserTableDao.Properties.User_id.eq(user_id));
             List<UserTable> users = queryBuilder.list();
-           // List<UserTable> users2 = userTableDao.loadAll();
+            // List<UserTable> users2 = userTableDao.loadAll();
             if (users.size() > 0) {
                 userTable = users.get(0);
             }
@@ -560,7 +560,7 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             openWritableDb();
             TestTableDao testTableDao = daoSession.getTestTableDao();
             testTable = testTableDao.load(id);
-            List<TestTable> testTables=testTableDao.loadAll();
+            //List<TestTable> testTables=testTableDao.loadAll();
             daoSession.clear();
         } catch (SQLiteException e) {
             e.printStackTrace();
@@ -668,6 +668,25 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public LeaderBoardTable getLeaderBoardByUserID(long user_id, long testID) {
+        LeaderBoardTable leaderBoardTable = null;
+        try {
+            openWritableDb();
+            LeaderBoardTableDao leaderBoardTableDao = daoSession.getLeaderBoardTableDao();
+            QueryBuilder<LeaderBoardTable> queryBuilder = leaderBoardTableDao.queryBuilder().where(LeaderBoardTableDao.Properties.User_id.eq(user_id), LeaderBoardTableDao.Properties.Test_id.eq(testID));
+            List<LeaderBoardTable> leaderBoardTableList = queryBuilder.list();
+            if (leaderBoardTableList.size() > 0) {
+                leaderBoardTable = leaderBoardTableList.get(0);
+            }
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        return leaderBoardTable;
     }
 
 

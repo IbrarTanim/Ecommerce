@@ -75,7 +75,14 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         leaderBoardTable.setUser_id(user_id);
         leaderBoardTable.setTest_id(test_id);
         leaderBoardTable.setCreated_at(new Date());
-        databaseManager.insertLeaderBoardTable(leaderBoardTable);
+        LeaderBoardTable previousLeaderBoard = databaseManager.getLeaderBoardByUserID(user_id, test_id);
+        if (previousLeaderBoard==null) {
+            databaseManager.insertLeaderBoardTable(leaderBoardTable);
+        }else {
+            leaderBoardTable.setId(previousLeaderBoard.getId());
+            databaseManager.updateLeaderBoardtTable(leaderBoardTable);
+
+        }
     }
 
     @Override

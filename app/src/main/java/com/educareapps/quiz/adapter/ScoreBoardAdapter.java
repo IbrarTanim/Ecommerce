@@ -68,7 +68,7 @@ public class ScoreBoardAdapter extends BaseAdapter {
         holder.tvTestName.setText(testTable.getTest_name());
         int percent = ((int) scoreList.get(position).getScore() * 100) / (Integer.parseInt(testTable.getQuestion_start_to()) - Integer.parseInt(testTable.getQuestion_start_from()));
         holder.tvPercentage.setText(String.valueOf(percent + " %"));
-        holder.tvDuration.setText(scoreList.get(position).getTotal_duration());
+        holder.tvDuration.setText(scoreList.get(position).getTotal_duration()+" min");
         return rowView;
     }
 

@@ -17,9 +17,11 @@
         android:id="@+id/tvTestName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tvCourseName"
+        android:layout_marginTop="@dimen/thirty"
         android:padding="@dimen/five"
-        android:text="Bangla" />
+        android:text="Bangla"
+        />
 
     <TextView
         android:id="@+id/tvPercentage"
@@ -35,9 +37,9 @@
     <TextView
         android:id="@+id/tvDuration"
         android:layout_width="@dimen/sixty"
-        android:layout_height="@dimen/sixty"
+        android:layout_height="@dimen/forty"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/tvPercentage"
         android:gravity="center"
         android:padding="@dimen/five"
         android:text="5 min " />
