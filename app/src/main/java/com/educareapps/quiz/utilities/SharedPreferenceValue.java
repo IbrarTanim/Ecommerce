@@ -3,6 +3,8 @@ package com.educareapps.quiz.utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.educareapps.quiz.activities.DashBoardActivity;
+
 /**
  * Created by RAFI on 9/18/2016.
  */
@@ -33,5 +35,18 @@ public class SharedPreferenceValue {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("is_download_complete", isDownloadSuccess);
         editor.commit();
+    }
+
+    public static void setLeaderBoardOK(Context context, boolean isLeaderBoardOK) {
+        SharedPreferences settings = context.getSharedPreferences("LEADERBOARD_DOWNLOAD", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("is_leaderboard_ok", isLeaderBoardOK);
+        editor.commit();
+    }
+
+    public static boolean getLeaderBoardOK(Context context) {
+        SharedPreferences settings = context.getSharedPreferences("LEADERBOARD_DOWNLOAD", 0);
+        boolean mFlag = settings.getBoolean("is_leaderboard_ok", false);
+        return mFlag;
     }
 }

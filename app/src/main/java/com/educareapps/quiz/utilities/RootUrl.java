@@ -12,4 +12,5 @@ public class RootUrl {
     public static final String REGISTRATION_URL = RootUrl + "Users/Registration/";
     public static final String UPDATE_LEADER_BOARD_URL = RootUrl + "Users/UpdateLeaderBoard";
     public static final String INSERT_LEADER_BOARD_URL = RootUrl + "Users/InsertLeaderBoard";
+    public static final String GET_LEADER_BOARDS_FOR_USER_URL = RootUrl + "Users/GetLeaderboardByUserID";
 }
