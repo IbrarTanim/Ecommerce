@@ -14,6 +14,8 @@ import com.educareapps.quiz.R;
 import com.educareapps.quiz.dao.CSVQuestionTable;
 import com.educareapps.quiz.dao.TestTable;
 import com.educareapps.quiz.manager.DatabaseManager;
+import com.educareapps.quiz.pojo.CorrectAnswerTestSummary;
+import com.educareapps.quiz.pojo.WrongAnswerTestSummary;
 import com.educareapps.quiz.utilities.SharedPreferenceValue;
 import com.educareapps.quiz.utilities.StaticAccess;
 
@@ -43,8 +45,8 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     int endingQuestionIndex = 0;
 
     //// for getting correct answer & wrong answer question list
-    ArrayList<CSVQuestionTable> correctQuestionList;
-    ArrayList<CSVQuestionTable> wrongQuestionList;
+    ArrayList<CorrectAnswerTestSummary> correctQuestionList;
+    ArrayList<WrongAnswerTestSummary> wrongQuestionList;
     TextView tvStatus, tvTimer;
 
     LinearLayout llOptionOne, llOptionTwo, llOptionThree, llOptionFour;
@@ -236,12 +238,13 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     private void checkCorrectAnswer(String userSayingAnswer) {
         if (userSayingAnswer.equals(question.getAnswer())) {
             /// add correct question in the list first
-            correctQuestionList.add(question);
+            correctQuestionList.add(new CorrectAnswerTestSummary(question, btnRadioClicked));
+
             /// then check is test over or not then  move to next question
             checkTestOver();
         } else {
             /// add wrong questin in the list first
-            wrongQuestionList.add(question);
+            wrongQuestionList.add(new WrongAnswerTestSummary(question, btnRadioClicked));
             /// then check is test over or not then  move to next question
             checkTestOver();
         }
@@ -266,7 +269,6 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
     /// finish the test finally
     private void finishTheTest() {
         quizEndTime = System.currentTimeMillis();
-
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Date date1 = new Date(quizStartTime);
         Date date2 = new Date(quizEndTime);
@@ -287,6 +289,12 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         resIntent.putExtra(StaticAccess.TAG_COME_FROM, 1);
         resIntent.putExtra(StaticAccess.TAG_USER_ID, user_id);
         resIntent.putExtra(StaticAccess.TEST_ID, test_id);
+        //resIntent.putExtra(StaticAccess.TAG_CORRECT_ANSWER_LIST, correctQuestionList);
+        //resIntent.putParcelableArrayListExtra(StaticAccess.TAG_WRONG_ANSWER_LIST, (ArrayList<? extends Parcelable>) wrongQuestionList);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(StaticAccess.TAG_CORRECT_ANSWER_LIST, correctQuestionList);
+        bundle.putSerializable(StaticAccess.TAG_WRONG_ANSWER_LIST, wrongQuestionList);
+        resIntent.putExtras(bundle);
         startActivity(resIntent);
         finish();
     }

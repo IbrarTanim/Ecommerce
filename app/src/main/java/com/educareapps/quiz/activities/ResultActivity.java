@@ -11,8 +11,11 @@ import com.educareapps.quiz.R;
 import com.educareapps.quiz.dao.LeaderBoardTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.parser.LeaderBoardUpdater;
+import com.educareapps.quiz.pojo.CorrectAnswerTestSummary;
+import com.educareapps.quiz.pojo.WrongAnswerTestSummary;
 import com.educareapps.quiz.utilities.StaticAccess;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ResultActivity extends BaseActivity implements View.OnClickListener {
@@ -33,6 +36,9 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     long test_id = -1;
     DatabaseManager databaseManager;
     LeaderBoardUpdater leaderBoardUpdater;
+    //// for getting correct answer & wrong answer question list
+    ArrayList<CorrectAnswerTestSummary> correctQuestionList;
+    ArrayList<WrongAnswerTestSummary> wrongQuestionList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +56,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         question_set_id = getIntent().getLongExtra(StaticAccess.QUESTION_SET_ID, -1);
         user_id = getIntent().getLongExtra(StaticAccess.TAG_USER_ID, -1);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
-
-
+        correctQuestionList = (ArrayList<CorrectAnswerTestSummary>) getIntent().getSerializableExtra(StaticAccess.TAG_CORRECT_ANSWER_LIST);
+        wrongQuestionList = (ArrayList<WrongAnswerTestSummary>) getIntent().getSerializableExtra(StaticAccess.TAG_WRONG_ANSWER_LIST);
         tvTotalPlayed = (TextView) findViewById(R.id.tvTotalPlayed);
         tvCorrectAnswer = (TextView) findViewById(R.id.tvCorrectAnswer);
         tvWrongAnswer = (TextView) findViewById(R.id.tvWrongAnswer);
@@ -62,6 +68,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
 
         btnPlayAgain.setOnClickListener(this);
         ibtnCrossResult.setOnClickListener(this);
+        tvCorrectAnswer.setOnClickListener(this);
+        tvWrongAnswer.setOnClickListener(this);
         initResult();
     }
 
@@ -116,7 +124,14 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
                     finish();
                 }
                 break;
+            case R.id.tvCorrectAnswer:
+
+                break;
+            case R.id.tvWrongAnswer:
+                break;
         }
 
     }
+
+
 }
