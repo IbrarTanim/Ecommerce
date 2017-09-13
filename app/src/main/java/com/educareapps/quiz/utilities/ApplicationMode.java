@@ -9,5 +9,5 @@ package com.educareapps.quiz.utilities;
 
 public class ApplicationMode {
 
-    public static boolean devMode = true;
+    public static boolean devMode = false;
 }

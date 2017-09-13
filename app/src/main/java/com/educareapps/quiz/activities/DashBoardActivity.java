@@ -50,7 +50,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         user_id = SharedPreferenceValue.getUserID(activity);
         if (user_id != -1) {
             user = databaseManager.getUserTableById(user_id);
-            tvEmailDashboard.setText(user.getEmail());
+            if (user!=null) {
+                tvEmailDashboard.setText(user.getEmail());
+            }
             if (!SharedPreferenceValue.getLeaderBoardOK(activity)) {
                 if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
                     checkServerLeaderBoardForUser();
