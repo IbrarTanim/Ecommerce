@@ -57,11 +57,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                 } else {
                     Toast.makeText(activity, "Connect with internet then try again", Toast.LENGTH_SHORT).show();
                 }
-            }
-            scoreList = user.getLeaderBoardToUser();
-            if (scoreList != null && scoreList.size() > 0) {
-                scoreBoardAdapter = new ScoreBoardAdapter(scoreList, activity);
-                lvScoreBoard.setAdapter(scoreBoardAdapter);
+            } else {
+                loadAllData();
             }
         }
         ibtnBackDashBoard.setOnClickListener(this);
@@ -69,14 +66,22 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void checkServerLeaderBoardForUser() {
-        new LeaderBoardUpdater(activity).settingLeaderBoardAsUser(databaseManager.getUserTableById(user_id).getUser_id());
+        new LeaderBoardUpdater(activity).settingLeaderBoardAsUser(activity,databaseManager.getUserTableById(user_id).getUser_id());
+    }
+
+    public void loadAllData() {
+        scoreList = databaseManager.getLeaderBOardByServerUserID(user.getUser_id());
+        if (scoreList != null && scoreList.size() > 0) {
+            scoreBoardAdapter = new ScoreBoardAdapter(scoreList, activity);
+            lvScoreBoard.setAdapter(scoreBoardAdapter);
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ibtnBackDashBoard:
-               System.exit(0);
+                //System.exit(0);
                 finish();
 
                 break;

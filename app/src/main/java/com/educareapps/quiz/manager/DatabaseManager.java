@@ -498,6 +498,26 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
         return userTable;
     }
 
+    @Override
+    public List<LeaderBoardTable> getLeaderBOardByServerUserID(long sever_user_id) {
+        List<LeaderBoardTable> listLeaderBoardTable = null;
+
+        try {
+            openReadableDb();
+            LeaderBoardTableDao leaderBoardTableDao = daoSession.getLeaderBoardTableDao();
+            QueryBuilder<LeaderBoardTable> queryBuilder = leaderBoardTableDao.queryBuilder().where(LeaderBoardTableDao.Properties.User_id.eq(sever_user_id)).orderDesc(LeaderBoardTableDao.Properties.Id);
+            listLeaderBoardTable = queryBuilder.list();
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        if (listLeaderBoardTable != null) {
+            return listLeaderBoardTable;
+        }
+        return null;
+    }
+
     /************************************************ TestTable **********************************************************/
 
     @Override

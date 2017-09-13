@@ -40,7 +40,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_result);
         activity = this;
         databaseManager = new DatabaseManager(activity);
-        leaderBoardUpdater=new LeaderBoardUpdater(activity);
+        leaderBoardUpdater = new LeaderBoardUpdater(activity);
         totalPlayed = getIntent().getIntExtra(StaticAccess.TAG_TOTAL_PLAYED, -1);
         correctAnswer = getIntent().getIntExtra(StaticAccess.TAG_CORRECT_ANSWER, 0);
         wrongAnswer = getIntent().getIntExtra(StaticAccess.TAG_WRONG_ANSWER, 0);
@@ -72,25 +72,22 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         tvTotalScore.setText(String.valueOf(totalScore));
         tvTotalDuration.setText(String.valueOf(duration) + " min");
         LeaderBoardTable leaderBoardTable = new LeaderBoardTable();
-        leaderBoardTable.setUser_id(user_id);
-        leaderBoardTable.setTest_id(test_id);
         leaderBoardTable.setScore(correctAnswer);
         leaderBoardTable.setNegative(String.valueOf(wrongAnswer));
         leaderBoardTable.setTotal_duration(String.valueOf(duration));
         leaderBoardTable.setCreated_at(new Date());
-        LeaderBoardTable previousLeaderBoard = databaseManager.getLeaderBoardByUserID(user_id, test_id);
+        LeaderBoardTable previousLeaderBoard = databaseManager.getLeaderBoardByUserID(databaseManager.getUserTableById(user_id).getUser_id(), databaseManager.getTestTableById(test_id).getTest_id());
         if (previousLeaderBoard == null) {
-            databaseManager.insertLeaderBoardTable(leaderBoardTable);
             /// for making server req we must need this two id to reset other wise server system may fucked up
             leaderBoardTable.setUser_id(databaseManager.getUserTableById(user_id).getUser_id());
             leaderBoardTable.setTest_id(databaseManager.getTestTableById(test_id).getTest_id());
+            databaseManager.insertLeaderBoardTable(leaderBoardTable);
             leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
         } else {
             leaderBoardTable.setId(previousLeaderBoard.getId());
-            databaseManager.updateLeaderBoardtTable(leaderBoardTable);
-
             leaderBoardTable.setUser_id(databaseManager.getUserTableById(user_id).getUser_id());
             leaderBoardTable.setTest_id(databaseManager.getTestTableById(test_id).getTest_id());
+            databaseManager.updateLeaderBoardtTable(leaderBoardTable);
             leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
         }
     }

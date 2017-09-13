@@ -16,7 +16,6 @@ public class LeaderBoardActivity extends BaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
         activity = this;
-
         ibtnBackBoard = (ImageButton) findViewById(R.id.ibtnBackBoard);
         ibtnBackBoard.setOnClickListener(this);
     }
