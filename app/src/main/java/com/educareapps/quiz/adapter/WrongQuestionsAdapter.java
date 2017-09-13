@@ -123,22 +123,22 @@ public class WrongQuestionsAdapter extends BaseAdapter {
         /// then show fucking users what they actually pressed for answer
         switch (wrongQuestionList.get(position).getOptionSelected()) {
             case 1:
-                holder.ibtnOptionOneDisplay.setImageResource(R.drawable.ic_sorry);
+                holder.ibtnOptionOneDisplay.setImageResource(R.drawable.wrong);
                 holder.ibtnOptionOneDisplay.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                holder.ibtnOptionTwoDisplay.setImageResource(R.drawable.ic_sorry);
+                holder.ibtnOptionTwoDisplay.setImageResource(R.drawable.wrong);
 
                 holder.ibtnOptionTwoDisplay.setVisibility(View.VISIBLE);
 
                 break;
             case 3:
-                holder.ibtnOptionThreeDisplay.setImageResource(R.drawable.ic_sorry);
+                holder.ibtnOptionThreeDisplay.setImageResource(R.drawable.wrong);
 
                 holder.ibtnOptionThreeDisplay.setVisibility(View.VISIBLE);
                 break;
             case 4:
-                holder.ibtnOptionFourDisplay.setImageResource(R.drawable.ic_sorry);
+                holder.ibtnOptionFourDisplay.setImageResource(R.drawable.wrong);
                 holder.ibtnOptionFourDisplay.setVisibility(View.VISIBLE);
                 break;
         }
