@@ -83,9 +83,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ibtnBackDashBoard:
-                //System.exit(0);
-                finish();
-
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
                 break;
             case R.id.btnStart:
                 startActivity(new Intent(activity, CourseActivity.class));

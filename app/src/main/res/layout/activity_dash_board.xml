@@ -47,7 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight=".7"
-            android:background="@color/quiz_play_bg_color">
+            android:background="@color/quiz_play_bg_color"
+            android:layout_marginBottom="@dimen/fifty">
 
             <ListView
                 android:id="@+id/lvScoreBoard"

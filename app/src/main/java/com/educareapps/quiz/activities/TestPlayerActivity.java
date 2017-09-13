@@ -114,6 +114,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
 
     /// init view with proper question
     private void initViewWithQuestion() {
+        btnNextQuestion.setVisibility(View.GONE);
         resetOptions();
         tvStatus.setText("Played: " + String.valueOf(startingQuestionIndex + 1) + "/" + String.valueOf(endingQuestionIndex));
         tvQuestion.setText(question.getQuestion());
@@ -146,6 +147,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.llOptionOne:
                 btnRadioClicked = 1;
+                btnNextQuestion.setVisibility(View.VISIBLE);
                 ibtnOptionOneTick.setVisibility(View.VISIBLE);
                 ibtnOptionTwo.setVisibility(View.GONE);
                 ibtnOptionThree.setVisibility(View.GONE);
@@ -159,6 +161,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.llOptionTwo:
                 btnRadioClicked = 2;
+                btnNextQuestion.setVisibility(View.VISIBLE);
                 ibtnOptionTwo.setVisibility(View.VISIBLE);
                 ibtnOptionOneTick.setVisibility(View.GONE);
                 ibtnOptionThree.setVisibility(View.GONE);
@@ -171,6 +174,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.llOptionThree:
                 btnRadioClicked = 3;
+                btnNextQuestion.setVisibility(View.VISIBLE);
                 ibtnOptionThree.setVisibility(View.VISIBLE);
                 ibtnOptionOneTick.setVisibility(View.GONE);
                 ibtnOptionTwo.setVisibility(View.GONE);
@@ -183,6 +187,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.llOptionFour:
                 btnRadioClicked = 4;
+                btnNextQuestion.setVisibility(View.VISIBLE);
                 ibtnOptionFour.setVisibility(View.VISIBLE);
                 ibtnOptionOneTick.setVisibility(View.GONE);
                 ibtnOptionTwo.setVisibility(View.GONE);
@@ -198,7 +203,6 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
                 Intent intent = new Intent(activity, TestListActivity.class);
                 intent.putExtra(StaticAccess.QUESTION_SET_ID, aTest.getQuestion_set_id());
                 startActivity(intent);
-
                 break;
 
             case R.id.btnNextQuestion:
