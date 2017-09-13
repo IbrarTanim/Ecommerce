@@ -147,6 +147,7 @@ public interface IDatabaseManager {
     boolean deleteUserById(Long id);
 
     UserTable getUserByServerUserID(long user_id);
+
     List<LeaderBoardTable> getLeaderBOardByServerUserID(long sever_user_id);
 
     /************************************************ TestTable**********************************************************/
@@ -173,6 +174,8 @@ public interface IDatabaseManager {
    * getTestTableById
     * */
     TestTable getTestTableById(long id);
+
+    TestTable getTestTableByServerTestId(long server_TestID);
 
 
     /*
@@ -210,5 +213,5 @@ public interface IDatabaseManager {
     * */
     boolean deleteLeaderBoardById(Long id);
 
-LeaderBoardTable getLeaderBoardByUserID(long user_id,long testID);
+    LeaderBoardTable getLeaderBoardByUserID(long user_id, long testID);
 }

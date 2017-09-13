@@ -589,6 +589,25 @@ public class DatabaseManager implements IDatabaseManager, AsyncOperationListener
     }
 
     @Override
+    public TestTable getTestTableByServerTestId(long server_TestID) {
+        TestTable testTable = null;
+        try {
+            openWritableDb();
+            TestTableDao testTableDao = daoSession.getTestTableDao();
+            QueryBuilder<TestTable> queryBuilder = testTableDao.queryBuilder().where(TestTableDao.Properties.Test_id.eq(server_TestID));
+            List<TestTable> testTableList = queryBuilder.list();
+            if (testTableList.size() > 0) {
+                testTable = testTableList.get(0);
+            }
+            daoSession.clear();
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        return testTable;
+    }
+
+    @Override
     public synchronized boolean deleteTestById(Long id) {
 
         try {

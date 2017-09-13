@@ -59,8 +59,8 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
         setContentView(R.layout.activity_test_player);
         activity = this;
         databaseManager = new DatabaseManager(activity);
-        tvQuestion = (TextView) findViewById(R.id.tvQuestion);
         btnNextQuestion = (Button) findViewById(R.id.btnNextQuestion);
+        tvQuestion = (TextView) findViewById(R.id.tvQuestion);
 
         llOptionOne = (LinearLayout) findViewById(R.id.llOptionOne);
         llOptionTwo = (LinearLayout) findViewById(R.id.llOptionTwo);
@@ -236,7 +236,7 @@ public class TestPlayerActivity extends BaseActivity implements View.OnClickList
 
     /// check the user answer is correct or not
     private void checkCorrectAnswer(String userSayingAnswer) {
-        if (userSayingAnswer.equals(question.getAnswer())) {
+        if (userSayingAnswer.equalsIgnoreCase(question.getAnswer())) {
             /// add correct question in the list first
             correctQuestionList.add(new CorrectAnswerTestSummary(question, btnRadioClicked));
 

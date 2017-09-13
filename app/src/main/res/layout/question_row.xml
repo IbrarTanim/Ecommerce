@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".3"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvQuestionDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/app_color"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/ten"
+                    android:paddingRight="@dimen/ten"
+                    android:text="Questions"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/twenty_five" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".7"
+            android:background="@color/quiz_play_bg_color"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="4">
+
+                    <LinearLayout
+                        android:id="@+id/llOptionOneDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_margin="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_bg"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionOneDisplay"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/greyLight"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionOneDisplay"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/fifteen"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llOptionTwoDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginLeft="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_bg"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionTwoDisplay"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/greyLight"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionTwoDisplay"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/fifteen"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llOptionThreeDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginLeft="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_bg"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionThreeDisplay"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/greyLight"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionThreeDisplay"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/fifteen"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llOptionFourDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/zero"
+                        android:layout_marginBottom="@dimen/five"
+                        android:layout_marginLeft="@dimen/five"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_bg"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvOptionFourDisplay"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/ten"
+                            android:layout_weight=".8"
+                            android:gravity="left|center"
+                            android:text="Option One"
+                            android:textColor="@color/greyLight"
+                            android:textSize="@dimen/twenty" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2">
+
+                            <ImageButton
+                                android:id="@+id/ibtnOptionFourDisplay"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:background="@android:color/transparent"
+                                android:padding="@dimen/fifteen"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_tick" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
