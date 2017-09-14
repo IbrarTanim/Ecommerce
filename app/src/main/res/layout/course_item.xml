@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/hundred"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/cell_bg"
-    android:padding="@dimen/five"
-    android:weightSum="1">
+    android:padding="@dimen/one">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/zero"
-        android:layout_weight=".8"
-        android:orientation="vertical">
+        android:layout_height="@dimen/hundred"
+        android:background="@drawable/cell_bg"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/ivCoursePhoto"
-            android:layout_width="@dimen/fifty"
-            android:layout_height="@dimen/fifty"
-            android:background="@android:color/transparent"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_logo" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".6"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivCoursePhoto"
+                android:layout_width="@dimen/fifty"
+                android:layout_height="@dimen/fifty"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_logo" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCourseTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight=".2"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/greyLight"
+            android:textSize="@dimen/ten" />
 
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/tvCourseTitle"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/zero"
-        android:gravity="center"
-        android:layout_weight=".2"
-        android:text=""
-        android:textColor="@color/greyLight"
-        android:textSize="@dimen/ten" />
-
-</LinearLayout> 
+</RelativeLayout>

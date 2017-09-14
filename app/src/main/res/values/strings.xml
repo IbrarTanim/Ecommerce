@@ -24,12 +24,16 @@
     <string name="powerdBy">Powered by Educare Apps Ltd</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="no_account_yet_create_one">OR\n Do you want to register</string>
+    <string name="login">LOGIN</string>
+    <string name="no_account_yet_create_one">OR\n Do you want to register?</string>
     <string name="loginOption">OR\n Do you want to Login</string>
-    <string name="register">Register</string>
+    <string name="register">REGISTER</string>
     <string name="select_subject">Select Subject</string>
     <string name="select_test">Select Test</string>
+    <string name="login_with_facebook">Login with Facebook</string>
+    <string name="login_with_g">Continue with G+</string>
 
+    <string name="facebook_app_id">507421042948057</string>
+    <string name="fb_login_protocol_scheme">fb507421042948057</string>
 
 </resources>

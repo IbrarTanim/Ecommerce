@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_color">
 
 
     <com.educareapps.quiz.utilities.CircularTextView
-        android:layout_width="@dimen/two_hundred"
-        android:layout_height="@dimen/two_hundred"
+        android:id="@+id/ctvEduquiz"
+        android:layout_width="@dimen/three_hundred"
+        android:layout_height="@dimen/three_hundred"
         android:layout_centerInParent="true"
+        android:fontFamily="sk"
         android:gravity="center"
         android:text="@string/eduquiz"
         android:textColor="@color/white"
@@ -21,13 +22,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:weightSum="9">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight="2.5" />
+            android:layout_weight="1.5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,18 +43,24 @@
             <View
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".5" />
+                android:layout_weight=".3" />
 
-            <TextView
-                android:id="@+id/textView"
+            <RelativeLayout
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".2"
-                android:gravity="right"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="@dimen/seventy"
-                android:textStyle="bold" />
+                android:layout_weight=".4">
+
+                <TextView
+                    android:id="@+id/tvPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/seventy"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <View
                 android:layout_width="@dimen/zero"
@@ -65,20 +74,21 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight="5.5" />
+            android:layout_weight="6.5" />
 
 
     </LinearLayout>
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/forty"
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/tvshimmer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/powerdBy"
         android:textColor="@color/white"
-        android:textSize="@dimen/twenty_five" />
-
-
+        android:textSize="@dimen/twenty_five"
+        app:reflectionColor="@color/app_color" />
 </RelativeLayout>

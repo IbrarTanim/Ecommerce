@@ -58,17 +58,18 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginLeft="@dimen/five"
-                        android:layout_marginRight="@dimen/five"
-                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginLeft="@dimen/one"
+                        android:layout_marginRight="@dimen/one"
+                        android:layout_marginTop="@dimen/one"
                         android:clipToPadding="true"
                         android:columnWidth="120dp"
                         android:gravity="center"
-                        android:horizontalSpacing="@dimen/five"
+                        android:horizontalSpacing="@dimen/one"
                         android:listSelector="#00000000"
                         android:numColumns="3"
                         android:stretchMode="columnWidth"
-                        android:verticalSpacing="@dimen/five" />
+                        android:verticalSpacing="@dimen/one" />
+
                 </LinearLayout>
             </ScrollView>
 
