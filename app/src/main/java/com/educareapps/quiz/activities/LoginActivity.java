@@ -38,8 +38,6 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -88,7 +86,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             }
         });*/
 
-<<<<<<< HEAD
+
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         tvLink_signup.setOnClickListener(this);
@@ -98,18 +96,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         callbackManager = CallbackManager.Factory.create();
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
-=======
-                btnLogin.setVisibility(View.GONE);
-                tvLink_signup.setVisibility(View.GONE);
-                btnAlreadyRegistered.setVisibility(View.VISIBLE);
-                btnRegister.setVisibility(View.VISIBLE);
-                /*loginButton.setVisibility(View.GONE);
-                btnGmail.setVisibility(View.GONE);*/
-                tvRegister.setVisibility(View.VISIBLE);
-                tvLogin.setVisibility(View.GONE);
 
-            }
-        });
+//                btnLogin.setVisibility(View.GONE);
+//                tvLink_signup.setVisibility(View.GONE);
+//                btnAlreadyRegistered.setVisibility(View.VISIBLE);
+//                btnRegister.setVisibility(View.VISIBLE);
+//                /*loginButton.setVisibility(View.GONE);
+//                btnGmail.setVisibility(View.GONE);*/
+//                tvRegister.setVisibility(View.VISIBLE);
+//                tvLogin.setVisibility(View.GONE);
+//
+//            }
+//        });
         btnAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +122,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 tvLogin.setVisibility(View.VISIBLE);
             }
         });
->>>>>>> bf0190e416dae32e248252aca757e09d64d89484
+
 
         loginButton.setReadPermissions("email");
         //loginButton.se

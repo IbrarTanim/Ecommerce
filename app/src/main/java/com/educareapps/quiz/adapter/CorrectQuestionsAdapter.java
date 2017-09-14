@@ -1,5 +1,6 @@
 package com.educareapps.quiz.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.educareapps.quiz.R;
+import com.educareapps.quiz.activities.ResultActivity;
 import com.educareapps.quiz.pojo.CorrectAnswerTestSummary;
+import com.educareapps.quiz.utilities.DialogNavBarHide;
 
 import java.util.ArrayList;
 
@@ -23,11 +26,14 @@ public class CorrectQuestionsAdapter extends BaseAdapter {
     ArrayList<CorrectAnswerTestSummary> correctQuestionList;
     private static LayoutInflater inflater = null;
 
+    ResultActivity activity;
+
     public CorrectQuestionsAdapter(Context context, ArrayList<CorrectAnswerTestSummary> correctQuestionList) {
         this.context = context;
         this.correctQuestionList = correctQuestionList;
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        activity = (ResultActivity) context;
     }
 
     @Override
@@ -52,10 +58,10 @@ public class CorrectQuestionsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Holder holder = new Holder();
         View rowView;
-        rowView = inflater.inflate(R.layout.question_row, null);
+        rowView = inflater.inflate(R.layout.correct_cell, null);
         holder.tvQuestionDisplay = (TextView) rowView.findViewById(R.id.tvQuestionDisplay);
 
         holder.llOptionOneDisplay = (LinearLayout) rowView.findViewById(R.id.llOptionOneDisplay);
@@ -73,8 +79,45 @@ public class CorrectQuestionsAdapter extends BaseAdapter {
         holder.ibtnOptionTwoDisplay = (ImageButton) rowView.findViewById(R.id.ibtnOptionTwoDisplay);
         holder.ibtnOptionThreeDisplay = (ImageButton) rowView.findViewById(R.id.ibtnOptionThreeDisplay);
         holder.ibtnOptionFourDisplay = (ImageButton) rowView.findViewById(R.id.ibtnOptionFourDisplay);
-
         holder.tvQuestionDisplay.setText(correctQuestionList.get(position).getPlayedQuestion().getQuestion());
+
+
+        holder.tvQuestionDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullQuestionDialog(correctQuestionList.get(position).getPlayedQuestion().getQuestion());
+            }
+        });
+
+        holder.llOptionOneDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullQuestionDialog(correctQuestionList.get(position).getPlayedQuestion().getOption_one());
+            }
+        });
+
+        holder.llOptionTwoDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullQuestionDialog(correctQuestionList.get(position).getPlayedQuestion().getOption_two());
+            }
+        });
+
+        holder.llOptionThreeDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullQuestionDialog(correctQuestionList.get(position).getPlayedQuestion().getOption_three());
+            }
+        });
+
+        holder.llOptionFourDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullQuestionDialog(correctQuestionList.get(position).getPlayedQuestion().getOption_four());
+            }
+        });
+
+
 
         holder.tvOptionOneDisplay.setText(correctQuestionList.get(position).getPlayedQuestion().getOption_one());
         holder.tvOptionTwoDisplay.setText(correctQuestionList.get(position).getPlayedQuestion().getOption_two());
@@ -109,6 +152,19 @@ public class CorrectQuestionsAdapter extends BaseAdapter {
                 break;
         }
         return rowView;
+    }
+
+
+    public void showFullQuestionDialog(String text) {
+        final Dialog dialog = new Dialog(activity, R.style.CustomAlertDialog);
+        dialog.setContentView(R.layout.full_question_layout);
+        dialog.setCancelable(true);
+
+        TextView tvFullQuestion = (TextView) dialog.findViewById(R.id.tvFullQuestion);
+        tvFullQuestion.setText(text);
+
+
+        DialogNavBarHide.navBarHide(activity, dialog);
     }
 
 }
