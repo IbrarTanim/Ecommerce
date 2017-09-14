@@ -38,8 +38,6 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -88,7 +86,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             }
         });*/
 
-<<<<<<< HEAD
+
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         tvLink_signup.setOnClickListener(this);
@@ -98,33 +96,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         callbackManager = CallbackManager.Factory.create();
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
-=======
-                btnLogin.setVisibility(View.GONE);
-                tvLink_signup.setVisibility(View.GONE);
-                btnAlreadyRegistered.setVisibility(View.VISIBLE);
-                btnRegister.setVisibility(View.VISIBLE);
-                /*loginButton.setVisibility(View.GONE);
-                btnGmail.setVisibility(View.GONE);*/
-                tvRegister.setVisibility(View.VISIBLE);
-                tvLogin.setVisibility(View.GONE);
 
-            }
-        });
-        btnAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btnLogin.setVisibility(View.VISIBLE);
-                tvLink_signup.setVisibility(View.VISIBLE);
-                btnAlreadyRegistered.setVisibility(View.GONE);
-                btnRegister.setVisibility(View.GONE);
-                /*loginButton.setVisibility(View.VISIBLE);
-                btnGmail.setVisibility(View.VISIBLE);*/
 
-                tvRegister.setVisibility(View.GONE);
-                tvLogin.setVisibility(View.VISIBLE);
-            }
-        });
->>>>>>> bf0190e416dae32e248252aca757e09d64d89484
+//        btnAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                btnLogin.setVisibility(View.VISIBLE);
+//                tvLink_signup.setVisibility(View.VISIBLE);
+//                btnAlreadyRegistered.setVisibility(View.GONE);
+//                btnRegister.setVisibility(View.GONE);
+//                /*loginButton.setVisibility(View.VISIBLE);
+//                btnGmail.setVisibility(View.VISIBLE);*/
+//
+//                tvRegister.setVisibility(View.GONE);
+//                tvLogin.setVisibility(View.VISIBLE);
+//            }
+//        });
+
 
         loginButton.setReadPermissions("email");
         //loginButton.se
@@ -199,7 +187,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     } else {
 
 
-
                         JSONObject user = jsonObject.getJSONObject(StaticAccess.USER_KEY_TAG);
                         int user_id = user.getInt("user_id");
                         String user_name = user.getString("user_name");
@@ -261,7 +248,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         AppController.getInstance().addToRequestQueue(loginReq);
     }
 
-    private void doLogin(final String userNameEmail, final String password) {
+    private void doLogin(final String userNameEmail, final String password, final String userType) {
         showProgress();
         StringRequest loginReq = new StringRequest(Request.Method.POST, RootUrl.LOGIN_URL, new Response.Listener<String>() {
             @Override
@@ -321,8 +308,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("usernameEmail", userNameEmail);
+                params.put("email", userNameEmail);
                 params.put("password", password);
+                params.put("regType", userType);
                 return params;
             }
 
@@ -381,7 +369,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     etPassword.setError("Field can not be empty !");
 
                 } else {
-                    doLogin(emailUserName, password);
+                    doLogin(emailUserName, password, StaticAccess.KEY_NORMAL_REGISTRATION_TYPE);
                 }
                 break;
 
@@ -394,7 +382,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 } else if (TextUtils.isEmpty(passwordReg)) {
                     etPassword.setError("Field can not be empty !");
                 } else {
-                    doRegistration(email, passwordReg,StaticAccess.KEY_NORMAL_REGISTRATION_TYPE);
+                    doRegistration(email, passwordReg, StaticAccess.KEY_NORMAL_REGISTRATION_TYPE);
                 }
 
                 break;
@@ -426,10 +414,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
         }
     }
-//faceBook
+
+    //faceBook
     private void getFacebookData(JSONObject object) {
 //       Bundle bundle = new Bundle();
-        String email="";
+        String email = "";
         try {
             String id = object.getString("id");
 
@@ -450,12 +439,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 bundle.putString("last_name", object.getString("last_name"));*/
 
             if (object.has("email"))
-                 email=object.getString("email");
+                email = object.getString("email");
 
 
-            if(email.length()>0){
+            if (email.length() > 0) {
 
-                doRegistration(email,"",StaticAccess.KEY_FACEBOOK_REGISTRATION_TYPE);
+                doRegistration(email, "", StaticAccess.KEY_FACEBOOK_REGISTRATION_TYPE);
             }
 
         } catch (Exception e) {
