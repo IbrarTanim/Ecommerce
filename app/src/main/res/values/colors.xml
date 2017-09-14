@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="app_color">#8BC24A</color>
+    <color name="app_color">#74E4BC</color>
     <color name="quiz_play_bg_color">#efefefef</color>
 
     <color name="editor_background">#FF666666</color>

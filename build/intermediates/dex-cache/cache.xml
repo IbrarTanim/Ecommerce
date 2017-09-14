@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_42798de11ed53ea1548822490d0dc2ddc0ea0493\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.3.0\73c49077166faa4c3c0059c5f583d1d7bd1475fe\core-3.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\core-3.3.0_f7bd46ffff0a5f0807f5f3757d1455dabfaea8bd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\7eaa7f98a50ff258a4d19976f5f5846c1aa70b11\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_756a8a675f8a88347aefca8a5ac822c578199844\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\8297aca464b15857b33600962c446be5336108da\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="807751a24cf96566fd8675517c94d8463cf364db">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_464bb4bf3e61586253d87e03ce6c0cc39a985b2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\cf198d940445c1673d113eec2bea9ecd6f60a0af\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e09663005d70dcedff0bb77211b9ac52d8b69421">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_587b6b663702bdb54a62b4da76e6f8fb8d9ff3ac\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9a47d975f6a370ed3e47c02ccf449d12b8f4a19">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_95fad01204601a8d29fee866ae97ed1675b075bc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\bolts-tasks-1.4.0_2fe8bc7b66f13cf1f8b60b961600b1307917a928\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.android\build-cache\2d783561e1df8d46e0066bde20f8ea22649d277b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="605019d3e4be636f5dd74c83d05198994e3a2ce9">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a15d23ff6716357cb53c49d1d75eef919d88b90f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Rakib\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="D:\Android Studio WorkSpace\Ecommerce\app\build\intermediates\transforms\dex\debug\folders\1000\10\bolts-applinks-1.4.0_53a58bac045791fae0c9fe9578c551f023cbc5c1\classes.dex" />
+    </item>
+
+</items>
