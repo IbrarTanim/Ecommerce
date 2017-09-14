@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
             android:layout_weight=".5"
-            android:background="#74E4BC"
+            android:background="@color/app_color"
             android:orientation="horizontal"
             android:weightSum="1">
 
@@ -49,7 +49,7 @@
                         android:gravity="center"
                         android:text="@string/register"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/thirty"
+                        android:textSize="@dimen/fifty"
                         android:visibility="gone" />
 
                     <TextView
@@ -59,7 +59,7 @@
                         android:gravity="center"
                         android:text="@string/login"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/thirty" />
+                        android:textSize="@dimen/fifty" />
 
 
                 </RelativeLayout>
@@ -235,8 +235,9 @@
                     android:layout_weight=".1"
                     android:background="@drawable/gmail_btn"
                     android:text="@string/login_with_g"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/fifteen" />
+                    android:textSize="@dimen/twenty" />
 
                 <View
                     android:layout_width="match_parent"
