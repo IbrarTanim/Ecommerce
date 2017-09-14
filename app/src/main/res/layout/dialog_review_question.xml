@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlType"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hundred"
+        android:background="@color/app_color">
+
+        <TextView
+            android:id="@+id/tvQuestionListType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/thirty" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lvQuestionList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlType">
+
+    </ListView>
+    <ImageButton
+        android:id="@+id/ibtnTestPlayerBackDisplay"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/five"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back" />
+</RelativeLayout>

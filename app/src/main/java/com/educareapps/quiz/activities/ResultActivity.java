@@ -1,18 +1,27 @@
 package com.educareapps.quiz.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.educareapps.quiz.R;
+import com.educareapps.quiz.adapter.CorrectQuestionsAdapter;
+import com.educareapps.quiz.adapter.WrongQuestionsAdapter;
 import com.educareapps.quiz.dao.LeaderBoardTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.parser.LeaderBoardUpdater;
+import com.educareapps.quiz.pojo.CorrectAnswerTestSummary;
+import com.educareapps.quiz.pojo.WrongAnswerTestSummary;
+import com.educareapps.quiz.utilities.DialogNavBarHide;
 import com.educareapps.quiz.utilities.StaticAccess;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ResultActivity extends BaseActivity implements View.OnClickListener {
@@ -33,6 +42,10 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
     long test_id = -1;
     DatabaseManager databaseManager;
     LeaderBoardUpdater leaderBoardUpdater;
+    //// for getting correct answer & wrong answer question list
+    ArrayList<CorrectAnswerTestSummary> correctQuestionList;
+    ArrayList<WrongAnswerTestSummary> wrongQuestionList;
+    LinearLayout lnCorrectAnsBlock, lnWrongAnsBlock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +53,7 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_result);
         activity = this;
         databaseManager = new DatabaseManager(activity);
-        leaderBoardUpdater=new LeaderBoardUpdater(activity);
+        leaderBoardUpdater = new LeaderBoardUpdater(activity);
         totalPlayed = getIntent().getIntExtra(StaticAccess.TAG_TOTAL_PLAYED, -1);
         correctAnswer = getIntent().getIntExtra(StaticAccess.TAG_CORRECT_ANSWER, 0);
         wrongAnswer = getIntent().getIntExtra(StaticAccess.TAG_WRONG_ANSWER, 0);
@@ -50,8 +63,10 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         question_set_id = getIntent().getLongExtra(StaticAccess.QUESTION_SET_ID, -1);
         user_id = getIntent().getLongExtra(StaticAccess.TAG_USER_ID, -1);
         test_id = getIntent().getLongExtra(StaticAccess.TEST_ID, -1);
-
-
+        correctQuestionList = (ArrayList<CorrectAnswerTestSummary>) getIntent().getSerializableExtra(StaticAccess.TAG_CORRECT_ANSWER_LIST);
+        wrongQuestionList = (ArrayList<WrongAnswerTestSummary>) getIntent().getSerializableExtra(StaticAccess.TAG_WRONG_ANSWER_LIST);
+        lnCorrectAnsBlock = (LinearLayout) findViewById(R.id.lnCorrectAnsBlock);
+        lnWrongAnsBlock = (LinearLayout) findViewById(R.id.lnWrongAnsBlock);
         tvTotalPlayed = (TextView) findViewById(R.id.tvTotalPlayed);
         tvCorrectAnswer = (TextView) findViewById(R.id.tvCorrectAnswer);
         tvWrongAnswer = (TextView) findViewById(R.id.tvWrongAnswer);
@@ -62,6 +77,8 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
 
         btnPlayAgain.setOnClickListener(this);
         ibtnCrossResult.setOnClickListener(this);
+        lnCorrectAnsBlock.setOnClickListener(this);
+        lnWrongAnsBlock.setOnClickListener(this);
         initResult();
     }
 
@@ -72,25 +89,24 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
         tvTotalScore.setText(String.valueOf(totalScore));
         tvTotalDuration.setText(String.valueOf(duration) + " min");
         LeaderBoardTable leaderBoardTable = new LeaderBoardTable();
-        leaderBoardTable.setUser_id(user_id);
-        leaderBoardTable.setTest_id(test_id);
         leaderBoardTable.setScore(correctAnswer);
         leaderBoardTable.setNegative(String.valueOf(wrongAnswer));
         leaderBoardTable.setTotal_duration(String.valueOf(duration));
         leaderBoardTable.setCreated_at(new Date());
-        LeaderBoardTable previousLeaderBoard = databaseManager.getLeaderBoardByUserID(user_id, test_id);
+        long serverUserid = databaseManager.getUserTableById(user_id).getUser_id();
+        long serverTestId = databaseManager.getTestTableById(test_id).getTest_id();
+        LeaderBoardTable previousLeaderBoard = databaseManager.getLeaderBoardByUserID(databaseManager.getUserTableById(user_id).getUser_id(), databaseManager.getTestTableById(test_id).getTest_id());
         if (previousLeaderBoard == null) {
-            databaseManager.insertLeaderBoardTable(leaderBoardTable);
             /// for making server req we must need this two id to reset other wise server system may fucked up
-            leaderBoardTable.setUser_id(databaseManager.getUserTableById(user_id).getUser_id());
-            leaderBoardTable.setTest_id(databaseManager.getTestTableById(test_id).getTest_id());
+            leaderBoardTable.setUser_id(serverUserid);
+            leaderBoardTable.setTest_id(serverTestId);
+            databaseManager.insertLeaderBoardTable(leaderBoardTable);
             leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
         } else {
             leaderBoardTable.setId(previousLeaderBoard.getId());
+            leaderBoardTable.setUser_id(serverUserid);
+            leaderBoardTable.setTest_id(serverTestId);
             databaseManager.updateLeaderBoardtTable(leaderBoardTable);
-
-            leaderBoardTable.setUser_id(databaseManager.getUserTableById(user_id).getUser_id());
-            leaderBoardTable.setTest_id(databaseManager.getTestTableById(test_id).getTest_id());
             leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
         }
     }
@@ -119,7 +135,56 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
                     finish();
                 }
                 break;
+            case R.id.lnCorrectAnsBlock:
+                if (correctQuestionList.size() > 0) {
+                    showCorrectQuestionDialog();
+                }
+                break;
+            case R.id.lnWrongAnsBlock:
+                if (wrongQuestionList.size() > 0) {
+                    showWrongQuestionDialog();
+                }
+                break;
         }
 
     }
+
+    public void showCorrectQuestionDialog() {
+        final Dialog dialog = new Dialog(activity, R.style.CustomAlertDialog);
+        dialog.setContentView(R.layout.dialog_review_question);
+        dialog.setCancelable(false);
+        TextView tvQuestionListType = (TextView) dialog.findViewById(R.id.tvQuestionListType);
+        tvQuestionListType.setText("Correct Question List");
+        ImageButton ibtnTestPlayerBackDisplay = (ImageButton) dialog.findViewById(R.id.ibtnTestPlayerBackDisplay);
+        ListView lvQuestionList = (ListView) dialog.findViewById(R.id.lvQuestionList);
+        CorrectQuestionsAdapter correctQuestionsAdapter = new CorrectQuestionsAdapter(activity, correctQuestionList);
+        lvQuestionList.setAdapter(correctQuestionsAdapter);
+        ibtnTestPlayerBackDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        DialogNavBarHide.navBarHide(activity, dialog);
+    }
+
+    public void showWrongQuestionDialog() {
+        final Dialog dialog = new Dialog(activity, R.style.CustomAlertDialog);
+        dialog.setContentView(R.layout.dialog_review_question);
+        dialog.setCancelable(false);
+        TextView tvQuestionListType = (TextView) dialog.findViewById(R.id.tvQuestionListType);
+        tvQuestionListType.setText("Wrong Question List");
+        ImageButton ibtnTestPlayerBackDisplay = (ImageButton) dialog.findViewById(R.id.ibtnTestPlayerBackDisplay);
+        ListView lvQuestionList = (ListView) dialog.findViewById(R.id.lvQuestionList);
+        WrongQuestionsAdapter wrongQuestionsAdapter = new WrongQuestionsAdapter(activity, wrongQuestionList);
+        lvQuestionList.setAdapter(wrongQuestionsAdapter);
+        ibtnTestPlayerBackDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        DialogNavBarHide.navBarHide(activity, dialog);
+    }
+
 }

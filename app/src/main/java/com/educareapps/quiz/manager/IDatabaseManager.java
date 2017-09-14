@@ -9,6 +9,7 @@ import com.educareapps.quiz.dao.TestTable;
 import com.educareapps.quiz.dao.UserTable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Interface that provides methods for managing the database inside the Application.
@@ -147,6 +148,8 @@ public interface IDatabaseManager {
 
     UserTable getUserByServerUserID(long user_id);
 
+    List<LeaderBoardTable> getLeaderBOardByServerUserID(long sever_user_id);
+
     /************************************************ TestTable**********************************************************/
 
       /*
@@ -171,6 +174,8 @@ public interface IDatabaseManager {
    * getTestTableById
     * */
     TestTable getTestTableById(long id);
+
+    TestTable getTestTableByServerTestId(long server_TestID);
 
 
     /*
@@ -208,5 +213,5 @@ public interface IDatabaseManager {
     * */
     boolean deleteLeaderBoardById(Long id);
 
-LeaderBoardTable getLeaderBoardByUserID(long user_id,long testID);
+    LeaderBoardTable getLeaderBoardByUserID(long user_id, long testID);
 }

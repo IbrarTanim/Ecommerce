@@ -62,13 +62,23 @@ public class ScoreBoardAdapter extends BaseAdapter {
         holder.tvTestName = (TextView) rowView.findViewById(R.id.tvTestName);
         holder.tvPercentage = (TextView) rowView.findViewById(R.id.tvPercentage);
         holder.tvDuration = (TextView) rowView.findViewById(R.id.tvDuration);
-        TestTable testTable = databaseManager.getTestTableById(scoreList.get(position).getTest_id());
+        LeaderBoardTable leaderBoard = scoreList.get(position);
+        TestTable testTable = databaseManager.getTestTableByServerTestId(leaderBoard.getTest_id());
+
         QuestionSetTable questionSetTable = databaseManager.getQuestionSetTableById(testTable.getQuestion_set_id());
+
         holder.tvCourseName.setText(String.valueOf(questionSetTable.getTitle()));
+
         holder.tvTestName.setText(testTable.getTest_name());
-        int percent = ((int) scoreList.get(position).getScore() * 100) / (Integer.parseInt(testTable.getQuestion_start_to()) - Integer.parseInt(testTable.getQuestion_start_from()));
+        int score = (int) leaderBoard.getScore();
+        int percent = (score * 100) / (Integer.parseInt(testTable.getQuestion_start_to()) - Integer.parseInt(testTable.getQuestion_start_from()));
         holder.tvPercentage.setText(String.valueOf(percent + " %"));
-        holder.tvDuration.setText(scoreList.get(position).getTotal_duration()+" min");
+        holder.tvDuration.setText(leaderBoard.getTotal_duration() + " min");
+        testTable = null;
+        questionSetTable = null;
+        score = 0;
+        percent = 0;
+        leaderBoard = null;
         return rowView;
     }
 

@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.educareapps.quiz.activities.DashBoardActivity;
 import com.educareapps.quiz.dao.LeaderBoardTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.utilities.AppController;
@@ -97,55 +98,10 @@ public class LeaderBoardUpdater {
         return isUpdate;
     }
 
-    boolean isInserted = false;
-
-    public boolean insertUserLeaderboard(final LeaderBoardTable leaderBoardTable) {
-        showProgress();
-        StringRequest insertLeaderBoardReq = new StringRequest(Request.Method.POST, RootUrl.INSERT_LEADER_BOARD_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(response);
-                    String svrResponse = jsonObject.getString(StaticAccess.TAG_USER_VALID_STATUS);
-                    if (svrResponse.equals("error")) {
-                        isInserted = false;
-                    } else {
-                        isInserted = true;
-                    }
-                } catch (JSONException e) {
-                    isInserted = false;
-                }
-                hideProgress();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                isInserted = false;
-                hideProgress();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("user_id", String.valueOf(leaderBoardTable.getUser_id()));
-                params.put("test_id", String.valueOf(leaderBoardTable.getTest_id()));
-                params.put("score", String.valueOf(leaderBoardTable.getScore()));
-                params.put("total_duration", leaderBoardTable.getTotal_duration());
-                params.put("negative", leaderBoardTable.getNegative());
-                return params;
-            }
-
-        };
-        AppController.getInstance().addToRequestQueue(insertLeaderBoardReq);
-        return isInserted;
-    }
-
     JSONArray leaderBoardJsonArr;
     boolean isLeaderBoardSettingDone = false;
 
-    public boolean settingLeaderBoardAsUser(final long user_id) {
+    public boolean settingLeaderBoardAsUser(final DashBoardActivity activity, final long user_id) {
         showProgress();
         final DatabaseManager databaseManager = new DatabaseManager(context);
         StringRequest insertLeaderBoardReq = new StringRequest(Request.Method.POST, RootUrl.GET_LEADER_BOARDS_FOR_USER_URL, new Response.Listener<String>() {
@@ -173,20 +129,19 @@ public class LeaderBoardUpdater {
                                 leaderBoard.setNegative(lederBoardJson.getString(TAG_NEGATIVE));
                                 leaderBoard.setIsHighscore(Boolean.parseBoolean(lederBoardJson.getString(TAG_HIGHSCORE)));
                                 try {
-                                    leaderBoard.setCreated_at(new SimpleDateFormat("dd-mm-yyy").parse(lederBoardJson.getString(TAG_CREATED_AT)));
+                                    leaderBoard.setCreated_at(new SimpleDateFormat("mm-dd-yyy").parse(lederBoardJson.getString(TAG_CREATED_AT)));
                                 } catch (ParseException e) {
                                     leaderBoard.setCreated_at(new Date());
                                 }
                                 LeaderBoardTable previousLeaderboard = databaseManager.getLeaderBoardByUserID(user_id, test_id);
                                 if (previousLeaderboard == null) {
                                     databaseManager.insertLeaderBoardTable(leaderBoard);
-
                                 }
 
                             }
                             isLeaderBoardSettingDone = true;
                             SharedPreferenceValue.setLeaderBoardOK(context, true);
-
+                            activity.loadAllData();
                         }
                     }
                 } catch (JSONException e) {

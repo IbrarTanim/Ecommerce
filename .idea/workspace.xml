@@ -67,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
           <provider editor-type-id="android-designer2">
             <state />
@@ -92,6 +92,38 @@
                 <element signature="e#8965#8987#0" expanded="true" />
                 <element signature="e#9078#9094#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_course.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_course.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
+              <folding>
+                <element signature="e#2396#2408#0" expanded="true" />
+                <element signature="e#2460#2472#0" expanded="true" />
+                <element signature="e#2522#2534#0" expanded="true" />
+                <element signature="e#2739#2751#0" expanded="true" />
+                <element signature="e#2962#2974#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_test_list.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test_list.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2375,9 +2407,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/DashBoardActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/utilities/ApplicationMode.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_course.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/course_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_test_list.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/facebook_btn.xml" />
@@ -2391,8 +2421,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/login_btn_bg.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/gobtn_bg.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/activities/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_course.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_test_list.xml" />
       </list>
     </option>
   </component>
@@ -2427,7 +2459,56 @@
     </navigator>
     <panes>
       <pane id="AndroidView">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ecommerce" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ecommerce" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ecommerce" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ecommerce" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="Scope" />
       <pane id="Scratches" />
@@ -2920,7 +3001,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/DatabaseManager.java</url>
-          <line>560</line>
+          <line>598</line>
           <properties />
           <option name="timeStamp" value="40" />
         </line-breakpoint>
@@ -2974,19 +3055,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/DatabaseManager.java</url>
-          <line>511</line>
+          <line>549</line>
           <properties />
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/DatabaseManager.java</url>
-          <line>611</line>
+          <line>650</line>
           <properties />
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/educareapps/quiz/manager/DatabaseManager.java</url>
-          <line>576</line>
+          <line>615</line>
           <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
@@ -3051,6 +3132,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="224" column="43" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
+          <folding>
+            <element signature="e#1209#2423#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3068,6 +3152,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+          <folding>
+            <element signature="e#491#1473#0" expanded="false" />
+            <element signature="e#1196#1208#0" expanded="false" />
+            <element signature="e#1250#1262#0" expanded="false" />
+            <element signature="e#1484#11451#0" expanded="false" />
+            <element signature="e#2248#4192#0" expanded="false" />
+            <element signature="e#2482#2495#0" expanded="false" />
+            <element signature="e#3966#3982#0" expanded="false" />
+            <element signature="e#4214#6289#0" expanded="false" />
+            <element signature="e#4454#4467#0" expanded="false" />
+            <element signature="e#4518#4531#0" expanded="false" />
+            <element signature="e#4583#4596#0" expanded="false" />
+            <element signature="e#6063#6079#0" expanded="false" />
+            <element signature="e#6311#8393#0" expanded="false" />
+            <element signature="e#6553#6566#0" expanded="false" />
+            <element signature="e#6617#6630#0" expanded="false" />
+            <element signature="e#6682#6695#0" expanded="false" />
+            <element signature="e#8166#8182#0" expanded="false" />
+            <element signature="e#8415#10493#0" expanded="false" />
+            <element signature="e#8656#8669#0" expanded="false" />
+            <element signature="e#8720#8733#0" expanded="false" />
+            <element signature="e#8785#8798#0" expanded="false" />
+            <element signature="e#10267#10283#0" expanded="false" />
+            <element signature="e#10627#10640#0" expanded="false" />
+            <element signature="e#11011#11024#0" expanded="false" />
+            <element signature="e#11076#11089#0" expanded="false" />
+            <element signature="e#11567#11581#0" expanded="false" />
+            <element signature="e#11612#11626#0" expanded="false" />
+            <element signature="e#11798#11811#0" expanded="false" />
+            <element signature="e#12024#12039#0" expanded="false" />
+            <element signature="e#12206#12218#0" expanded="false" />
+            <element signature="e#12411#12433#0" expanded="false" />
+            <element signature="e#12464#12479#0" expanded="false" />
+            <element signature="e#12703#12719#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3085,6 +3204,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3102,6 +3222,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3151,26 +3272,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_course.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="67" column="64" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test_list.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="81" column="23" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+          <folding>
+            <element signature="e#139#155#0" expanded="true" />
+            <element signature="e#217#229#0" expanded="true" />
+            <element signature="e#324#340#0" expanded="true" />
+            <element signature="e#555#568#0" expanded="true" />
+            <element signature="e#716#729#0" expanded="true" />
+            <element signature="e#922#936#0" expanded="true" />
+            <element signature="e#975#989#0" expanded="true" />
+            <element signature="e#1367#1380#0" expanded="true" />
+            <element signature="e#1563#1575#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3178,6 +3290,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3185,6 +3298,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="34" column="61" selection-start-line="34" selection-start-column="61" selection-end-line="34" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3266,10 +3380,10 @@
         <state relative-caret-position="84">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="e#216#229#0" expanded="true" />
-            <element signature="e#251#264#0" expanded="true" />
-            <element signature="e#287#300#0" expanded="true" />
-            <element signature="e#321#334#0" expanded="true" />
+            <element signature="e#216#229#0" expanded="false" />
+            <element signature="e#251#264#0" expanded="false" />
+            <element signature="e#287#300#0" expanded="false" />
+            <element signature="e#321#334#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3386,7 +3500,7 @@
         <state relative-caret-position="462">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="e#133#145#0" expanded="true" />
+            <element signature="e#133#145#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3447,6 +3561,34 @@
             <element signature="e#8965#8987#0" expanded="true" />
             <element signature="e#9078#9094#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_course.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="50" column="51" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
+          <folding>
+            <element signature="e#2396#2408#0" expanded="true" />
+            <element signature="e#2460#2472#0" expanded="true" />
+            <element signature="e#2522#2534#0" expanded="true" />
+            <element signature="e#2739#2751#0" expanded="true" />
+            <element signature="e#2962#2974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_test_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
