@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class CircularTextView extends TextView {
 
     private float strokeWidth = 5;
-    int strokeColor = Color.parseColor("#FFFFFF"), solidColor = Color.parseColor("#8BC24A");
+    int strokeColor = Color.parseColor("#FFFFFF"), solidColor = Color.parseColor("#74E4BC");
 
     public CircularTextView(Context context) {
         super(context);

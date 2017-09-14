@@ -90,8 +90,8 @@ public class LoginActivity extends BaseActivity {
                 tvLink_signup.setVisibility(View.GONE);
                 btnAlreadyRegistered.setVisibility(View.VISIBLE);
                 btnRegister.setVisibility(View.VISIBLE);
-                loginButton.setVisibility(View.GONE);
-                btnGmail.setVisibility(View.GONE);
+                /*loginButton.setVisibility(View.GONE);
+                btnGmail.setVisibility(View.GONE);*/
                 tvRegister.setVisibility(View.VISIBLE);
                 tvLogin.setVisibility(View.GONE);
 
@@ -104,8 +104,8 @@ public class LoginActivity extends BaseActivity {
                 tvLink_signup.setVisibility(View.VISIBLE);
                 btnAlreadyRegistered.setVisibility(View.GONE);
                 btnRegister.setVisibility(View.GONE);
-                loginButton.setVisibility(View.VISIBLE);
-                btnGmail.setVisibility(View.VISIBLE);
+                /*loginButton.setVisibility(View.VISIBLE);
+                btnGmail.setVisibility(View.VISIBLE);*/
 
                 tvRegister.setVisibility(View.GONE);
                 tvLogin.setVisibility(View.VISIBLE);
