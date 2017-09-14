@@ -27,6 +27,7 @@ import com.educareapps.quiz.dao.TestTable;
 import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.manager.IDatabaseManager;
 import com.educareapps.quiz.parser.QuizPlaceJson;
+import com.educareapps.quiz.utilities.Animanation;
 import com.educareapps.quiz.utilities.AppController;
 import com.educareapps.quiz.utilities.CircularTextView;
 import com.educareapps.quiz.utilities.DialogNavBarHide;
@@ -36,6 +37,8 @@ import com.educareapps.quiz.utilities.SharedPreferenceValue;
 import com.educareapps.quiz.utilities.StaticAccess;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 
 import org.json.JSONObject;
 
@@ -67,17 +70,20 @@ public class SplashActivity extends BaseActivity {
 
         ctvEduquiz = (CircularTextView) findViewById(R.id.ctvEduquiz);
         ctvEduquiz.setTypeface(face);
+        Animanation.zoomIn(ctvEduquiz);
 
         tvPlus = (TextView) findViewById(R.id.tvPlus);
         tvPlus.setTypeface(face);
-
-
+        Animanation.rotationAnimation(tvPlus);
+        ShimmerTextView tvshimmer = (ShimmerTextView) findViewById(R.id.tvshimmer);
+        Shimmer shimmer = new Shimmer();
+        shimmer.start(tvshimmer);
         printHashKey();
 
     }
 
 
-    public  void printHashKey() {
+    public void printHashKey() {
         try {
             //PackageInfo info = getPackageInfo(pContext, PackageManager.GET_SIGNATURES);
             PackageInfo info = getPackageManager().getPackageInfo("com.educareapps.quiz", PackageManager.GET_SIGNATURES);

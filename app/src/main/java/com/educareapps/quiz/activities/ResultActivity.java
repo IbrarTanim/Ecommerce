@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.educareapps.quiz.R;
 import com.educareapps.quiz.adapter.CorrectQuestionsAdapter;
@@ -19,6 +20,7 @@ import com.educareapps.quiz.parser.LeaderBoardUpdater;
 import com.educareapps.quiz.pojo.CorrectAnswerTestSummary;
 import com.educareapps.quiz.pojo.WrongAnswerTestSummary;
 import com.educareapps.quiz.utilities.DialogNavBarHide;
+import com.educareapps.quiz.utilities.InternetAvailabilityCheck;
 import com.educareapps.quiz.utilities.StaticAccess;
 
 import java.util.ArrayList;
@@ -101,13 +103,23 @@ public class ResultActivity extends BaseActivity implements View.OnClickListener
             leaderBoardTable.setUser_id(serverUserid);
             leaderBoardTable.setTest_id(serverTestId);
             databaseManager.insertLeaderBoardTable(leaderBoardTable);
-            leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
+            if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
+                leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
+
+            } else {
+                Toast.makeText(activity, "Leader board server update failed.Connect with internet then try again", Toast.LENGTH_SHORT).show();
+            }
         } else {
             leaderBoardTable.setId(previousLeaderBoard.getId());
             leaderBoardTable.setUser_id(serverUserid);
             leaderBoardTable.setTest_id(serverTestId);
             databaseManager.updateLeaderBoardtTable(leaderBoardTable);
-            leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
+            if (InternetAvailabilityCheck.getConnectivityStatus(activity) != StaticAccess.TYPE_NOT_CONNECTED) {
+                leaderBoardUpdater.updateUserLeaderboard(leaderBoardTable);
+
+            } else {
+                Toast.makeText(activity, "Leader board server update failed.Connect with internet then try again", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
