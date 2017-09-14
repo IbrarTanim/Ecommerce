@@ -128,13 +128,11 @@ public class WrongQuestionsAdapter extends BaseAdapter {
                 break;
             case 2:
                 holder.ibtnOptionTwoDisplay.setImageResource(R.drawable.wrong);
-
                 holder.ibtnOptionTwoDisplay.setVisibility(View.VISIBLE);
 
                 break;
             case 3:
                 holder.ibtnOptionThreeDisplay.setImageResource(R.drawable.wrong);
-
                 holder.ibtnOptionThreeDisplay.setVisibility(View.VISIBLE);
                 break;
             case 4:
