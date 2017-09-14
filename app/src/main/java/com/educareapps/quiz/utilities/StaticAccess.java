@@ -31,4 +31,9 @@ public class StaticAccess {
     public static final String KEY_STATION_LINK = "stationLink";
 
 
+    public static final String KEY_NORMAL_REGISTRATION_TYPE = "1";
+    public static final String KEY_FACEBOOK_REGISTRATION_TYPE = "2";
+    public static final String KEY_GOOGLE_REGISTRATION_TYPE = "3";
+
+
 }

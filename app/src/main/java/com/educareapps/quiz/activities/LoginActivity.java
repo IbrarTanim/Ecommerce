@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -35,12 +38,14 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     EditText etEmailUsername, etPassword;
     Button btnLogin, btnRegister, btnGmail;
@@ -76,76 +81,18 @@ public class LoginActivity extends BaseActivity {
         tvRegister.setTypeface(face);
         tvLogin.setTypeface(face);
 
-        btnGmail.setOnClickListener(new View.OnClickListener() {
+      /*  btnGmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(activity, DashBoardActivity.class));
             }
-        });
-        tvLink_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        });*/
 
-                btnLogin.setVisibility(View.GONE);
-                tvLink_signup.setVisibility(View.GONE);
-                btnAlreadyRegistered.setVisibility(View.VISIBLE);
-                btnRegister.setVisibility(View.VISIBLE);
-                loginButton.setVisibility(View.GONE);
-                btnGmail.setVisibility(View.GONE);
-                tvRegister.setVisibility(View.VISIBLE);
-                tvLogin.setVisibility(View.GONE);
-
-            }
-        });
-        btnAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btnLogin.setVisibility(View.VISIBLE);
-                tvLink_signup.setVisibility(View.VISIBLE);
-                btnAlreadyRegistered.setVisibility(View.GONE);
-                btnRegister.setVisibility(View.GONE);
-                loginButton.setVisibility(View.VISIBLE);
-                btnGmail.setVisibility(View.VISIBLE);
-
-                tvRegister.setVisibility(View.GONE);
-                tvLogin.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = etEmailUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                if (TextUtils.isEmpty(email)) {
-                    etEmailUsername.setError("Field can not be empty !");
-                } else if (TextUtils.isEmpty(password)) {
-                    etPassword.setError("Field can not be empty !");
-
-                } else {
-                    doRegistration(email, password);
-                }
-
-            }
-        });
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailUserName = etEmailUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                if (TextUtils.isEmpty(emailUserName)) {
-                    etEmailUsername.setError("Field can not be empty !");
-                } else if (TextUtils.isEmpty(password)) {
-                    etPassword.setError("Field can not be empty !");
-
-                } else {
-                    doLogin(emailUserName, password);
-                }
-            }
-        });
-
+        btnRegister.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
+        tvLink_signup.setOnClickListener(this);
+        btnAlreadyRegistered.setOnClickListener(this);
+        btnGmail.setOnClickListener(this);
 
         callbackManager = CallbackManager.Factory.create();
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -157,11 +104,29 @@ public class LoginActivity extends BaseActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                if (!loginResult.getAccessToken().isExpired()) {
-                    Intent intent = new Intent(activity, DashBoardActivity.class);
-                    startActivity(intent);
-//                    sentServer()
-                }
+
+
+                String accessToken = loginResult.getAccessToken().getToken();
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject jsonObject,
+                                                    GraphResponse response) {
+
+
+                                // Getting FB User Data
+                                getFacebookData(jsonObject);
+
+
+                            }
+                        });
+
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,first_name,last_name,email,gender");
+                request.setParameters(parameters);
+                request.executeAsync();
 
             }
 
@@ -189,7 +154,7 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    private void doRegistration(final String email, final String password) {
+    private void doRegistration(final String email, final String password, final String regType) {
         showProgress();
         StringRequest loginReq = new StringRequest(Request.Method.POST, RootUrl.REGISTRATION_URL, new Response.Listener<String>() {
             @Override
@@ -204,6 +169,9 @@ public class LoginActivity extends BaseActivity {
                         Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
 
                     } else {
+
+
+
                         JSONObject user = jsonObject.getJSONObject(StaticAccess.USER_KEY_TAG);
                         int user_id = user.getInt("user_id");
                         String user_name = user.getString("user_name");
@@ -215,6 +183,7 @@ public class LoginActivity extends BaseActivity {
                         String contact_no = user.getString("contact_no");
                         int status = user.getInt("status");
                         String datetime = new SimpleDateFormat("dd-mm-yyy").format(new Date());
+
                         UserTable aUser = new UserTable();
                         aUser.setUser_id(user_id);
                         aUser.setUser_name(user_name == null ? "" : user_name);
@@ -250,6 +219,7 @@ public class LoginActivity extends BaseActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email);
                 params.put("password", password);
+                params.put("status", regType);
                 return params;
             }
 
@@ -364,4 +334,106 @@ public class LoginActivity extends BaseActivity {
             }
         }, 1000);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.loginButton:
+                break;
+
+            case R.id.btnGmail:
+                break;
+
+            case R.id.btnLogin:
+                String emailUserName = etEmailUsername.getText().toString();
+                String password = etPassword.getText().toString();
+                if (TextUtils.isEmpty(emailUserName)) {
+                    etEmailUsername.setError("Field can not be empty !");
+                } else if (TextUtils.isEmpty(password)) {
+                    etPassword.setError("Field can not be empty !");
+
+                } else {
+                    doLogin(emailUserName, password);
+                }
+                break;
+
+            case R.id.btnRegister:
+
+                String email = etEmailUsername.getText().toString();
+                String passwordReg = etPassword.getText().toString();
+                if (TextUtils.isEmpty(email)) {
+                    etEmailUsername.setError("Field can not be empty !");
+                } else if (TextUtils.isEmpty(passwordReg)) {
+                    etPassword.setError("Field can not be empty !");
+                } else {
+                    doRegistration(email, passwordReg,StaticAccess.KEY_NORMAL_REGISTRATION_TYPE);
+                }
+
+                break;
+
+            case R.id.tvLink_signup:
+
+                btnLogin.setVisibility(View.GONE);
+                tvLink_signup.setVisibility(View.GONE);
+                btnAlreadyRegistered.setVisibility(View.VISIBLE);
+                btnRegister.setVisibility(View.VISIBLE);
+                loginButton.setVisibility(View.GONE);
+                btnGmail.setVisibility(View.GONE);
+                tvRegister.setVisibility(View.VISIBLE);
+                tvLogin.setVisibility(View.GONE);
+
+                break;
+
+            case R.id.btnAlreadyRegistered:
+
+                btnLogin.setVisibility(View.VISIBLE);
+                tvLink_signup.setVisibility(View.VISIBLE);
+                btnAlreadyRegistered.setVisibility(View.GONE);
+                btnRegister.setVisibility(View.GONE);
+                loginButton.setVisibility(View.VISIBLE);
+                btnGmail.setVisibility(View.VISIBLE);
+
+                tvRegister.setVisibility(View.GONE);
+                tvLogin.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+//faceBook
+    private void getFacebookData(JSONObject object) {
+//       Bundle bundle = new Bundle();
+        String email="";
+        try {
+            String id = object.getString("id");
+
+            /*  URL profile_pic;
+            try {
+                profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?type=large");
+                Log.i("profile_pic", profile_pic + "");
+                bundle.putString("profile_pic", profile_pic.toString());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            }*/
+
+     /*       bundle.putString("idFacebook", id);
+            if (object.has("first_name"))
+                bundle.putString("first_name", object.getString("first_name"));
+            if (object.has("last_name"))
+                bundle.putString("last_name", object.getString("last_name"));*/
+
+            if (object.has("email"))
+                 email=object.getString("email");
+
+
+            if(email.length()>0){
+
+                doRegistration(email,"",StaticAccess.KEY_FACEBOOK_REGISTRATION_TYPE);
+            }
+
+        } catch (Exception e) {
+            Log.d("tag", "BUNDLE Exception : " + e.toString());
+        }
+    }
+
+
 }

@@ -15,6 +15,10 @@ public class Documentation {
     4. if the user after  creating new acc and delete the application and
     then that again install the app and try to login then match user information with server and return response
     and the user information from server and the app saved it in the local database.
+
+
+
+
     * */
     /*
     * REGISTRATION FLOW
