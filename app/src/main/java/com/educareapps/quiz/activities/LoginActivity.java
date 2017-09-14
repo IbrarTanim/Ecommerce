@@ -2,6 +2,7 @@ package com.educareapps.quiz.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -23,6 +24,13 @@ import com.educareapps.quiz.utilities.AppController;
 import com.educareapps.quiz.utilities.RootUrl;
 import com.educareapps.quiz.utilities.SharedPreferenceValue;
 import com.educareapps.quiz.utilities.StaticAccess;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,13 +43,14 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity {
 
     EditText etEmailUsername, etPassword;
-    Button btnLogin, btnRegister, btnFB, btnGmail;
+    Button btnLogin, btnRegister, btnGmail;
+    LoginButton loginButton;
     Button tvLink_signup, btnAlreadyRegistered;
     ProgressDialog progressDialog;
     LoginActivity activity;
     DatabaseManager databaseManager;
     TextView tvRegister, tvLogin;
-
+    CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +59,12 @@ public class LoginActivity extends BaseActivity {
         activity = this;
         databaseManager = new DatabaseManager(activity);
         progressDialog = new ProgressDialog(activity);
+
+        Typeface face = Typeface.createFromAsset(getAssets(), "font/sketch_book.ttf");
+
         etEmailUsername = (EditText) findViewById(R.id.etEmailUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        btnFB = (Button) findViewById(R.id.btnFB);
+        loginButton = (LoginButton) findViewById(R.id.loginButton);
         btnGmail = (Button) findViewById(R.id.btnGmail);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnRegister = (Button) findViewById(R.id.btnRegister);
@@ -60,6 +72,10 @@ public class LoginActivity extends BaseActivity {
         btnAlreadyRegistered = (Button) findViewById(R.id.btnAlreadyRegistered);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
         tvLogin = (TextView) findViewById(R.id.tvLogin);
+
+        tvRegister.setTypeface(face);
+        tvLogin.setTypeface(face);
+
         btnGmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +90,8 @@ public class LoginActivity extends BaseActivity {
                 tvLink_signup.setVisibility(View.GONE);
                 btnAlreadyRegistered.setVisibility(View.VISIBLE);
                 btnRegister.setVisibility(View.VISIBLE);
-               /* btnFB.setVisibility(View.GONE);
-                btnGmail.setVisibility(View.GONE);*/
+                loginButton.setVisibility(View.GONE);
+                btnGmail.setVisibility(View.GONE);
                 tvRegister.setVisibility(View.VISIBLE);
                 tvLogin.setVisibility(View.GONE);
 
@@ -84,13 +100,12 @@ public class LoginActivity extends BaseActivity {
         btnAlreadyRegistered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 btnLogin.setVisibility(View.VISIBLE);
                 tvLink_signup.setVisibility(View.VISIBLE);
                 btnAlreadyRegistered.setVisibility(View.GONE);
                 btnRegister.setVisibility(View.GONE);
-                /*btnFB.setVisibility(View.VISIBLE);
-                btnGmail.setVisibility(View.VISIBLE);*/
+                loginButton.setVisibility(View.VISIBLE);
+                btnGmail.setVisibility(View.VISIBLE);
 
                 tvRegister.setVisibility(View.GONE);
                 tvLogin.setVisibility(View.VISIBLE);
@@ -130,7 +145,49 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+
+
+        callbackManager = CallbackManager.Factory.create();
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
+        loginButton.setReadPermissions("email");
+        //loginButton.se
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                if (!loginResult.getAccessToken().isExpired()) {
+                    Intent intent = new Intent(activity, DashBoardActivity.class);
+                    startActivity(intent);
+//                    sentServer()
+                }
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+        //logger.logPurchase(BigDecimal.valueOf(4.32), Currency.getInstance("USD"));
+
+
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
 
     private void doRegistration(final String email, final String password) {
         showProgress();

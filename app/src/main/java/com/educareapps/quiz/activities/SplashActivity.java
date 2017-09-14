@@ -3,10 +3,16 @@ package com.educareapps.quiz.activities;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,6 +28,7 @@ import com.educareapps.quiz.manager.DatabaseManager;
 import com.educareapps.quiz.manager.IDatabaseManager;
 import com.educareapps.quiz.parser.QuizPlaceJson;
 import com.educareapps.quiz.utilities.AppController;
+import com.educareapps.quiz.utilities.CircularTextView;
 import com.educareapps.quiz.utilities.DialogNavBarHide;
 import com.educareapps.quiz.utilities.InternetAvailabilityCheck;
 import com.educareapps.quiz.utilities.RootUrl;
@@ -32,6 +39,8 @@ import com.gun0912.tedpermission.TedPermission;
 
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class SplashActivity extends BaseActivity {
@@ -40,6 +49,8 @@ public class SplashActivity extends BaseActivity {
     private int SPLASH_TIME_OUT = 2000;
     ProgressDialog progressDialog;
     IDatabaseManager databaseManager;
+    CircularTextView ctvEduquiz;
+    TextView tvPlus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +62,36 @@ public class SplashActivity extends BaseActivity {
         // if internet has
         checkPermission();
 
+        Typeface face = Typeface.createFromAsset(getAssets(), "font/sketch_book.ttf");
 
-        //new DeleteAsyncTask().execute();
-        // else
-        // go next
+
+        ctvEduquiz = (CircularTextView) findViewById(R.id.ctvEduquiz);
+        ctvEduquiz.setTypeface(face);
+
+        tvPlus = (TextView) findViewById(R.id.tvPlus);
+        tvPlus.setTypeface(face);
+
+
+        printHashKey();
+
+    }
+
+
+    public  void printHashKey() {
+        try {
+            //PackageInfo info = getPackageInfo(pContext, PackageManager.GET_SIGNATURES);
+            PackageInfo info = getPackageManager().getPackageInfo("com.educareapps.quiz", PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i("HashKeyFind", "printHashKey() Hash Key: " + hashKey);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("HashKeyTest", "printHashKey()", e);
+        } catch (Exception e) {
+            Log.e("HaskKeyCheck", "printHashKey()", e);
+        }
     }
 
 

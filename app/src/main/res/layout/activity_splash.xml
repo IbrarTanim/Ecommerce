@@ -8,10 +8,12 @@
 
 
     <com.educareapps.quiz.utilities.CircularTextView
-        android:layout_width="@dimen/two_hundred"
-        android:layout_height="@dimen/two_hundred"
+        android:id="@+id/ctvEduquiz"
+        android:layout_width="@dimen/three_hundred"
+        android:layout_height="@dimen/three_hundred"
         android:layout_centerInParent="true"
         android:gravity="center"
+        android:fontFamily="sk"
         android:text="@string/eduquiz"
         android:textColor="@color/white"
         android:textSize="@dimen/fifty"
@@ -22,12 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="9">
+        android:weightSum="9"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight="2.5" />
+            android:layout_weight="1.5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,13 +44,13 @@
             <View
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".5" />
+                android:layout_weight=".3" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tvPlus"
                 android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
-                android:layout_weight=".2"
+                android:layout_weight=".4"
                 android:gravity="right"
                 android:text="+"
                 android:textColor="@color/white"
@@ -65,7 +69,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero"
-            android:layout_weight="5.5" />
+            android:layout_weight="6.5" />
 
 
     </LinearLayout>
