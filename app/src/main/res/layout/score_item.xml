@@ -33,6 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/ic_percentage"
+            android:layout_margin="@dimen/five"
             android:gravity="center"
             android:padding="@dimen/five"
             android:text="50%" />

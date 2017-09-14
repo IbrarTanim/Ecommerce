@@ -36,4 +36,8 @@
     <string name="facebook_app_id">507421042948057</string>
     <string name="fb_login_protocol_scheme">fb507421042948057</string>
 
+    <string name="api_key">AIzaSyAV6Iuzz1op1b1Hdb5XKDDxrD5i-pnG2B4</string>
+    <string name="Quiz_API_key">AIzaSyAV6Iuzz1op1b1Hdb5XKDDxrD5i-pnG2B4</string>
+
+
 </resources>
