@@ -22,7 +22,7 @@
                 android:layout_centerInParent="true"
                 android:text=""
                 android:textColor="@color/white"
-                android:textSize="@dimen/twenty" />
+                android:textSize="@dimen/thirty" />
         </RelativeLayout>
 
         <ListView
