@@ -393,8 +393,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 tvLink_signup.setVisibility(View.GONE);
                 btnAlreadyRegistered.setVisibility(View.VISIBLE);
                 btnRegister.setVisibility(View.VISIBLE);
-                loginButton.setVisibility(View.GONE);
-                btnGmail.setVisibility(View.GONE);
+                loginButton.setVisibility(View.VISIBLE);
+                btnGmail.setVisibility(View.VISIBLE);
                 tvRegister.setVisibility(View.VISIBLE);
                 tvLogin.setVisibility(View.GONE);
 
